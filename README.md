@@ -5,7 +5,7 @@
 - **Thiago Moreirão - 20221437**
 - **David Bação - 20230331** 
 
-**Repositório no GitHub:**https://github.com/ThZedd/Zoopolis
+**Repositório no GitHub:** https://github.com/ThZedd/Zoopolis
 
 ---
 ### **Professores**
