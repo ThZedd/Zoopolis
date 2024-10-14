@@ -1,4 +1,4 @@
-![[Pasted image 20241014192337.png]]
+![[Pasted image 20241014201919.png]]
 **Curso:** **Engenharia Informática** 
 **Elementos do Grupo 03:**
 - **Bernardo Carvalho - 20231441**
