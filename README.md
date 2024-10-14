@@ -1,4 +1,4 @@
-![[Pasted image 20241014201919.png]]
+![[Iade logo.png]]
 **Curso:** **Engenharia Informática** 
 **Elementos do Grupo 03:**
 - **Bernardo Carvalho - 20231441**
