@@ -13,22 +13,22 @@
 ### **Professores**
 
 **Programação Mobile** 
-Nathan Campos 
+<br>Nathan Campos 
 
 **Projeto Desenvolvimento Móvel** 
-Pedro Rosa
+<br>Pedro Rosa
 
 **Programação Orientada por Objetos** 
-Fabio Guilherme 
+<br>Fabio Guilherme 
 
 **Bases de Dados** 
-Miguel Boavida
+<br>Miguel Boavida
 
 **Competências Comunicacionais** 
-Luiza Bianquini Campos
+<br>Luiza Bianquini Campos
 
 **Matemática Discreta** 
-Paulo Velho
+<br>Paulo Velho
 
 
 ---
