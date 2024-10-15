@@ -47,11 +47,11 @@ Aplicação Móvel, zoológico, interação, educação, turismo, colheita de po
 # Objetivos e Motivação
 
 
-##### Motivação:
+### Motivação:
 
 Com a crescente digitalização dos espaços culturais e educativos, os zoológicos têm a oportunidade de melhorar a experiência dos seus visitantes. A nossa aplicação **Zoopolis** pretende tornar essas visitas mais cativantes e informativas, principalmente para o público jovem, através da combinação de entretenimento e educação.
 
-##### Objetivos:
+### Objetivos:
 
  - Oferecer uma experiência cativante e interativa, com a colheita de pontos, um guia digital e localização em tempo real.
  - Incentivar as visitas recorrentes ao zoológico e o aprendizado sobre as espécies através de um guia digital.
