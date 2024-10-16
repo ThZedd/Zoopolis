@@ -79,7 +79,7 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 ---
 # Guiões de Teste
 
-##### Caso de Utilização Principal: Visita Guiada (Core)
+### Caso de Utilização Principal: Visita Guiada (Core)
 
 1.  O utilizador faz login ou cria uma conta;
 2.  **Introduz o código**, que estará disponibilizado no bilhete, e inicia a sua visita ao zoo;
