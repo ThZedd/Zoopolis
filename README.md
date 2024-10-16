@@ -89,3 +89,20 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 6. Ao scannear esse **QR Code** esse animal aparece durante aquela visita como **"Visitado"** e o utilizador **ganha 1 ponto**;
 7. Esses pontos podem ser acumulados, e ao fim de juntar um determinado número de pontos poderá levantar num dos kiosks um brinde.
 
+### Casos de Utilização Secundários:
+
+#### - Compra de Bilhetes:
+
+1.  O utilizador faz login ou cria uma conta;
+2. Acede ao menu dos preços e seleciona a opção de "Buy Tickets";
+3. Seleciona o tipo de bilhete e o número de entradas;
+4. Conclui a compra através de um pagamento seguro.
+
+#### - Pesquisa Informativa:
+1. O utilizador pode selecionar a opção de entrar como convidado;
+2. Seleciona o menu dos animais;
+3. Pesquisa sobre o animal que deseja;
+4. Seleciona (caso este exista no zoológico) e obterá informações sobre o mesmo.
+
+---
+# Descrição da solução
