@@ -94,15 +94,36 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 #### - Compra de Bilhetes:
 
 1.  O utilizador faz login ou cria uma conta;
-2. Acede ao menu dos preços e seleciona a opção de "Buy Tickets";
+2. Acede ao menu dos preços e **seleciona a opção** de "Buy Tickets";
 3. Seleciona o tipo de bilhete e o número de entradas;
-4. Conclui a compra através de um pagamento seguro.
+4. Conclui a compra através de um **pagamento seguro**.
 
 #### - Pesquisa Informativa:
-1. O utilizador pode selecionar a opção de entrar como convidado;
-2. Seleciona o menu dos animais;
-3. Pesquisa sobre o animal que deseja;
+1. O utilizador pode selecionar a opção de **entrar como convidado**;
+2. Seleciona o **menu dos animais**;
+3. Pesquisa sobre o **animal que deseja**;
 4. Seleciona (caso este exista no zoológico) e obterá informações sobre o mesmo.
 
 ---
 # Descrição da solução
+
+#### 1. Descrição Genérica:
+
+- A solução será criar uma **aplicação móvel** que oferece uma **experiência interativa, educativa e divertida** para os visitantes do zoológico. Inclui funcionalidades como **mapa interativo**, **colheita de pontos**, **compra de bilhetes**, **informação e curiosidades** acerca dos animais do zoológico e **localização em tempo real**.
+
+#### 2. Enquadramento nas Unidades Curriculares:
+
+- **Programação Mobile:** Desenvolvimento da aplicação móvel através da utilização da aplicação **Android Studio**.
+- **Programação Orientada por Objetos:** Interligação da **base de dados** com a app através da utilização do **Spring Boot**.
+- **Base de dados:** Armazenamento das **informações dos animais, utilizadores e dos pontos coletados**.
+- **Competências Comunicacionais:** Comunicação eficaz na **propaganda e divulgação** do produto em desenvolvimento.
+- **Matemática Discreta:** Análise e tratamento dos dados da aplicação.
+
+#### 3. Requisitos Técnicos:
+
+- **Linguagens de Programação**: **Kotlin**, **Java**, **MySQL**.
+- **Plataforma de Desenvolvimento**: Android Studio
+- **Base de Dados:** MySQL Workbench.
+- **API:** Spring Boot. 
+
+#### 4. Arquitetura da Solução:
