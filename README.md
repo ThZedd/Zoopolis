@@ -163,3 +163,4 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 - [ZSL London Zoo](https://www.zsl.org/) 
 - [Bronx Zoo](https://map.bronxzoo.com/home) 
 - [San Diego Zoo App](https://play.google.com/store/apps/details?id=com.seamgen.sandiegozoo.zoo&hl=en&pli=1) 
+- [Figma](https://www.figma.com/)
