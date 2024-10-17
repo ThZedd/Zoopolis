@@ -35,21 +35,20 @@
 # Relatório - Projeto Mobile - Zoopolis
 
 
-**Zoopolis** é uma aplicação móvel concebida com o intuito de melhorar a experiência dos visitantes ao zoológico, através do fornecimento de um meio interativo e educativo para explorar as instalações. O seu objetivo é resolver a **falta de informações acessíveis** (por exemplo: a localização dos caixotes do lixo) durante a visita, oferecendo um guia digital, localização em tempo real, exibição de preços, recursos educativos e a **possibilidade de acumular pontos**, de modo a maximizar o aproveitamento da visita. 
+- **Zoopolis** é uma aplicação móvel concebida com o intuito de melhorar a experiência dos visitantes ao zoológico, através do fornecimento de um meio interativo e educativo para explorar as instalações. O seu objetivo é resolver a **falta de informações acessíveis** (por exemplo: a localização dos caixotes do lixo) durante a visita, oferecendo um guia digital, localização em tempo real, exibição de preços, recursos educativos e a **possibilidade de acumular pontos**, de modo a maximizar o aproveitamento da visita. 
 
 ---
 # Palavras-Chave
 
 
-Aplicação Móvel, zoológico, interação, educação, turismo, colheita de pontos, guia digital, localização em tempo real.
+- Aplicação Móvel, zoológico, interação, educação, turismo, colheita de pontos, guia digital, localização em tempo real.
 
 ---
 # Objetivos e Motivação
 
-
 ### Motivação:
 
-Com a crescente digitalização dos espaços culturais e educativos, os zoológicos têm a oportunidade de melhorar a experiência dos seus visitantes. A nossa aplicação **Zoopolis** pretende tornar essas visitas mais cativantes e informativas, principalmente para o público jovem, através da combinação de entretenimento e educação.
+- Com a crescente digitalização dos espaços culturais e educativos, os zoológicos têm a oportunidade de melhorar a experiência dos seus visitantes. A nossa aplicação **Zoopolis** pretende tornar essas visitas mais cativantes e informativas, principalmente para o público jovem, através da combinação de entretenimento e educação.
 
 ### Objetivos:
 
@@ -127,3 +126,40 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 - **API:** Spring Boot. 
 
 #### 4. Arquitetura da Solução:
+
+- **Frontend:** Desenvolvimento da aplicação com Android Studio.
+- **Backend:** Utilização de Spring Boot para lidar com as interações entre a base de dados e a aplicação.
+- **Base de dados:** Utilização de MySQL Workbench para criar a DB.
+
+#### 5. Tecnologias a utilizar:
+
+- **Frontend:** Kotlin.
+- **Backend:** Java.
+- **Base de dados:** MySQL.
+
+---
+
+# MockUps:
+
+
+
+---
+# Planeamento (Gráfico de Gantt):
+
+
+
+
+
+
+---
+# Conclusão:
+
+- O nosso projeto **Zoopolis** tem como objetivo revolucionar as visitas ao zoológico e a forma como as pessoas interagem com o zoo, utilizando tecnologias modernas como **a localização em tempo real**. Queremos criar uma **experiência educativa e cativante**, contribuindo para a preservação da vida selvagem, sensibilizando os visitantes. Ao longo do desenvolvimento da aplicação, **estaremos abertos a críticas construtivas**, de forma a atender às necessidades dos nossos utilizadores, garantindo assim que a nossa aplicação seja **intuitiva, funcional e prática**.
+
+
+---
+# Bibliografia:
+
+- [ZSL London Zoo](https://www.zsl.org/) 
+- [Bronx Zoo](https://map.bronxzoo.com/home) 
+- [San Diego Zoo App](https://play.google.com/store/apps/details?id=com.seamgen.sandiegozoo.zoo&hl=en&pli=1) 
