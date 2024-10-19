@@ -166,3 +166,4 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 - [San Diego Zoo App](https://play.google.com/store/apps/details?id=com.seamgen.sandiegozoo.zoo&hl=en&pli=1) 
 - [Jardim Zoológico](https://www.zoo.pt)
 - [Figma](https://www.figma.com/)
+- [ClickUp](https://www.clickup.com/)
