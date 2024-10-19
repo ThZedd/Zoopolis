@@ -1,8 +1,5 @@
 ![image](https://github.com/user-attachments/assets/dd55e169-cb3e-4b78-b666-63bd3092f4f6)
 
----
-# Índice:
----
 **Curso:** **Engenharia Informática** 
 
 **Elementos do Grupo 03:**
@@ -13,7 +10,7 @@
 **Repositório no GitHub:** https://github.com/ThZedd/Zoopolis
 
 ---
-# **Professores**
+### **Professores**
 
 **Programação Mobile** 
 <br>Nathan Campos 
@@ -37,10 +34,12 @@
 ---
 # Relatório - Projeto Mobile - Zoopolis
 
+
 - **Zoopolis** é uma aplicação móvel concebida com o intuito de melhorar a experiência dos visitantes ao zoológico, através do fornecimento de um meio interativo e educativo para explorar as instalações. O seu objetivo é resolver a **falta de informações acessíveis** (por exemplo: a localização dos caixotes do lixo) durante a visita, oferecendo um guia digital, localização em tempo real, exibição de preços, recursos educativos e a **possibilidade de acumular pontos**, de modo a maximizar o aproveitamento da visita. 
 
 ---
 # Palavras-Chave
+
 
 - Aplicação Móvel, zoológico, interação, educação, turismo, colheita de pontos, guia digital, localização em tempo real.
 
