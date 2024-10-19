@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/0a0584f1-045d-4eb2-9670-13dc1ff7ae00)
+![image](https://github.com/user-attachments/assets/dd55e169-cb3e-4b78-b666-63bd3092f4f6)
 
 **Curso:** **Engenharia Informática** 
 
@@ -54,7 +54,7 @@
 
  - Oferecer uma experiência cativante e interativa, com a colheita de pontos, um guia digital e localização em tempo real.
  - Incentivar as visitas recorrentes ao zoológico e o aprendizado sobre as espécies através de um guia digital.
- - Facilitar a visita ao zoo com uma interface intuitiva e de facil acesso.
+ - Facilitar a visita ao zoo com uma interface intuitiva e de fácil acesso.
 
 ---
 # Público-Alvo
@@ -146,10 +146,9 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 ---
 # Planeamento (Gráfico de Gantt):
 
+Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 
-
-
-
+https://sharing.clickup.com/9012393636/l/8cjwdn4-332/list
 
 ---
 # Conclusão:
