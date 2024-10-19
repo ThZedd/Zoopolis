@@ -1,6 +1,12 @@
 ![image](https://github.com/user-attachments/assets/dd55e169-cb3e-4b78-b666-63bd3092f4f6)
 
+---
+# Índice:
+
+---
 **Curso:** **Engenharia Informática** 
+
+
 
 **Elementos do Grupo 03:**
 - **Bernardo Carvalho - 20231441**
@@ -10,7 +16,7 @@
 **Repositório no GitHub:** https://github.com/ThZedd/Zoopolis
 
 ---
-### **Professores**
+# **Professores**
 
 **Programação Mobile** 
 <br>Nathan Campos 
