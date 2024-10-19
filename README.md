@@ -148,7 +148,9 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 
 Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 
-https://sharing.clickup.com/9012393636/l/8cjwdn4-332/list
+- https://sharing.clickup.com/9012393636/g/8cjwdn4-372/gantt
+
+- https://sharing.clickup.com/9012393636/l/8cjwdn4-332/list
 
 ---
 # Conclusão:
