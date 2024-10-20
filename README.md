@@ -250,10 +250,10 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 ---
 # Bibliografia:
 
-- [ZSL London Zoo](https://www.zsl.org/) 
+- [ZSL London Zoo - London Zoo](https://www.zsl.org/) 
 - [Bronx Zoo](https://map.bronxzoo.com/home) 
-- [San Diego Zoo App](https://play.google.com/store/apps/details?id=com.seamgen.sandiegozoo.zoo&hl=en&pli=1) 
-- [Jardim Zoológico](https://www.zoo.pt)
+- [San Diego Zoo App - San Diego Zoo](https://play.google.com/store/apps/details?id=com.seamgen.sandiegozoo.zoo&hl=en&pli=1) 
+- [Jardim Zoológico de Lisboa](https://www.zoo.pt)
 - [Figma - Figma, Inc.](https://www.figma.com/)
 - [ClickUp](https://www.clickup.com/)
 - [Kotlin - Jetbrains](https://kotlinlang.org/)
