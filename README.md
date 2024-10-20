@@ -205,9 +205,9 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 ## 7. Project Team
 
 - Developers:
-- Bernardo Carvalho;
-- Thiago Moreirão;
-- David Bação;
+   - Bernardo Carvalho;
+   - Thiago Moreirão;
+   - David Bação;
 ## 8. Stakeholders
 
 - **European University - IADE**
@@ -215,12 +215,12 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 ## 9. Overall Project Risk
   
 - **Risks:**
-   1. Due to the limited time to complete the project, there is a risk that we will not be able to implement all the desired functionalities.
-   2. Users' lack of familiarity with the new system can result in low use and dissemination, compromising the success of the project.
+   - Due to the limited time to complete the project, there is a risk that we will not be able to implement all the desired functionalities.
+   - Users' lack of familiarity with the new system can result in low use and dissemination, compromising the success of the project.
 
 - **Mitigations:**
-   1. Conduct development and brainstorming sessions with the team to prioritize essential features and ensure better project planning.
-   2. Collect feedback from a group of beta users during the testing phase to identify areas for improvement and promote acceptance of the system.
+   - Conduct development and brainstorming sessions with the team to prioritize essential features and ensure better project planning.
+   - Collect feedback from a group of beta users during the testing phase to identify areas for improvement and promote acceptance of the system.
 
 ## 10. Project Success Criteria
 
