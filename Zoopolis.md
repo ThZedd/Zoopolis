@@ -229,8 +229,9 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 ---
 # MockUps:
 
+A aplicação utilizada foi o Figma:
 
-
+- https://www.figma.com/proto/HtLBeDXc9heSYg3r913Lhk/Projeto?node-id=0-1&t=GbXDCTrreYVTK9H9-1
 
 ---
 # Planeamento (Gráfico de Gantt):
@@ -242,6 +243,7 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 - https://sharing.clickup.com/9012393636/l/8cjwdn4-332/list
 
 ---
+
 # Conclusão:
 
 - O nosso projeto **Zoopolis** tem como objetivo revolucionar as visitas ao zoológico e a forma como as pessoas interagem com o zoo, utilizando tecnologias modernas como **a localização em tempo real**. Queremos criar uma **experiência educativa e cativante**, contribuindo para a preservação da vida selvagem, sensibilizando os visitantes. Ao longo do desenvolvimento da aplicação, **estaremos abertos a críticas construtivas**, de forma a atender às necessidades dos nossos utilizadores, garantindo assim que a nossa aplicação seja **intuitiva, funcional e prática**.
