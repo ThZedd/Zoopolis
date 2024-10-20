@@ -2,10 +2,34 @@
 
 ---
 # Índice:
----
-**Curso:** **Engenharia Informática** 
+- [Curso](#curso)
+- [Elementos do Grupo](#elementos-do-grupo)
+- [Professores](#professores)
+- [Relatório - Projeto Mobile - Zoopolis](#relatório---projeto-mobile---zoopolis)
+- [Palavras-Chave](#palavras-chave)
+- [Objetivos e Motivação](#objetivos-e-motivação)
+- [Público-Alvo](#público-alvo)
+- [Aplicações Semelhantes](#aplicações-semelhantes)
+- [Guiões de Teste](#guiões-de-teste)
+  - [Caso de Utilização Principal: Visita Guiada](#caso-de-utilização-principal-visita-guiada)
+  - [Casos de Utilização Secundários](#casos-de-utilização-secundários)
+- [Descrição da Solução](#descrição-da-solução)
+  - [Descrição Genérica](#descrição-genérica)
+  - [Enquadramento nas Unidades Curriculares](#enquadramento-nas-unidades-curriculares)
+  - [Requisitos Técnicos](#requisitos-técnicos)
+  - [Arquitetura da Solução](#arquitetura-da-solução)
+  - [Tecnologias a Utilizar](#tecnologias-a-utilizar)
+- [MockUps](#mockups)
+- [Planeamento (Gráfico de Gantt)](#planeamento-gráfico-de-gantt)
+- [Conclusão](#conclusão)
+- [Bibliografia](#bibliografia)
 
-**Elementos do Grupo 03:**
+
+---
+#### **Curso:** 
+- **Engenharia Informática** 
+
+#### **Elementos do Grupo:**
 - **Bernardo Carvalho - 20231441**
 - **Thiago Moreirão - 20221437**
 - **David Bação - 20230331** 
