@@ -234,7 +234,7 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 ---
 # Planeamento (Gráfico de Gantt):
 
-- Utilizamos o site recomendado para a realização do Gráfico de Gantt:
+Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 
 - https://sharing.clickup.com/9012393636/g/8cjwdn4-372/gantt
 
