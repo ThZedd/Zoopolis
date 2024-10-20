@@ -12,6 +12,7 @@
 - [Aplicações Semelhantes](#aplicações-semelhantes)
 - [Guiões de Teste](#guiões-de-teste)
 - [Descrição da Solução](#descrição-da-solução)
+- [Project Charter](#project-charter)
 - [MockUps](#mockups)
 - [Planeamento (Gráfico de Gantt)](#planeamento-gráfico-de-gantt)
 - [Conclusão](#conclusão)
