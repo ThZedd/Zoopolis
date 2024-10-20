@@ -174,62 +174,55 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 
 ## 2. Project Details
 
-- **Project Description**:
+- **Zoopolis** is a mobile application designed to improve the experience of zoo visitors by    providing an interactive and educational means to explore the facilities.The reason we chose the Zoo is for people to have greater contact with nature, since nowadays, technology has given us such comfort that we forget how good nature is for us and what it provides us.
 
-    - Zoopolis is a mobile application designed to improve the experience of zoo visitors by    providing an interactive and educational means to explore the facilities. 
-	The reason we chose the Zoo is for people to have greater contact with nature, since nowadays, technology has given us such comfort that we forget how good nature is for us and what it provides us.
+## 3. Key Requirements
 
-- **Key Requirements**:
+1. **Database:** MySQL for data storage, connected to the backend via REST API.
+2. **UI/UX Design:** User interface designed in Figma, following Material Design guidelines for a fluid and modern experience.
+3. **Mobile Programming:** Developed in Kotlin using the Android SDK, with Retrofit for server communication.
+4. **Backend Programming:** Backend developed in Java, with RESTful APIs to manage data and communicate with the database.
+5. **Platform:** Native Android app, compatible with devices running Android 5.0 (Lollipop) or higher.
 
-    1. Database: MySQL for data storage, connected to the backend via REST API.
+## 4. Expected Benefits
 
-    2. UI/UX Design: User interface designed in Figma, following Material Design guidelines for a fluid and modern experience.
-    3. Mobile Programming: Developed in Kotlin using the Android SDK, with Retrofit for server communication.
-    4. Backend Programming: Backend developed in Java, with RESTful APIs to manage data and communicate with the database.
-    5. Platform: Native Android app, compatible with devices running Android 5.0 (Lollipop) or higher.
-
-- **Expected Benefits**:
-
-    1.  Improved Visitor Experience: The application offers interactive features such as a map and information about animals, providing a more educational and engaging visit.
-
-    2. Simplified Access: Purchasing tickets and planning visits through the app makes the experience more convenient, avoiding queues and offering real-time information.
-    3. Increased Engagement: Multimedia and interactivity features increase visitor engagement, encouraging more frequent visits and greater connection with the zoo.
-    4. Ease of Management: The zoo can monitor visitation patterns, send push notifications and reduce operational costs by digitizing most of its operations.
-    5. Sustainability: Digitizing information reduces the use of paper and helps preserve the environment, aligning with the zoo's conservation objectives.
-
-## 3. Estimated Costs & Resources
+1. **Improved Visitor Experience:** The application offers interactive features such as a map and information about animals, providing a more educational and engaging visit.
+2. **Simplified Access:** Purchasing tickets and planning visits through the app makes the experience more convenient, avoiding queues and offering real-time information.
+3. **Increased Engagement:** Multimedia and interactivity features increase visitor engagement, encouraging more frequent visits and greater connection with the zoo.
+4. **Ease of Management:** The zoo can monitor visitation patterns, send push notifications and reduce operational costs by digitizing most of its operations.
+5. **Sustainability:** Digitizing information reduces the use of paper and helps preserve the environment, aligning with the zoo's conservation objectives.
+## 5. Estimated Costs & Resources
 
 - **Estimated Costs**: $3000
 
 - **Resources**: $450
-## 4. Estimated Milestones
+## 6. Estimated Milestones
 
-1. Database setup - December 13;
-2. UI/UX Design - November 20;
-3. Mobile Programming - December 20;
-4. Backend Development - December 25;
+1. **UI/UX Design** - November 20
+2. **Database** - December 13
+3. **Mobile Programming** - December 20
+4. **Backend Programming** - December 29
+## 7. Project Team
 
-## 5. Project Team
-
-- **Developers**: <br>
-    - Thiago Moreirão
-    - David Bação
-    - Bernardo Carvalho
- 
-## 6. Stakeholders
+- Developers:
+   - Bernardo Carvalho;
+   - Thiago Moreirão;
+   - David Bação;
+## 8. Stakeholders
 
 - **European University - IADE**
 
-## 7. Overall Project Risk
+## 9. Overall Project Risk
   
-- **Risks**:<br>
-    1. Due to the limited time to complete the project, there is a risk that we will not be able to implement all the desired functionalities.
-    2. Users' lack of familiarity with the new system can result in low use and dissemination, compromising the success of the project.
- <br>
- - **Mitigations:**
-   1. Conduct development and brainstorming sessions with the team to prioritize essential features and ensure better project planning.
-   2. Collect feedback from a group of beta users during the testing phase to identify areas for improvement and promote acceptance of the system.
-## 8. Project Success Criteria
+- **Risks:**
+	1. Due to the limited time to complete the project, there is a risk that we will not be able to implement all the desired functionalities.
+	2. Users' lack of familiarity with the new system can result in low use and dissemination, compromising the success of the project.
+
+- **Mitigations:**
+	1. Conduct development and brainstorming sessions with the team to prioritize essential features and ensure better project planning.
+	2. Collect feedback from a group of beta users during the testing phase to identify areas for improvement and promote acceptance of the system.
+
+## 10. Project Success Criteria
 
 - If all the features are working and public acceptance is favorable, we thought about communicating with the Lisbon Zoo to find a possible partnership, where we would publicize our work and implement it in a real situation.
 ---
