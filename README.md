@@ -211,7 +211,7 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 
 ## 5. Project Team
 
-- **Developers**:
+- **Developers**: <br>
     - Thiago Moreirão
     - David Bação
     - Bernardo Carvalho
@@ -222,10 +222,10 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 
 ## 7. Overall Project Risk
   
-- **Risks**:
+- **Risks**:<br>
     1. Due to the limited time to complete the project, there is a risk that we will not be able to implement all the desired functionalities.
     2. Users' lack of familiarity with the new system can result in low use and dissemination, compromising the success of the project.
- 
+ <br>
  - **Mitigations:**
    1. Conduct development and brainstorming sessions with the team to prioritize essential features and ensure better project planning.
    2. Collect feedback from a group of beta users during the testing phase to identify areas for improvement and promote acceptance of the system.
