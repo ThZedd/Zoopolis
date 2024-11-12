@@ -1,5 +1,6 @@
 package pt.iade.ei.zoopolis.ui.components
 
+import android.content.Intent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -20,6 +21,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -27,12 +29,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import pt.iade.ei.zoopolis.MainActivity
 import pt.iade.ei.zoopolis.R
 
 
 @Composable
-fun MenuButton(name: String, imageRes: Int){
+fun MenuButton(name: String, imageRes: Int, activityClass: Class<*>){
     val borderStrokeWidthSize = 1.45f
+    val context = LocalContext.current
     OutlinedCard(
         modifier = Modifier
             .padding(vertical = 15.dp, horizontal = 8.dp)
@@ -42,7 +46,11 @@ fun MenuButton(name: String, imageRes: Int){
         border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(124f, 0.68f, 0.16f)),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 7.dp
-        )
+        ),
+        onClick = {
+            val intent = Intent(context, activityClass)
+            context.startActivity(intent)
+        }
     ){
 
 
@@ -122,6 +130,6 @@ fun MenuButton(name: String, imageRes: Int){
 @Composable
 fun MenuButtonPreview(){
 
-    MenuButton("Animais", R.drawable.animais)
+    MenuButton("Animais", R.drawable.animais, MainActivity::class.java)
 
 }

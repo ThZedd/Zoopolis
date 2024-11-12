@@ -29,27 +29,26 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pt.iade.ei.zoopolis.MainMenuActivity
+import pt.iade.ei.zoopolis.MainActivity
 import pt.iade.ei.zoopolis.R
 
 
 @Composable
-fun Login(name: String, imageRes: Int) {
+fun PriceButton(name: String, imageRes: Int, activityClass: Class<*>){
     val borderStrokeWidthSize = 1.45f
     val context = LocalContext.current
     OutlinedCard(
         modifier = Modifier
-            .padding(vertical = 15.dp, horizontal = 8.dp)
-            .size(width = 200.dp, height = 60.dp),
+            .padding(start = 15.dp, end = 8.dp, bottom = 20.dp)
+            .size(width = 500.dp, height = 180.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface),
-        border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(124f, 0.68f, 0.16f)),
+        border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(0f, 0f, 0f)),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 7.dp,
-
+            defaultElevation = 7.dp
         ),
         onClick = {
-            val intent = Intent(context, MainMenuActivity::class.java)
+            val intent = Intent(context, activityClass)
             context.startActivity(intent)
         }
     ){
@@ -61,17 +60,16 @@ fun Login(name: String, imageRes: Int) {
             verticalAlignment = Alignment.CenterVertically
         ){
             Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
                 Image(painter = painterResource(id = imageRes),
-                contentDescription = "",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxSize()
+                    contentDescription = "",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxSize()
 
-            )
-
+                )
                 Box {
                     // Contorno - Desenha o texto em todas as direções para simular o contorno
                     Text(
@@ -123,17 +121,15 @@ fun Login(name: String, imageRes: Int) {
                         )
                     )
                 }
+
             }
         }
     }
 }
-
-
 @Preview(showBackground = true)
 @Composable
-fun LoginPreview(){
-    Login("Login", R.drawable.login)
+fun PriceButtonPreview(){
+
+    PriceButton("Buy Tickets", R.drawable.discount, MainActivity::class.java)
 
 }
-
-
