@@ -1,4 +1,4 @@
-package pt.iade.ei.zoopolis.ui.components
+package pt.iade.ei.zoopolis.ui.menus
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize

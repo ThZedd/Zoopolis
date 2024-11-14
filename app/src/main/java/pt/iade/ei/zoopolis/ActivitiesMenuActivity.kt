@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import pt.iade.ei.zoopolis.ui.components.ActivitiesMenu
+import pt.iade.ei.zoopolis.ui.menus.ActivitiesMenu
 import pt.iade.ei.zoopolis.ui.theme.ZoopolisTheme
 
 class ActivitiesMenuActivity : ComponentActivity() {

@@ -1,4 +1,4 @@
-package pt.iade.ei.zoopolis.ui.components
+package pt.iade.ei.zoopolis.ui.menus
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -29,9 +29,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import pt.iade.ei.zoopolis.AnimalDescriptionMenuActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.models.Animal
 import pt.iade.ei.zoopolis.models.AnimalClass
+import pt.iade.ei.zoopolis.ui.components.AnimalButton
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -107,7 +109,7 @@ fun AnimalMenu() {
 
                     items(animalContentListExample()) { animal ->
                         AnimalButton(
-                            animal = animal, )
+                            animal = animal, AnimalDescriptionMenuActivity::class.java )
                     }
                 }
             }

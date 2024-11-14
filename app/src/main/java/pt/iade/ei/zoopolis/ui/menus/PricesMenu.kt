@@ -1,13 +1,13 @@
-package pt.iade.ei.zoopolis.ui.components
+package pt.iade.ei.zoopolis.ui.menus
 
 import androidx.compose.foundation.Image
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,17 +17,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import pt.iade.ei.zoopolis.MainActivity
 import pt.iade.ei.zoopolis.R
-
+import pt.iade.ei.zoopolis.ui.components.PriceButton
 
 @Composable
 
-fun StartingMenu() {
+fun PricesMenu() {
 
     Box {
         Image(
             modifier = Modifier.fillMaxSize(),
-            painter = painterResource(R.drawable.startingmenubackground),
+            painter = painterResource(R.drawable.mainmenubackground),
             contentDescription = "background_image",
             contentScale = ContentScale.FillBounds
         )
@@ -42,6 +43,7 @@ fun StartingMenu() {
                     .padding(top = 0.dp)
 
             ) {
+
                 Column(
                     modifier = Modifier
                         .padding(innerPadding)
@@ -49,19 +51,19 @@ fun StartingMenu() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Image(
-                        painter = painterResource(R.drawable.logozoo),
-                        contentDescription = "Logo",
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(300.dp, 300.dp),
-                        alignment = Alignment.TopStart
-                    )
 
+                    Card(modifier = Modifier
+                        .padding(top = 120.dp)
+                        .fillMaxSize(),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color.hsl(124f, 0.68f, 0.16f)))
+                    {
+                        Column(modifier = Modifier.padding(top = 20.dp)) {
 
-
-                    Login("Login", R.drawable.login)
-                    Login("Register", R.drawable.register)
-                    Login("Enter as Guest", R.drawable.guest)
+                            PriceButton("Buy Tickets", R.drawable.discount, MainActivity::class.java)
+                            PriceButton("Entry Costs", R.drawable.entryprice, MainActivity::class.java)
+                        }
+                    }
 
                 }
             }
@@ -72,7 +74,8 @@ fun StartingMenu() {
 @Preview(showBackground = true)
 @Composable
 
-fun StartingMenuPreview(){
-    StartingMenu()
+fun PricesMenuPreview(){
+    PricesMenu()
 
 }
+

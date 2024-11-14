@@ -1,9 +1,7 @@
 package pt.iade.ei.zoopolis.ui.components
 
-
 import android.content.Intent
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -12,7 +10,6 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,37 +18,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pt.iade.ei.zoopolis.MainActivity
-import pt.iade.ei.zoopolis.R
-import pt.iade.ei.zoopolis.models.Animal
-import pt.iade.ei.zoopolis.models.AnimalClass
+import pt.iade.ei.zoopolis.MainMenuActivity
+
+
 
 @Composable
-fun AnimalButton(animal: Animal, activityClass: Class<*>) {
-    val negativeNumber = -1f
+fun GetDirectionsButton(name: String, containerColor: Color) {
     val borderStrokeWidthSize = 1.45f
     val context = LocalContext.current
     OutlinedCard(
         modifier = Modifier
-            .padding(vertical = 10.dp, horizontal = 8.dp)
-            .size(width = 300.dp, height = 90.dp),
+            .padding(top = 15.dp, end = 8.dp, start = 8.dp)
+            .size(width = 330.dp, height = 60.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface),
-        border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(124f, 0.68f, 0.16f)),
+            containerColor = containerColor),
+        border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(0f, 0f, 0f)),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 7.dp
-        ),
+            defaultElevation = 7.dp,
+
+            ),
         onClick = {
-            val intent = Intent(context, activityClass)
+            val intent = Intent(context, MainMenuActivity::class.java)
             context.startActivity(intent)
         }
     ){
@@ -62,60 +56,47 @@ fun AnimalButton(animal: Animal, activityClass: Class<*>) {
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ){
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(painter = painterResource(id = animal.imageRes),
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxSize()
 
-                )
-
-                Box(
-                    modifier = Modifier.padding(top = 65.dp)
-                ) {
+                Box {
                     // Contorno - Desenha o texto em todas as direções para simular o contorno
                     Text(
-                        text = animal.name,
+                        text = name,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
+                        fontSize = 22.sp,
                         textAlign = TextAlign.Center,
-                        color = Color(0xFF0D4311), // Cor do contorno
+                        color = Color(0xFF000000), // Cor do contorno
                         modifier = Modifier.offset(x = 1.dp, y = 2.dp)
                     )
                     Text(
-                        text = animal.name,
+                        text = name,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
+                        fontSize = 22.sp,
                         textAlign = TextAlign.Center,
-                        color = Color(0xFF0D4311), // Cor do contorno
-                        modifier = Modifier.offset(x = negativeNumber.dp, y = 0.dp)
+                        color = Color(0xFF000000), // Cor do contorno
+                        modifier = Modifier.offset(x = -1.dp, y = 0.dp)
                     )
                     Text(
-                        text = animal.name,
+                        text = name,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
+                        fontSize = 22.sp,
                         textAlign = TextAlign.Center,
-                        color = Color(0xFF0D4311), // Cor do contorno
+                        color = Color(0xFF000000), // Cor do contorno
                         modifier = Modifier.offset(x = 0.dp, y = 1.dp)
                     )
                     Text(
-                        text = animal.name,
+                        text = name,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
+                        fontSize = 22.sp,
                         textAlign = TextAlign.Center,
-                        color = Color(0xFF0D4311), // Cor do contorno
-                        modifier = Modifier.offset(x = 0.dp, y = negativeNumber.dp)
+                        color = Color(0xFF000000), // Cor do contorno
+                        modifier = Modifier.offset(x = 0.dp, y = -1.dp)
                     )
 
                     // Texto principal
                     Text(
-                        text = animal.name,
+                        text = name,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
+                        fontSize = 22.sp,
                         textAlign = TextAlign.Center,
                         color = Color.White,
                         style = TextStyle(
@@ -130,30 +111,13 @@ fun AnimalButton(animal: Animal, activityClass: Class<*>) {
             }
         }
     }
-}
+
 
 
 @Preview(showBackground = true)
 @Composable
-fun AnimalButtonPreview(){
-    AnimalButton(animal = Animal(
-        id = 0,
-        name = "Tiger",
-        imageRes = R.drawable.precos,
-        description = "Tiger is a Tiger",
-        weight = 100.0f,
-        height =  1.30f,
-        classs = listOf(
-            AnimalClass(
-            id = 0,
-            className = "Mammalia",
-            kingdom = "Animalia",
-            order = "Carnivora",
-            family = "Felidae",
-            genus = "Panthera",
-            specie = "P. tigris")
-        )
-    ), MainActivity::class.java)
+fun GetDirectionsButtonPreview(){
+    GetDirectionsButton("Get Directions", containerColor = Color.hsl(330f, 0.11f, 0.11f))
 
 }
 
