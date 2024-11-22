@@ -6,7 +6,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
@@ -16,25 +17,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-
+import pt.iade.ei.zoopolis.R
+import pt.iade.ei.zoopolis.models.Animal
+import pt.iade.ei.zoopolis.models.AnimalClass
 
 
 @Composable
-fun AnimalDescriptionBox(name: String, containerColor: Color) {
+fun AnimalDescriptionBox(animal: Animal, containerColor: Color) {
     val borderStrokeWidthSize = 1.45f
-    val context = LocalContext.current
     OutlinedCard(
         modifier = Modifier
             .padding(top = 15.dp, end = 8.dp, start = 8.dp)
-            .size(width = 330.dp, height = 600.dp),
+            .wrapContentHeight()
+            .wrapContentWidth(),// Altura ajustada automaticamente ao conteúdo
         colors = CardDefaults.cardColors(
             containerColor = containerColor),
         border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(0f, 0f, 0f)),
@@ -52,10 +53,10 @@ fun AnimalDescriptionBox(name: String, containerColor: Color) {
 
                 // Texto principal
                 Text(
-                    text = name,
+                    text = animal.description,
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
-                    modifier = Modifier.padding(top = 10.dp),
+                    modifier = Modifier.padding(top = 10.dp, start = 10.dp, end = 10.dp, bottom = 10.dp),
                     textAlign = TextAlign.Center,
                     color = Color.White,
                     style = TextStyle(
@@ -76,12 +77,24 @@ fun AnimalDescriptionBox(name: String, containerColor: Color) {
 @Preview(showBackground = true)
 @Composable
 fun AnimalDescriptionPreview(){
-    AnimalDescriptionBox("É a subespécie mais pequena de tigre no Mundo. A pelagem ocre-alaranjada, apresenta riscas negras longitudinais largas e muitas vezes duplas, pelo que a sua pelagem é mais escura do que noutras subespécies.\n" +
-            "\n" +
-            "Hábitos\n" +
-            "Espécie territorial e solitária embora pares de macho e fêmea se possam associar para além da reprodução. Esta espécie gosta muito de água e é uma excelente nadadora. Durante os dias mais quentes da época seca, passa longos períodos dentro de água. Caça por emboscada.Reprodução\n" +
-            "O acasalamento pode ocorrer em qualquer altura do ano, no entanto, em cada época de acasalamento, um macho e uma fêmea acasalam apenas um com o outro. A cópula é muito breve, e repetida durante 5 a 6 dias. As crias são amamentadas durante 3 a 6 meses.Conservação\n" +
-            "Ameaçada pela perda do habitat sobretudo para produção de óleo de palma, pela caça para o comércio ilegal e pela perseguição direta pelo Homem. Estima-se que existam apenas 400 destes animais na Natureza.)", containerColor = Color.hsl(330f, 0.11f, 0.11f))
+    AnimalDescriptionBox(animal = Animal(
+        id = 0,
+        name = "Tiger",
+        imageRes = R.drawable.precos,
+        description = "É a subespécie mais pequena de tigre no Mundo. A pelagem ocre-alaranjada, apresenta riscas negras longitudinais largas e muitas vezes duplas, pelo que a sua pelagem é mais escura do que noutras subespécies.",
+        weight = 100.0f,
+        height =  1.30f,
+        classs = listOf(
+            AnimalClass(
+                id = 0,
+                className = "Mammalia",
+                kingdom = "Animalia",
+                order = "Carnivora",
+                family = "Felidae",
+                genus = "Panthera",
+                specie = "P. tigris")
+        )
+    ), containerColor = Color.hsl(330f, 0.11f, 0.11f))
 
 }
 

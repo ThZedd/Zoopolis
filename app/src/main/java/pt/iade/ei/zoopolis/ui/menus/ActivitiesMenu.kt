@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import pt.iade.ei.zoopolis.ActivitiesTimeActivity
 import pt.iade.ei.zoopolis.MainActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.ui.components.PriceButton
@@ -68,7 +69,7 @@ fun ActivitiesMenu() {
                         ) {
 
                            item{
-                            PriceButton("Dolphins", R.drawable.baiadosgolfinhos, MainActivity::class.java)
+                            PriceButton("Dolphins", R.drawable.baiadosgolfinhos, ActivitiesTimeActivity::class.java)
                             PriceButton("Zoo's Train", R.drawable.comboiozoo, MainActivity::class.java)
                             PriceButton("Cable Car", R.drawable.teleferico, MainActivity::class.java)
                             PriceButton("Enchanted Forest", R.drawable.bosqueencantado, MainActivity::class.java)

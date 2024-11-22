@@ -21,11 +21,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import pt.iade.ei.zoopolis.R
+import pt.iade.ei.zoopolis.models.Animal
+import pt.iade.ei.zoopolis.models.AnimalClass
 
 
 @Composable
-fun AnimalNameBox(name: String, containerColor: Color) {
+fun AnimalNameBox(animal: Animal, containerColor: Color) {
     val borderStrokeWidthSize = 1.45f
     OutlinedCard(
         modifier = Modifier
@@ -49,7 +51,7 @@ fun AnimalNameBox(name: String, containerColor: Color) {
 
                 // Texto principal
                 Text(
-                    text = name,
+                    text = animal.name,
                     fontWeight = FontWeight.Bold,
                     fontSize = 22.sp,
                     textAlign = TextAlign.Center,
@@ -72,7 +74,24 @@ fun AnimalNameBox(name: String, containerColor: Color) {
 @Preview(showBackground = true)
 @Composable
 fun AnimalNameBoxPreview(){
-    AnimalNameBox("Name: Tiger \n (Panthera tigris)", containerColor = Color.hsl(330f, 0.11f, 0.11f))
+    AnimalNameBox(animal = Animal(
+        id = 0,
+        name = "Tiger \n Panthera Tigris",
+        imageRes = R.drawable.precos,
+        description = "Tiger is a Tiger",
+        weight = 100.0f,
+        height =  1.30f,
+        classs = listOf(
+            AnimalClass(
+                id = 0,
+                className = "Mammalia",
+                kingdom = "Animalia",
+                order = "Carnivora",
+                family = "Felidae",
+                genus = "Panthera",
+                specie = "P. tigris")
+        )
+    ), containerColor = Color.hsl(330f, 0.11f, 0.11f))
 
 }
 

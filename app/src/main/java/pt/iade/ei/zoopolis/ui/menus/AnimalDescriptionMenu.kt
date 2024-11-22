@@ -22,6 +22,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.zoopolis.R
+import pt.iade.ei.zoopolis.models.Animal
+import pt.iade.ei.zoopolis.models.AnimalClass
 import pt.iade.ei.zoopolis.ui.components.AnimalDescriptionBox
 import pt.iade.ei.zoopolis.ui.components.AnimalNameBox
 import pt.iade.ei.zoopolis.ui.components.GetDirectionsButton
@@ -98,16 +100,45 @@ fun AnimalDescriptionMenu() {
                             containerColor = Color.hsl(4f, 0.45f, 0.14f)
                         )
                         AnimalNameBox(
-                            "Name: Tiger \n (Panthera tigris)",
+                            Animal(
+                                id = 0,
+                                name = "Tiger",
+                                imageRes = R.drawable.precos,
+                                description = "É a subespécie mais pequena de tigre no Mundo. A pelagem ocre-alaranjada, apresenta riscas negras longitudinais largas e muitas vezes duplas, pelo que a sua pelagem é mais escura do que noutras subespécies.",
+                                weight = 100.0f,
+                                height =  1.30f,
+                                classs = listOf(
+                                    AnimalClass(
+                                        id = 0,
+                                        className = "Mammalia",
+                                        kingdom = "Animalia",
+                                        order = "Carnivora",
+                                        family = "Felidae",
+                                        genus = "Panthera",
+                                        specie = "P. tigris")
+                                )
+                            ),
                             containerColor = Color.hsl(36f, 0.90f, 0.37f)
                         )
                         AnimalDescriptionBox(
-                            "É a subespécie mais pequena de tigre no Mundo. A pelagem ocre-alaranjada, apresenta riscas negras longitudinais largas e muitas vezes duplas, pelo que a sua pelagem é mais escura do que noutras subespécies.\n" +
-                                    "\n" +
-                                    "Hábitos\n" +
-                                    "Espécie territorial e solitária embora pares de macho e fêmea se possam associar para além da reprodução. Esta espécie gosta muito de água e é uma excelente nadadora. Durante os dias mais quentes da época seca, passa longos períodos dentro de água. Caça por emboscada.Reprodução\n" +
-                                    "O acasalamento pode ocorrer em qualquer altura do ano, no entanto, em cada época de acasalamento, um macho e uma fêmea acasalam apenas um com o outro. A cópula é muito breve, e repetida durante 5 a 6 dias. As crias são amamentadas durante 3 a 6 meses.Conservação\n" +
-                                    "Ameaçada pela perda do habitat sobretudo para produção de óleo de palma, pela caça para o comércio ilegal e pela perseguição direta pelo Homem. Estima-se que existam apenas 400 destes animais na Natureza.)",
+                            animal = Animal(
+                                id = 0,
+                                name = "Tiger",
+                                imageRes = R.drawable.precos,
+                                description = "É a subespécie mais pequena de tigre no Mundo. A pelagem ocre-alaranjada, apresenta riscas negras longitudinais largas e muitas vezes duplas, pelo que a sua pelagem é mais escura do que noutras subespécies.",
+                                weight = 100.0f,
+                                height =  1.30f,
+                                classs = listOf(
+                                    AnimalClass(
+                                        id = 0,
+                                        className = "Mammalia",
+                                        kingdom = "Animalia",
+                                        order = "Carnivora",
+                                        family = "Felidae",
+                                        genus = "Panthera",
+                                        specie = "P. tigris")
+                                )
+                            ),
                             containerColor = Color.hsl(34f, 0.67f, 0.57f)
                         )
 
