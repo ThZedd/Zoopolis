@@ -286,7 +286,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 
 	 - URL:
 
-	 `animals`
+	 `/animals`
 
 	- METHOD:
 
@@ -294,8 +294,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 
 	- SUCESS RESPONSE:
 ```
-		[
-
+[
   {
 
 "id": [integer],
