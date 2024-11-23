@@ -298,7 +298,6 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
   {
 
 "id": [integer],
-
 "name": [string],
 "ciName": [string],
 "description": [string],
