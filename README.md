@@ -271,4 +271,48 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 
 # Dicionário de dados
 ## Modelo Entidade-Relação
-- 
+---
+# - REST API
+
+
+#### **Introdução**
+
+A API do Zoopolis oferece acesso eficiente a informações sobre animais, os pontos dos usuários e localização dos recintos, permitindo consultas, visualizações e recolhas de informações. Desenvolvida para integração com a aplicação móvel, a API fornece os dados atualizados e é compatível várias outras plataformas.
+
+Os dados são entregues em formato JSON, garantindo respostas consistentes e facilitando a integração com diversos sistemas. A estrutura dos dados e os Endpoints são flexíveis, projetados para suportar futuras atualizações e melhorias contínuas na aplicação.
+
+#### **Endpoints**
+- Mostrar Animais
+
+	 - URL:
+
+	 `/animals
+
+	- METHOD:
+
+	 `GET
+
+	- SUCESS RESPONSE:
+	````
+```
+	[
+
+  {
+
+"id": [integer],
+"name": [string],
+"ciName": [string],
+"description": [string],
+"weight": [float],
+"height": [float],
+"length": [float],
+"classe": {
+      "id": [integer],
+      "name": [string],
+      "order": [string],
+      "family": [string]
+    },
+"imageUrl": [string]
+  },
+
+]
