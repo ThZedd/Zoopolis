@@ -286,20 +286,20 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 
 	 - URL:
 
-	 `/animals
+	 `animals`
 
 	- METHOD:
 
-	 `GET
+	 `GET`
 
 	- SUCESS RESPONSE:
-	````
 ```
-	[
+		[
 
   {
 
 "id": [integer],
+
 "name": [string],
 "ciName": [string],
 "description": [string],
@@ -316,3 +316,4 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
   },
 
 ]
+```
