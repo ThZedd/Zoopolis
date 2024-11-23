@@ -266,3 +266,9 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 - [Spring Boot - VMware Tanzu](https://spring.io)
 - [MySQL - Oracle](https://www.mysql.com/)
 - [Android SDK 28 - Google](https://developer.android.com/tools/releases/platforms#9.0)
+
+---
+
+# Dicionário de dados
+## Modelo Entidade-Relação
+- 
