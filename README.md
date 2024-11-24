@@ -336,6 +336,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	 
 	 - **URL Paramethers:**
 		 - Required:
+		 
 		 `id: [integer]`
 
 	- **SUCESS RESPONSE:**
@@ -421,6 +422,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	 
 	 - **URL Paramethers:**
 		 - Required:
+		 
 		 `id: [integer]`
 
 	- **SUCESS RESPONSE:**
@@ -461,7 +463,9 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	 
 	 - **URL Paramethers:**
 		 - Required:
+		 
 		 `id: [integer]`
+		 
 		 `email: [string]`
 
 	- **SUCESS RESPONSE:**
