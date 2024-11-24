@@ -274,7 +274,6 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 ---
 # REST API
 
-
 #### **Introdução**
 
 A API do Zoopolis oferece acesso eficiente a informações sobre animais, os pontos dos usuários e localização dos recintos, permitindo consultas, visualizações e recolhas de informações. Desenvolvida para integração com a aplicação móvel, a API fornece os dados atualizados e é compatível várias outras plataformas.
@@ -284,34 +283,202 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 #### **Endpoints**
 - Mostrar Animais
 
-	 - URL:
+	 - **URL:**
 
 	 `/animals`
 
-	- METHOD:
+	- **METHOD:**
 
 	 `GET`
 
-	- SUCESS RESPONSE:
+	- **SUCESS RESPONSE:**
+	
 ```
 [
   {
 
-"id": [integer],
-"name": [string],
-"ciName": [string],
-"description": [string],
-"weight": [float],
-"height": [float],
-"length": [float],
-"classe": {
-      "id": [integer],
-      "name": [string],
-      "order": [string],
-      "family": [string]
-    },
-"imageUrl": [string]
+	"id": [integer],
+	"name": [string],
+	"ciName": [string],
+	"description": [string],
+	"weight": [float],
+	"height": [float],
+	"length": [float],
+	"classe": {
+	      "id": [integer],
+	      "name": [string],
+	      "order": [string],
+	      "family": [string]
+	    },
+	"imageUrl": [string]
   },
+]
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+	"status": 500,
+	"message": "An unexpected error occurred.",
+	"timestamp": [datetime]
+}
+```
+- Mostrar Animais por ID
+
+	 - **URL:**
+
+	 `/animals/:id
+
+	- **METHOD:**
+
+	 `GET`
+	 
+	 - **URL Paramethers:**
+		 - Required:
+		 `id: [integer]
+
+	- **SUCESS RESPONSE:**
+	
+```
+[
+  {
+
+	"id": [integer],
+	"name": [string],
+	"ciName": [string],
+	"description": [string],
+	"weight": [float],
+	"height": [float],
+	"length": [float],
+	"classe": {
+	      "id": [integer],
+	      "name": [string],
+	      "order": [string],
+	      "family": [string]
+	    },
+	"imageUrl": [string]
+	  },
 
 ]
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+	
+	"status": 404,
+	"message": "Animal with id {id} not found.",
+	"timestamp": [datetime]
+	
+}
+```
+- Mostrar Users
+
+	 - **URL:**
+
+	 `/persons
+
+	- **METHOD:**
+
+	 `GET`
+
+	- **SUCESS RESPONSE:**
+	
+```
+[
+  {
+
+	"id": [integer],
+	"name": [string],
+	"email": [string],
+	"password": [string],
+	"gender": [char],
+	"bdate": [date]
+	},
+]
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+	"status": 500,
+	"message": "An unexpected error occurred.",
+	"timestamp": [datetime]
+}
+```
+- Mostrar Users por ID
+
+	 - **URL:**
+
+	 `/persons/:id
+
+	- **METHOD:**
+
+	 `GET`
+	 
+	 - **URL Paramethers:**
+		 - Required:
+		 `id: [integer]
+
+	- **SUCESS RESPONSE:**
+```
+[
+  {
+
+	"id": [integer],
+	"name": [string],
+	"email": [string],
+	"password": [string],
+	"gender": [char],
+	"bdate": [date]
+	  },
+
+]
+```
+- **ERROR RESPONSE:**
+
+```
+{
+	
+	"status": 404,
+	"message": "Person with id {id} not found.",
+	"timestamp": [datetime]
+	
+}
+```
+- Mostrar o Email de um User pelo ID
+
+	 - **URL:**
+
+	 `/persons/:id/:email
+
+	- **METHOD:**
+
+	 `GET`
+	 
+	 - **URL Paramethers:**
+		 - Required:
+		 `id: [integer]
+		 `email: [string]
+
+	- **SUCESS RESPONSE:**
+```
+[
+  {
+	"email": [string],
+  },
+]
+```
+
+```
+{
+	
+	"status": 404,
+	"message": "Email not found from Person with id {id} not found.",
+	"timestamp": [datetime]
+	
+}
 ```
