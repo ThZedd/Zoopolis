@@ -328,7 +328,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 
 	 - **URL:**
 
-	 `/animals/:id
+	 `/animals/:id`
 
 	- **METHOD:**
 
@@ -336,7 +336,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	 
 	 - **URL Paramethers:**
 		 - Required:
-		 `id: [integer]
+		 `id: [integer]`
 
 	- **SUCESS RESPONSE:**
 	
@@ -378,7 +378,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 
 	 - **URL:**
 
-	 `/persons
+	 `/persons`
 
 	- **METHOD:**
 
@@ -413,7 +413,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 
 	 - **URL:**
 
-	 `/persons/:id
+	 `/persons/:id`
 
 	- **METHOD:**
 
@@ -421,7 +421,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	 
 	 - **URL Paramethers:**
 		 - Required:
-		 `id: [integer]
+		 `id: [integer]`
 
 	- **SUCESS RESPONSE:**
 ```
@@ -453,7 +453,7 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 
 	 - **URL:**
 
-	 `/persons/:id/:email
+	 `/persons/:id/:email`
 
 	- **METHOD:**
 
@@ -461,8 +461,8 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	 
 	 - **URL Paramethers:**
 		 - Required:
-		 `id: [integer]
-		 `email: [string]
+		 `id: [integer]`
+		 `email: [string]`
 
 	- **SUCESS RESPONSE:**
 ```
