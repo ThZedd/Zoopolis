@@ -271,7 +271,7 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 
 # Dicionário de dados
 ## Modelo Entidade-Relação
-- ![image](https://github.com/ThZedd/Zoopolis/blob/bb6e5dcdcc1fa04e7f41f450598b55b494aa5177/Documents/Segunda_entrega/modelo_entidade_relacao.png)
+
 ---
 # REST API
 
