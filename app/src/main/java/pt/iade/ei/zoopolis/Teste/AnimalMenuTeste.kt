@@ -1,5 +1,6 @@
-package pt.iade.ei.zoopolis.Teste
+package pt.iade.ei.zoopolis.teste
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +19,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,19 +28,31 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import pt.iade.ei.zoopolis.AnimalDescriptionMenuActivity
 import pt.iade.ei.zoopolis.R
-import pt.iade.ei.zoopolis.models.Animal
-import pt.iade.ei.zoopolis.models.AnimalClass
 import pt.iade.ei.zoopolis.ui.components.AnimalButton
+import pt.iade.ei.zoopolis.ui.menus.animalContentListExample
+import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AnimalMenuTeste() {
+    val animalDTOViewModel: AnimalDTOViewModel = viewModel()
+
+    // Coleta os animais da ViewModel
+    val animals by animalDTOViewModel.animals.collectAsState()
+
+    // Ação de erro de rede
+    val showErrorToast by animalDTOViewModel.showErrorToastChannel.collectAsState(initial = false)
+    if (showErrorToast) {
+        Toast.makeText(LocalContext.current, "Error loading animals", Toast.LENGTH_SHORT).show()
+    }
     var text by remember{mutableStateOf("") }
     var active by remember{mutableStateOf(false) }
     Box {
@@ -59,7 +73,12 @@ fun AnimalMenuTeste() {
                     .align(alignment = Alignment.TopCenter)
             ) {
                 SearchBar(
-                    modifier = Modifier.padding(start = 15.dp, end = 15.dp, top = 80.dp, bottom = 15.dp ),
+                    modifier = Modifier.padding(
+                        start = 15.dp,
+                        end = 15.dp,
+                        top = 80.dp,
+                        bottom = 15.dp
+                    ),
                     query = text,
                     onQueryChange = {
                         text = it
@@ -67,7 +86,7 @@ fun AnimalMenuTeste() {
                     onSearch = {
                         active = false
                     },
-                    active = active ,
+                    active = active,
                     onActiveChange = {
                         active = it
                     },
@@ -81,10 +100,10 @@ fun AnimalMenuTeste() {
                         )
                     },
                     trailingIcon = {
-                        if(active){
+                        if (active) {
                             Icon(
                                 modifier = Modifier.clickable {
-                                    if(text.isNotEmpty()){
+                                    if (text.isNotEmpty()) {
 
                                         text = ""
                                     } else {
@@ -98,23 +117,22 @@ fun AnimalMenuTeste() {
                         }
                     }
                 ) { }
-
-                // Muito importante! So facam listas assim:
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Top
                 ) {
 
-                    items(animalContentListExample()) { animal ->
-                        AnimalButton(
-                            animal = animal, AnimalDescriptionMenuActivity::class.java )
+                    items(animals.size) { animal ->
+                        AnimalButtonTeste(
+                            animal = animals[animal], AnimalDescriptionMenuActivity::class.java )
                     }
                 }
             }
+            }
         }
     }
-}
+
 
 
 @Preview(showBackground = true)
@@ -124,260 +142,3 @@ fun AnimalMenuPreview(){
     AnimalMenuTeste()
 }
 
-fun animalContentListExample(): List<Animal> {
-    return listOf(
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        ),
-        Animal(
-            id = 0,
-            name = "Tiger",
-            imageRes = R.drawable.precos,
-            description = "Tiger is a Tiger",
-            weight = 100.0f,
-            height =  1.30f,
-            classs = listOf(
-                AnimalClass(
-                    id = 0,
-                    className = "Mammalia",
-                    kingdom = "Animalia",
-                    order = "Carnivora",
-                    family = "Felidae",
-                    genus = "Panthera",
-                    specie = "P. tigris")
-            )
-        )
-
-    )
-}

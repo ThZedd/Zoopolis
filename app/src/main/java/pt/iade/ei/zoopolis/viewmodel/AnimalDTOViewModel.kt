@@ -20,10 +20,16 @@ class AnimalDTOViewModel(
     private val _animals = MutableStateFlow<List<AnimalDTO>>(emptyList())
     val animals = _animals.asStateFlow()
 
+    private val _animalById = MutableStateFlow<AnimalDTO?>(null)
+    val animalById = _animalById.asStateFlow()
+
     private val _showErrorToastChannel = Channel<Boolean>()
     val showErrorToastChannel = _showErrorToastChannel.receiveAsFlow()
 
     init {
+        loadAnimals()
+    }
+    private fun loadAnimals() {
         viewModelScope.launch {
             animalsrepository.getAnimals().collectLatest { result ->
                 when (result) {
@@ -39,7 +45,25 @@ class AnimalDTOViewModel(
                     }
                 }
             }
+        }
+    }
 
+    fun loadAnimalById(id: Int) {
+        viewModelScope.launch {
+            animalsrepository.getAnimalsById(id).collectLatest { result ->
+                when (result) {
+                    is Result.Error -> {
+                        _showErrorToastChannel.send(true)
+                    }
+                    is Result.Sucess -> {
+                        result.data?.let { animal ->
+                            _animalById.update {
+                                animal
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

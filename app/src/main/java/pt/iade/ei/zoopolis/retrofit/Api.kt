@@ -3,7 +3,6 @@ package pt.iade.ei.zoopolis.retrofit
 import pt.iade.ei.zoopolis.models.AnimalDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface Api {
 

@@ -64,32 +64,14 @@ fun GetDirectionsButton(name: String, containerColor: Color) {
                         fontWeight = FontWeight.Bold,
                         fontSize = 22.sp,
                         textAlign = TextAlign.Center,
-                        color = Color(0xFF000000), // Cor do contorno
-                        modifier = Modifier.offset(x = 1.dp, y = 2.dp)
-                    )
-                    Text(
-                        text = name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 22.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color(0xFF000000), // Cor do contorno
-                        modifier = Modifier.offset(x = -1.dp, y = 0.dp)
-                    )
-                    Text(
-                        text = name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 22.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color(0xFF000000), // Cor do contorno
-                        modifier = Modifier.offset(x = 0.dp, y = 1.dp)
-                    )
-                    Text(
-                        text = name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 22.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color(0xFF000000), // Cor do contorno
-                        modifier = Modifier.offset(x = 0.dp, y = -1.dp)
+                        color = Color.Black, // Contorno geralmente é preto
+                        style = TextStyle(
+                            shadow = Shadow(
+                                color = Color.Black,
+                                offset = Offset(-3f, -3f),
+                                blurRadius = 0.75f
+                            )
+                        )
                     )
 
                     // Texto principal
@@ -102,8 +84,8 @@ fun GetDirectionsButton(name: String, containerColor: Color) {
                         style = TextStyle(
                             shadow = Shadow(
                                 color = Color.Black,
-                                offset = Offset(4f, 4f), // Ajuste o deslocamento da sombra
-                                blurRadius = 6f // Aumente o valor para uma sombra mais suave
+                                offset = Offset(3f, 3f), // Ajuste o deslocamento da sombra
+                                blurRadius = 0.75f // Aumente o valor para uma sombra mais suave
                             )
                         )
                     )

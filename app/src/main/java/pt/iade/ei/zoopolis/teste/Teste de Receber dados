@@ -125,3 +125,97 @@ fun MainViewPreview() {
         MainView()
     }
 }
+
+
+@Composable
+fun AnimalDTO(animal: AnimalDTO) {
+    val negativeNumber = -1f
+    val borderStrokeWidthSize = 1.45f
+
+    OutlinedCard(
+        modifier = Modifier
+            .padding(vertical = 10.dp, horizontal = 8.dp)
+            .size(width = 300.dp, height = 90.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface),
+        border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(124f, 0.68f, 0.16f)),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 7.dp
+        ),
+
+    ){
+
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(painter = painterResource(id = R.drawable.precos),
+                    contentDescription = "",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxSize()
+
+                )
+
+                Box(
+                    modifier = Modifier.padding(top = 65.dp)
+                ) {
+                    // Contorno - Desenha o texto em todas as direções para simular o contorno
+                    Text(
+                        text = animal.name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
+                        textAlign = TextAlign.Center,
+                        color = Color(0xFF0D4311), // Cor do contorno
+                        modifier = Modifier.offset(x = 1.dp, y = 2.dp)
+                    )
+                    Text(
+                        text = animal.name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
+                        textAlign = TextAlign.Center,
+                        color = Color(0xFF0D4311), // Cor do contorno
+                        modifier = Modifier.offset(x = negativeNumber.dp, y = 0.dp)
+                    )
+                    Text(
+                        text = animal.name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
+                        textAlign = TextAlign.Center,
+                        color = Color(0xFF0D4311), // Cor do contorno
+                        modifier = Modifier.offset(x = 0.dp, y = 1.dp)
+                    )
+                    Text(
+                        text = animal.name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
+                        textAlign = TextAlign.Center,
+                        color = Color(0xFF0D4311), // Cor do contorno
+                        modifier = Modifier.offset(x = 0.dp, y = negativeNumber.dp)
+                    )
+
+                    // Texto principal
+                    Text(
+                        text = animal.name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
+                        textAlign = TextAlign.Center,
+                        color = Color.White,
+                        style = TextStyle(
+                            shadow = Shadow(
+                                color = Color.Black,
+                                offset = Offset(4f, 4f), // Ajuste o deslocamento da sombra
+                                blurRadius = 6f // Aumente o valor para uma sombra mais suave
+                            )
+                        )
+                    )
+                }
+            }
+        }
+    }
+}

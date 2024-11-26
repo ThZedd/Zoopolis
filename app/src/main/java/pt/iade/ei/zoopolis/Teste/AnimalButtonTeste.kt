@@ -1,17 +1,19 @@
-package pt.iade.ei.zoopolis.Teste
+package pt.iade.ei.zoopolis.teste
 
 
 import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
@@ -23,23 +25,27 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pt.iade.ei.zoopolis.MainActivity
-import pt.iade.ei.zoopolis.R
-import pt.iade.ei.zoopolis.models.Animal
-import pt.iade.ei.zoopolis.models.AnimalClass
+import coil.compose.AsyncImagePainter
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
+import coil.size.Size
+import pt.iade.ei.zoopolis.AnimalDescriptionMenuActivity
+import pt.iade.ei.zoopolis.models.AnimalDTO
 
 @Composable
-fun AnimalButtonTeste(animal: Animal, activityClass: Class<*>) {
-    val negativeNumber = -1f
+fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
     val borderStrokeWidthSize = 1.45f
     val context = LocalContext.current
+    val imageState = rememberAsyncImagePainter(
+        model = ImageRequest.Builder(LocalContext.current).data(animal.imageUrl).size(Size.ORIGINAL).build()
+    ).state
+
     OutlinedCard(
         modifier = Modifier
             .padding(vertical = 10.dp, horizontal = 8.dp)
@@ -52,6 +58,7 @@ fun AnimalButtonTeste(animal: Animal, activityClass: Class<*>) {
         ),
         onClick = {
             val intent = Intent(context, activityClass)
+            intent.putExtra("animal_id", animal.id)
             context.startActivity(intent)
         }
     ){
@@ -66,66 +73,62 @@ fun AnimalButtonTeste(animal: Animal, activityClass: Class<*>) {
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Image(painter = painterResource(id = animal.imageRes),
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxSize()
 
-                )
+                if (imageState is AsyncImagePainter.State.Error){
+                    Log.e("AnimalButton", animal.imageUrl)
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator()
+                    }
+                }
+                if (imageState is AsyncImagePainter.State.Success){
+                    Image(
+                        painter = imageState.painter,
+                        contentDescription = animal.name,
+                        contentScale = ContentScale.Crop
+                    )
+                }
 
                 Box(
                     modifier = Modifier.padding(top = 65.dp)
                 ) {
-                    // Contorno - Desenha o texto em todas as direções para simular o contorno
-                    Text(
-                        text = animal.name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color(0xFF0D4311), // Cor do contorno
-                        modifier = Modifier.offset(x = 1.dp, y = 2.dp)
-                    )
-                    Text(
-                        text = animal.name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color(0xFF0D4311), // Cor do contorno
-                        modifier = Modifier.offset(x = negativeNumber.dp, y = 0.dp)
-                    )
-                    Text(
-                        text = animal.name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color(0xFF0D4311), // Cor do contorno
-                        modifier = Modifier.offset(x = 0.dp, y = 1.dp)
-                    )
-                    Text(
-                        text = animal.name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color(0xFF0D4311), // Cor do contorno
-                        modifier = Modifier.offset(x = 0.dp, y = negativeNumber.dp)
-                    )
 
+
+//color = Color(0xFF0D4311)
+
+
+                    Text(
+                        text = animal.name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp,
+                        textAlign = TextAlign.Center,
+                        color = Color(0xFF0D4311), // Contorno geralmente é preto
+                        style = TextStyle(
+                            shadow = Shadow(
+                                color = Color(0xFF0D4311),
+                                offset = Offset(-3f, -3f),
+                                blurRadius = 2f
+                            )
+                        )
+                    )
                     // Texto principal
                     Text(
                         text = animal.name,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp,
+                        fontSize = 18.sp,
                         textAlign = TextAlign.Center,
                         color = Color.White,
                         style = TextStyle(
                             shadow = Shadow(
-                                color = Color.Black,
-                                offset = Offset(4f, 4f), // Ajuste o deslocamento da sombra
-                                blurRadius = 6f // Aumente o valor para uma sombra mais suave
+                                color = Color(0xFF0D4311),
+                                offset = Offset(3f, 3f), // Ajuste o deslocamento da sombra
+                                blurRadius = 0.15f // Aumente o valor para uma sombra mais suave
                             )
                         )
                     )
+
                 }
             }
         }
@@ -136,24 +139,14 @@ fun AnimalButtonTeste(animal: Animal, activityClass: Class<*>) {
 @Preview(showBackground = true)
 @Composable
 fun AnimalButtonPreview(){
-    AnimalButtonTeste(animal = Animal(
-        id = 0,
+    AnimalButtonTeste(animal = AnimalDTO(
+        id = 1,
         name = "Tiger",
-        imageRes = R.drawable.precos,
+        ciName = "Panthera tigris",
         description = "Tiger is a Tiger",
-        weight = 100.0f,
-        height =  1.30f,
-        classs = listOf(
-            AnimalClass(
-                id = 0,
-                className = "Mammalia",
-                kingdom = "Animalia",
-                order = "Carnivora",
-                family = "Felidae",
-                genus = "Panthera",
-                specie = "P. tigris")
-        )
-    ), MainActivity::class.java)
+        imageUrl = "ola"
+    ),
+        AnimalDescriptionMenuActivity::class.java)
 
 }
 
