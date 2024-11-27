@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -88,11 +87,11 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO) {
                                 .padding(vertical = 0.dp, horizontal = 8.dp)
                                 .size(width = 330.dp, height = 200.dp),
                             colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surface
+                                containerColor = Color(0xFF0D4311)
                             ),
                             border = BorderStroke(
                                 borderStrokeWidthSize.dp,
-                                Color.hsl(0f, 0f, 0f)
+                                Color(0xFFE8FFD2)
                             ),
                             elevation = CardDefaults.cardElevation(
                                 defaultElevation = 7.dp

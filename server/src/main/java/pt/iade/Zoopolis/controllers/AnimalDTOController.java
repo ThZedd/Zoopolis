@@ -11,7 +11,6 @@ import pt.iade.Zoopolis.models.repositories.AnimalRepository;
 
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.text.Normalizer;
 @RestController

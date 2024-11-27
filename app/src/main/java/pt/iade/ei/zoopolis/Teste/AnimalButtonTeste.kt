@@ -5,15 +5,19 @@ import android.content.Intent
 import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
@@ -25,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -36,6 +41,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import pt.iade.ei.zoopolis.AnimalDescriptionMenuActivity
+import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.models.AnimalDTO
 
 @Composable
@@ -46,10 +52,11 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
         model = ImageRequest.Builder(LocalContext.current).data(animal.imageUrl).size(Size.ORIGINAL).build()
     ).state
 
+
     OutlinedCard(
         modifier = Modifier
             .padding(vertical = 10.dp, horizontal = 8.dp)
-            .size(width = 300.dp, height = 90.dp),
+            .size(width = 300.dp, height = 100.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface),
         border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(124f, 0.68f, 0.16f)),
@@ -63,17 +70,56 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
         }
     ){
 
-
         Row(
-            modifier = Modifier.fillMaxSize(),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ){
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xFFE8FFD2)),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
 
+        ) {
+            // Ícone e informações à esquerda
+            Row(
+                modifier = Modifier
+                    .weight(0.55f)
+                    .fillMaxHeight(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.notfavoriteanimal),
+                    contentDescription = "Not favorite animal",
+                    modifier = Modifier
+                        .size(25.dp)
+                        .padding(start = 5.dp)
+
+                )
+                Spacer(modifier = Modifier.padding(2.dp))
+
+                // Texto principal
+                Text(
+                    text = animal.name,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 15.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth(),
+                    color = Color.Black,
+                    style = TextStyle(
+                        shadow = Shadow(
+                            color = Color(0xFFE8FFD2),
+                            offset = Offset(3f, 3f), // Ajuste o deslocamento da sombra
+                            blurRadius = 0.15f // Aumente o valor para uma sombra mais suave
+                        )
+                    )
+                )
+            }
+            Spacer(modifier = Modifier.padding(4.dp))
+
+            Box(
+                modifier = Modifier
+                    .weight(1f) // Ocupa parte do espaço
+
+            ) {
                 if (imageState is AsyncImagePainter.State.Error){
                     Log.e("AnimalButton", animal.imageUrl)
                     Box(
@@ -90,50 +136,12 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
                         contentScale = ContentScale.Crop
                     )
                 }
-
-                Box(
-                    modifier = Modifier.padding(top = 65.dp)
-                ) {
-
-
-//color = Color(0xFF0D4311)
-
-
-                    Text(
-                        text = animal.name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color(0xFF0D4311), // Contorno geralmente é preto
-                        style = TextStyle(
-                            shadow = Shadow(
-                                color = Color(0xFF0D4311),
-                                offset = Offset(-3f, -3f),
-                                blurRadius = 2f
-                            )
-                        )
-                    )
-                    // Texto principal
-                    Text(
-                        text = animal.name,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp,
-                        textAlign = TextAlign.Center,
-                        color = Color.White,
-                        style = TextStyle(
-                            shadow = Shadow(
-                                color = Color(0xFF0D4311),
-                                offset = Offset(3f, 3f), // Ajuste o deslocamento da sombra
-                                blurRadius = 0.15f // Aumente o valor para uma sombra mais suave
-                            )
-                        )
-                    )
-
-                }
             }
         }
     }
 }
+
+
 
 
 @Preview(showBackground = true)

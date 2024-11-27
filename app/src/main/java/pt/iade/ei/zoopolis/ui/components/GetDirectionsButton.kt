@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
@@ -28,7 +27,6 @@ import androidx.compose.ui.unit.sp
 import pt.iade.ei.zoopolis.MainMenuActivity
 
 
-
 @Composable
 fun GetDirectionsButton(name: String, containerColor: Color) {
     val borderStrokeWidthSize = 1.45f
@@ -39,7 +37,7 @@ fun GetDirectionsButton(name: String, containerColor: Color) {
             .size(width = 330.dp, height = 60.dp),
         colors = CardDefaults.cardColors(
             containerColor = containerColor),
-        border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(0f, 0f, 0f)),
+        border = BorderStroke(borderStrokeWidthSize.dp, Color(0xFFE8FFD2)),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 7.dp,
 

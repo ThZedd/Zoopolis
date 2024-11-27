@@ -23,9 +23,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pt.iade.ei.zoopolis.R
-import pt.iade.ei.zoopolis.models.Animal
-import pt.iade.ei.zoopolis.models.AnimalClass
 import pt.iade.ei.zoopolis.models.AnimalDTO
 
 
@@ -39,7 +36,7 @@ fun AnimalDescriptionBoxTeste(animal: AnimalDTO) {
             .wrapContentWidth(),// Altura ajustada automaticamente ao conteúdo
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF0D4311)),
-        border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(0f, 0f, 0f)),
+        border = BorderStroke(borderStrokeWidthSize.dp, Color(0xFFE8FFD2)),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 7.dp,
         )
