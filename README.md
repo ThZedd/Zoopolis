@@ -340,6 +340,15 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	"timestamp": [datetime]
 }
 ```
+
+- **SAMPLE CALL:**
+	
+```
+
+@Get("animals")
+suspend fun getAnimals(): Flow<Result<List<AnimalDTO>>>
+
+```
 - Mostrar Animais por ID
 
 	 - **URL:**
@@ -391,6 +400,16 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	
 }
 ```
+
+- **SAMPLE CALL:**
+	
+```
+
+@Get("animals/{id}")
+suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
+
+```
+
 - Mostrar Users
 
 	 - **URL:**
