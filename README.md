@@ -273,7 +273,7 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 # Dicionário de dados
 ## Modelo Entidade-Relação
 
-  ![image](Documents/Segunda_entrega/modelo_entidade_relacao.png)
+  <t> ![image](Documents/Segunda_entrega/modelo_entidade_relacao.png)
 
 - O relacionamento com a pessoa (Person) é central no modelo. Cada pessoa pode visitar diferentes subáreas do local (Sub Area), registrando suas preferências e comportamentos durante a sua visita. Algumas dessas pessoas podem indicar também um animal favorito
   (Favorite), estabelecendo um vínculo que ajuda na personalização da experiência e na análise de tendências do interesse do público.
