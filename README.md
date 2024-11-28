@@ -392,15 +392,6 @@ suspend fun getAnimals(): Flow<Result<List<AnimalDTO>>>
 ]
 ```
 
-- **SAMPLE CALL:**
-	
-```
-
-@Get("animals/{id}")
-suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
-
-```
-
 - **ERROR RESPONSE:**
 
 ```
