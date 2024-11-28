@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -35,8 +35,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import pt.iade.ei.zoopolis.AnimalDescriptionMenuActivity
 import pt.iade.ei.zoopolis.R
-import pt.iade.ei.zoopolis.ui.components.AnimalButton
-import pt.iade.ei.zoopolis.ui.menus.animalContentListExample
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
 
 

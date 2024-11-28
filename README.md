@@ -17,6 +17,8 @@
 - [Planeamento (Gráfico de Gantt)](#planeamento-gráfico-de-gantt)
 - [Conclusão](#conclusão)
 - [Bibliografia](#bibliografia)
+- [Dicionário-de-Dados](#dicionário-de-dados)
+- [Rest-API](#rest-api)
 
 
 ---
@@ -268,7 +270,9 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 - [Android SDK 28 - Google](https://developer.android.com/tools/releases/platforms#9.0)
 
 ---
-
+# Diagrama de Classes
+- ![image](Documents/Segunda_entrega/Diagrama-de-classes.png)
+---
 # Dicionário de dados
 ## Modelo Entidade-Relação
 
@@ -339,6 +343,16 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	"timestamp": [datetime]
 }
 ```
+
+- **SAMPLE CALL:**
+	
+```
+
+@Get("animals")
+suspend fun getAnimals(): Flow<Result<List<AnimalDTO>>>
+
+```
+
 - Mostrar Animais por ID
 
 	 - **URL:**
@@ -377,6 +391,15 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	  },
 
 ]
+```
+
+- **SAMPLE CALL:**
+	
+```
+
+@Get("animals/{id}")
+suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
+
 ```
 
 - **ERROR RESPONSE:**
