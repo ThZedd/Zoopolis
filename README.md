@@ -17,6 +17,7 @@
 - [Planeamento (Gráfico de Gantt)](#planeamento-gráfico-de-gantt)
 - [Conclusão](#conclusão)
 - [Bibliografia](#bibliografia)
+- [Diagrama-de-Classes](#diagrama-de-classes)
 - [Dicionário-de-Dados](#dicionário-de-dados)
 - [Rest-API](#rest-api)
 
@@ -270,7 +271,7 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 
 ---
 # Diagrama de Classes
-- ![image](Documents/Segunda_entrega/Diagrama-de-Classes.png)
+ ![image](Documents/Segunda_entrega/Diagrama-de-Classes.png)
 ---
 # Dicionário de dados
 ## Modelo Entidade-Relação
