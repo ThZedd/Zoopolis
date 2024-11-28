@@ -20,7 +20,6 @@
 - [Dicionário-de-Dados](#dicionário-de-dados)
 - [Rest-API](#rest-api)
 
-
 ---
 # Curso: 
 - **Engenharia Informática** 
@@ -276,7 +275,7 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 # Dicionário de dados
 ## Modelo Entidade-Relação
 
-![image](Documents/Segunda_entrega/modelo_entidade_relacao.png)
+  <t> ![image](Documents/Segunda_entrega/modelo_entidade_relacao.png)
 
 - O relacionamento com a pessoa (Person) é central no modelo. Cada pessoa pode visitar diferentes subáreas do local (Sub Area), registrando suas preferências e comportamentos durante a sua visita. Algumas dessas pessoas podem indicar também um animal favorito
   (Favorite), estabelecendo um vínculo que ajuda na personalização da experiência e na análise de tendências do interesse do público.
@@ -352,7 +351,10 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 suspend fun getAnimals(): Flow<Result<List<AnimalDTO>>>
 
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 12b975ae50706f890adfd256920c22144adf7492
 - Mostrar Animais por ID
 
 	 - **URL:**
@@ -413,6 +415,16 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 	
 }
 ```
+
+- **SAMPLE CALL:**
+	
+```
+
+@Get("animals/{id}")
+suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
+
+```
+
 - Mostrar Users
 
 	 - **URL:**
