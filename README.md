@@ -278,13 +278,13 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 
   <t> ![image](Documents/Segunda_entrega/modelo_entidade_relacao.png)
 
-- O relacionamento com a pessoa (Person) é central no modelo. Cada pessoa pode visitar diferentes subáreas do local (Sub Area), registrando suas preferências e comportamentos durante a sua visita. Algumas dessas pessoas podem indicar também um animal favorito
-  (Favorite), estabelecendo um vínculo que ajuda na personalização da experiência e na análise de tendências do interesse do público.
-  Os animais (Animal) estão organização em diferentes classes (Class), como mamíferos, aves ou répteis, permitindo uma categorização eficiente de acordo com suas características biológicas. Esses animais também estão alojados em recintos específicos 
-  (Enclousures), que atendem às necessidades de cada espécime. Cada recindo também está localizado em uma subárea (SubArea), que é uma parte de uma área maior que é o zoológico, permitindo a organização do espaço em setores bem definidos. As áreas (Area) também 
-  desempenhas outras funções importantes, pois incluem diferentes tipos de atividades (Activity) realizadas em diversos locais, como passeios, brincadeiras e interações com os animais. Além disso, às áreas contêm quiosques (Kiosks), que oferecem produtos para os 
-  visitantes e também conta com o sistema derecompensa por pontos adquiridos na visita. Esses quiosques mantêm um controle de estoque (Stock) de produtos, como alimentos, bebidas e brinquedos. Com esse modelo, não é apenas fácil de organizar como também gerir o 
-  zoológico, já que podemos saber todas as informações sobre os locais mais visitados além de gerir bem os produtos e serviços prestados em cada local.
+ O relacionamento com a pessoa (Person) é central no modelo. Cada pessoa pode visitar diferentes subáreas do local (Sub Area), registrando suas preferências e comportamentos durante a sua visita. Algumas dessas pessoas podem indicar também um animal favorito
+(Favorite), estabelecendo um vínculo que ajuda na personalização da experiência e na análise de tendências do interesse do público.
+Os animais (Animal) estão organização em diferentes classes (Class), como mamíferos, aves ou répteis, permitindo uma categorização eficiente de acordo com suas características biológicas. Esses animais também estão alojados em recintos específicos 
+(Enclousures), que atendem às necessidades de cada espécime. Cada recindo também está localizado em uma subárea (SubArea), que é uma parte de uma área maior que é o zoológico, permitindo a organização do espaço em setores bem definidos. As áreas (Area) também 
+desempenhas outras funções importantes, pois incluem diferentes tipos de atividades (Activity) realizadas em diversos locais, como passeios, brincadeiras e interações com os animais. Além disso, às áreas contêm quiosques (Kiosks), que oferecem produtos para os 
+visitantes e também conta com o sistema derecompensa por pontos adquiridos na visita. Esses quiosques mantêm um controle de estoque (Stock) de produtos, como alimentos, bebidas e brinquedos. Com esse modelo, não é apenas fácil de organizar como também gerir o 
+zoológico, já que podemos saber todas as informações sobre os locais mais visitados além de gerir bem os produtos e serviços prestados em cada local.
 
 ## Documento de referência 
 
@@ -352,10 +352,6 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 suspend fun getAnimals(): Flow<Result<List<AnimalDTO>>>
 
 ```
-<<<<<<< HEAD
-
-=======
->>>>>>> 12b975ae50706f890adfd256920c22144adf7492
 - Mostrar Animais por ID
 
 	 - **URL:**
