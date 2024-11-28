@@ -272,7 +272,10 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 ---
 # Diagrama de Classes
  ![image](Documents/Segunda_entrega/Diagrama-de-Classes.png)
+
 ---
+
+
 # Dicionário de dados
 ## Modelo Entidade-Relação
 
@@ -289,8 +292,9 @@ zoológico, já que podemos saber todas as informações sobre os locais mais vi
 ## Documento de referência 
 
 [Dicionário de dados](Documents/Segunda_entrega/Zoopolis_Base_de_Dados_.pdf) 
- 
+
 ---
+
 # REST API
 
 #### **Introdução**
