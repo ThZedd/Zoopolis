@@ -270,7 +270,7 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 
 ---
 # Diagrama de Classes
-- ![image](Documents/Segunda_entrega/Diagrama-de-classes.png)
+- ![image](Documents/Segunda_entrega/Diagrama-de-Classes.png)
 ---
 # Dicionário de dados
 ## Modelo Entidade-Relação
