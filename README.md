@@ -289,10 +289,11 @@ desempenhas outras funções importantes, pois incluem diferentes tipos de ativi
 visitantes e também conta com o sistema derecompensa por pontos adquiridos na visita. Esses quiosques mantêm um controle de estoque (Stock) de produtos, como alimentos, bebidas e brinquedos. Com esse modelo, não é apenas fácil de organizar como também gerir o 
 zoológico, já que podemos saber todas as informações sobre os locais mais visitados além de gerir bem os produtos e serviços prestados em cada local.
 
-## Documento de referência 
+## Documentos de referência 
 
 [Dicionário de dados](Documents/Segunda_entrega/Zoopolis_Base_de_Dados_.pdf) 
 
+[Guia de dados](Documents/Segunda_entrega/Guia_de_Dados.pdf) 
 ---
 
 # REST API
