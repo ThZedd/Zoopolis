@@ -17,6 +17,7 @@
 - [Planeamento (Gráfico de Gantt)](#planeamento-gráfico-de-gantt)
 - [Conclusão](#conclusão)
 - [Bibliografia](#bibliografia)
+- [Personas](#personas)
 - [Diagrama-de-Classes](#diagrama-de-classes)
 - [Dicionário-de-Dados](#dicionário-de-dados)
 - [Rest-API](#rest-api)
