@@ -270,6 +270,66 @@ Utilizamos o site recomendado para a realização do Gráfico de Gantt:
 - [Android SDK 28 - Google](https://developer.android.com/tools/releases/platforms#9.0)
 
 ---
+# Personas
+
+ - **Nome:** Lucas Silva
+- **Idade**: 27 anos
+- **Profissão**: Desenvolvedor de software
+- **Localização**: Mora em um apartamento na cidade, próximo ao zoológico
+- **Status Familiar**: Solteiro, mas frequentemente visita com amigos ou sobrinhos
+
+#### **Perfil e Comportamento**
+
+Lucas é apaixonado por tecnologia e natureza. Cresceu a assistir documentários sobre animais e sempre gostou de explorar lugares que combinam aprendizado com lazer. Ele utiliza aplicativos para maximizar suas experiências e valoriza recursos tecnológicos como localização em tempo real e interação online. Apesar de visitar o zoológico ocasionalmente, ele está sempre em busca de algo novo, como eventos ou experiências exclusivas.
+
+#### **Objetivos ao usar o app**
+
+- Descobrir experiências únicas: eventos, habitats imersivos e exposições interativas.
+- Interagir com a tecnologia do zoológico, como quiosques digitais, acumulo de pontos e localização em tempo real.
+- Compartilhar momentos no zoológico nas redes sociais.
+
+#### **Frustrações e Desafios**
+
+- Falta de inovação em passeios típicos.
+- Informações desatualizadas sobre eventos ou atrações fechadas.
+- Longas filas ou dificuldades em encontrar o caminho no zoológico.
+
+#### **Motivações**
+
+- Explorar e aprender sobre animais de forma dinâmica e tecnológica.
+- Usar o app para simplificar a visita e evitar contratempos.
+- Criar conexões com a natureza e promover a conservação ambiental.
+
+---
+
+**Nome:**Ana Clara
+- **Idade**: 35 anos
+- **Profissão**: Professora de biologia no secundário
+- **Localização**: Cidade grande, a 40 km do zoológico
+- **Status Familiar**: Casada, mãe de duas crianças (7 e 10 anos)
+
+#### **Perfil e Comportamento**
+
+Ana Clara é apaixonada por natureza e está sempre procurando atividades educativas e divertidas para seus filhos. Gosta de planejar passeios antecipadamente e valoriza recursos que tornam a experiência mais interativa e informativa. Usa tecnologia para organizar suas atividades, como aplicativos e sites, mas prefere interfaces simples e intuitivas.
+
+#### **Objetivos ao usar o app**
+
+- **Planejar a visita**: Quer saber horários, preços, mapa do zoológico, atrações e eventos especiais.
+- **Educar os filhos**: Busca informações sobre os animais que vão visitar, como curiosidades, habitat natural e hábitos alimentares.
+- **Interatividade**: Gostaria de interagir com o zoológico mesmo após a visita, como receber atualizações sobre os animais.
+
+#### **Frustrações e Desafios**
+
+- Perder tempo com informações desorganizadas ou difíceis de acessar.
+- Falta de clareza sobre o que esperar do passeio (exemplo: eventos lotados ou ausência de atrações específicas no dia).
+- Dificuldade em manter as crianças engajadas durante o passeio.
+
+#### **Motivações**
+
+- Ensinar aos filhos a importância da conservação da natureza.
+- Proporcionar momentos de lazer e conexão familiar.
+- Descobrir novidades no zoológico e compartilhar com a comunidade escolar.
+---
 # Diagrama de Classes
  ![image](Documents/Segunda_entrega/Diagrama-de-Classes.png)
 
