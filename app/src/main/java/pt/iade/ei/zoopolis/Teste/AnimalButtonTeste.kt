@@ -18,10 +18,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -51,7 +56,7 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
     val imageState = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current).data(animal.imageUrl).size(Size.ORIGINAL).build()
     ).state
-
+    var favorite by remember { mutableStateOf(false) }
 
     OutlinedCard(
         modifier = Modifier
@@ -68,7 +73,7 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
             intent.putExtra("animal_id", animal.id)
             context.startActivity(intent)
         }
-    ){
+    ) {
 
         Row(
             modifier = Modifier
@@ -77,23 +82,34 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
 
-        ) {
+            ) {
             // Ícone e informações à esquerda
             Row(
                 modifier = Modifier
-                    .weight(0.55f)
+                    .weight(0.4f)
                     .fillMaxHeight(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
-                Icon(
-                    painter = painterResource(R.drawable.notfavoriteanimal),
-                    contentDescription = "Not favorite animal",
-                    modifier = Modifier
-                        .size(25.dp)
-                        .padding(start = 5.dp)
+                IconButton(
+                    onClick = {
+                        favorite = !favorite
 
-                )
+                    },
+                    modifier = Modifier
+                        .padding(start = 5.dp)
+                        .size(34.dp) // Tamanho do botão, ajustável
+                ) {
+                    Icon(
+                        painter = painterResource(
+                            if (favorite) R.drawable.heart_minus else R.drawable.heart_plus
+                        ),
+                        contentDescription = "Not favorite animal",
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
+
+
                 Spacer(modifier = Modifier.padding(2.dp))
 
                 // Texto principal
@@ -113,14 +129,14 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
                     )
                 )
             }
-            Spacer(modifier = Modifier.padding(4.dp))
+            Spacer(modifier = Modifier.padding(2.dp))
 
             Box(
                 modifier = Modifier
-                    .weight(1f) // Ocupa parte do espaço
+                    .weight(0.65f) // Ocupa parte do espaço
 
             ) {
-                if (imageState is AsyncImagePainter.State.Error){
+                if (imageState is AsyncImagePainter.State.Error) {
                     Log.e("AnimalButton", animal.imageUrl)
                     Box(
                         modifier = Modifier.fillMaxWidth(),
@@ -129,7 +145,7 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
                         CircularProgressIndicator()
                     }
                 }
-                if (imageState is AsyncImagePainter.State.Success){
+                if (imageState is AsyncImagePainter.State.Success) {
                     Image(
                         painter = imageState.painter,
                         contentDescription = animal.name,
@@ -138,8 +154,8 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
                 }
             }
         }
-    }
-}
+    } }
+
 
 
 

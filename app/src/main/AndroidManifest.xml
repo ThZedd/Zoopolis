@@ -55,6 +55,10 @@
             android:name=".ActivitiesTimeActivity"
             android:exported="true"
             android:theme="@style/Theme.Zoopolis" />
+        <activity
+            android:name=".ProfileMenuActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Zoopolis" />
     </application>
 
 </manifest>
