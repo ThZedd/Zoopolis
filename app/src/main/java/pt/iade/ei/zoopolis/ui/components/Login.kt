@@ -34,7 +34,7 @@ import pt.iade.ei.zoopolis.R
 
 
 @Composable
-fun Login(name: String, imageRes: Int) {
+fun Login(name: String, imageRes: Int, activityClass: Class<*>) {
     val borderStrokeWidthSize = 1.45f
     val context = LocalContext.current
     OutlinedCard(
@@ -49,7 +49,7 @@ fun Login(name: String, imageRes: Int) {
 
         ),
         onClick = {
-            val intent = Intent(context, MainMenuActivity::class.java)
+            val intent = Intent(context, activityClass)
             context.startActivity(intent)
         }
     ){
@@ -132,7 +132,7 @@ fun Login(name: String, imageRes: Int) {
 @Preview(showBackground = true)
 @Composable
 fun LoginPreview(){
-    Login("Login", R.drawable.login)
+    Login("Login", R.drawable.login, MainMenuActivity::class.java)
 
 }
 

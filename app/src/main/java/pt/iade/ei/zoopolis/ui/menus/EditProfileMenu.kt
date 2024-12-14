@@ -116,7 +116,7 @@ fun EditProfileMenu(person: Person) {
                                 )
                             )
                             EditProfileTextFieldBox()
-                            PointsBox("${person.name} tem 100 points")
+                            PointsBox("100 points")
                             ProfileButton("Save")
 
                         }

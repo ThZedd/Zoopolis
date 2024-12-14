@@ -31,6 +31,14 @@
             android:exported="true"
             android:theme="@style/Theme.Zoopolis" />
         <activity
+            android:name=".RegisterMenuActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Zoopolis" />
+        <activity
+            android:name=".LoginMenuActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Zoopolis" />
+        <activity
             android:name=".MapMenuActivity"
             android:exported="true"
             android:theme="@style/Theme.Zoopolis" />

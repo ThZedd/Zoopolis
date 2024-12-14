@@ -15,8 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,6 +28,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun EditProfileTextFieldBox() {
+    val focusManager = LocalFocusManager.current
     Card(
         modifier = Modifier
             .padding(top = 15.dp, end = 8.dp, start = 8.dp),
@@ -60,7 +64,8 @@ fun EditProfileTextFieldBox() {
                 value = "",
                 onValueChange = {},
                 labelText = "Username",
-                leadingIcon = Icons.Default.Person
+                leadingIcon = Icons.Default.Person,
+                onNext = { focusManager.moveFocus(androidx.compose.ui.focus.FocusDirection.Next) }
             )
             EditProfileChangeButton("Change")
             Text(
@@ -82,7 +87,8 @@ fun EditProfileTextFieldBox() {
                 value = "",
                 onValueChange = {},
                 labelText = "Email",
-                leadingIcon = Icons.Default.Person
+                leadingIcon = Icons.Default.Person,
+                onNext = { focusManager.moveFocus(androidx.compose.ui.focus.FocusDirection.Next) }
             )
             EditProfileChangeButton("Change")
             Text(
@@ -104,7 +110,10 @@ fun EditProfileTextFieldBox() {
                 value = "",
                 onValueChange = {},
                 labelText = "Password",
-                leadingIcon = Icons.Default.Lock
+                leadingIcon = Icons.Default.Lock,
+                keyboardType = KeyboardType.Password,
+                visualTransformation = PasswordVisualTransformation(), // Exibe asteriscos
+                onNext = { focusManager.clearFocus() }
             )
             EditProfileChangeButton("Change")
         }
