@@ -39,6 +39,10 @@
             android:exported="true"
             android:theme="@style/Theme.Zoopolis" />
         <activity
+            android:name=".FavoriteMenuActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Zoopolis" />
+        <activity
             android:name=".MapMenuActivity"
             android:exported="true"
             android:theme="@style/Theme.Zoopolis" />

@@ -19,6 +19,9 @@ interface Api {
     @GET("persons/{id}")
     suspend fun getPersonsById(@Path("id") id: Int): Person
 
+    @GET("favorite/person/{personId}")
+    suspend fun getFavoriteAnimalsByPerson(@Path("personId") personId: Int): List<AnimalDTO>
+
     companion object{
 
         const val BASE_URL = "http://10.0.2.2:8080/api/"

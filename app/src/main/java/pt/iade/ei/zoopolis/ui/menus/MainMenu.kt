@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.zoopolis.ActivitiesMenuActivity
 import pt.iade.ei.zoopolis.AnimalMenuActivity
+import pt.iade.ei.zoopolis.FavoriteMenuActivity
 import pt.iade.ei.zoopolis.MapMenuActivity
 import pt.iade.ei.zoopolis.PricesMenuActivity
 import pt.iade.ei.zoopolis.R
@@ -75,6 +76,7 @@ fun MainMenu() {
                     }
 
                     EnterTheCodeButton("Enter The Code", R.drawable.enterthecode)
+                    MenuButton("Preços", R.drawable.precos, FavoriteMenuActivity::class.java)
 
                 }
             }

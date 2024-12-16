@@ -1,9 +1,6 @@
 package pt.iade.Zoopolis.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "favorite")
@@ -31,4 +28,33 @@ public class Favorite{
             nullable = true
     )
     private Person person;
+
+    public Favorite() {}
+
+    // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+
 }
