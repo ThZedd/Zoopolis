@@ -10,9 +10,6 @@ public class Favorite{
     @Column(name = "fav_id")
     private int id;
 
-    @Column(name = "fav_animal")
-    private boolean favorite;
-
     @ManyToOne
     @JoinColumn(
             name = "fav_ani_id",
@@ -40,21 +37,19 @@ public class Favorite{
         this.id = id;
     }
 
-    public boolean getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(boolean favorite) {
-        this.favorite = favorite;
-    }
-
     public Animal getAnimal() {
         return animal;
+    }
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
     }
 
     public Person getPerson() {
         return person;
     }
 
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
 }

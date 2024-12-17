@@ -1,5 +1,4 @@
-package pt.iade.ei.zoopolis.ui.menus
-
+package pt.iade.ei.zoopolis.menusdasatividadesteste
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -24,11 +23,11 @@ import pt.iade.ei.zoopolis.ui.components.ActivitiesTimeBox
 
 @Composable
 
-fun ActivitiesTimeMenu() {
+fun Teleferico() {
     Box {
         Image(
             modifier = Modifier.fillMaxSize(),
-            painter = painterResource(R.drawable.baia_golfinhos_background),
+            painter = painterResource(R.drawable.telefericos_design_background),
             contentDescription = "background_image",
             contentScale = ContentScale.FillBounds
         )
@@ -52,14 +51,14 @@ fun ActivitiesTimeMenu() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     item {
-                        ActivitiesImageBox("Baia dos Golfinhos", R.drawable.baia_dos_golfinhos_design_penguin_dentro_do_retangulo,Color.hsl(196f, 0.93f, 0.63f))
-                        ActivitiesTimeBox("Horário:", R.drawable.baia_dos_golfinhos_design_horario, "21 de setembro a 20 março: 11h (não se realiza à terça-feira) / 14h30\n" +
-                                "21 de março a 20 de setembro: 11h / 14h30 / 16h30\n")
-                        ActivitiesDescriptionBox("Descrição:", R.drawable.activitiesdescriptionbox, "A valorização dos oceanos e a conservação da biodiversidade marinha, é a mensagem das apresentações diárias da Baía dos Golfinhos. \n" +
+                        ActivitiesImageBox("Teleférico", R.drawable.telefericos_design_banner_titulo,Color.hsl(196f, 0.93f, 0.63f))
+                        ActivitiesTimeBox("Horário:", R.drawable.telefericos_design_banner_horario, "Verão: 11h30 - 19h30 (última viagem) \n\n" +
+                                "Inverno: 11h - 17h30 (última viagem)\n")
+                        ActivitiesDescriptionBox("Descrição:", R.drawable.telefericos_design_banner_info, "OBSERVE O ZOO DE OUTRA PERSPETIVA, UMA VIAGEM SURPREENDENTE DE 20 MINUTOS. \n" +
                                 "\n" +
-                                "Numa envolvência única, de comportamentos subaquáticos, os visitantes têm a oportunidade de conhecer as capacidades físicas e mentais dos embaixadores dos oceanos - os golfinhos. Com esta apresentação pretende-se ainda, sensibilizar os visitantes para a maior ameaça dos oceanos – o lixo marinho – e, deste modo, promover a mudança de atitudes e comportamentos.\n" +
-                                "\n" +
-                                "Conhecer para cuidar e agir pela preservação dos oceanos!")
+                                "Tenha em atenção\n" +
+                                "Não se realiza sob chuva e/ou ventos fortes.\n" +
+                                "Crianças menores de 12 anos terão de ser acompanhadas por um adulto maior de 18 anos.")
 
 
                     }
@@ -71,8 +70,8 @@ fun ActivitiesTimeMenu() {
 @Preview(showBackground = true)
 @Composable
 
-fun ActivitiesTimeMenuPreview(){
-    ActivitiesTimeMenu()
+fun TelefericoPreview(){
+    Teleferico()
 
 }
 

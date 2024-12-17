@@ -31,7 +31,7 @@ import pt.iade.ei.zoopolis.R
 
 
 @Composable
-fun ActivitiesTimeBox(name: String, imageRes: Int) {
+fun ActivitiesTimeBox(name: String, imageRes: Int, time: String) {
     val borderStrokeWidthSize = 2f
     OutlinedCard(
         modifier = Modifier
@@ -85,8 +85,7 @@ fun ActivitiesTimeBox(name: String, imageRes: Int) {
                      )
 
                         Text(
-                            text = "21 de setembro a 20 março: 11h (não se realiza à terça-feira) / 14h30\n" +
-                                    "21 de março a 20 de setembro: 11h / 14h30 / 16h30\n",
+                            text = time,
                             fontWeight = FontWeight.Bold,
                             fontSize = 15.sp,
                             modifier = Modifier.padding(top = 10.dp, start = 10.dp, bottom = 0.dp),
@@ -128,7 +127,8 @@ fun ActivitiesTimeBox(name: String, imageRes: Int) {
 @Preview(showBackground = true)
 @Composable
 fun ActivitiesTimeBoxPreview(){
-    ActivitiesTimeBox("Horário:", R.drawable.baia_dos_golfinhos_design_horario)
+    ActivitiesTimeBox("Horário:", R.drawable.baia_dos_golfinhos_design_horario,"21 de setembro a 20 março: 11h (não se realiza à terça-feira) / 14h30\n" +
+            "21 de março a 20 de setembro: 11h / 14h30 / 16h30\n")
 
 }
 

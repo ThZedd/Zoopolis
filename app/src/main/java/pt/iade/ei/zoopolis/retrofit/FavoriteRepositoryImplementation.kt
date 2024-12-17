@@ -34,4 +34,16 @@ class FavoriteRepositoryImplementation(
             emit(Result.Sucess(favoriteAnimalsByPersonFromApi))
         }
     }
+
+    override suspend fun isFavorite(personId: Int, animalId: Int): Boolean {
+        return api.isFavorite(personId, animalId)
+    }
+
+    override suspend fun addFavorite(personId: Int, animalId: Int): String {
+        return api.addFavorite(personId, animalId)
+    }
+
+    override suspend fun removeFavorite(personId: Int, animalId: Int): String {
+        return api.removeFavorite(personId, animalId)
+    }
 }

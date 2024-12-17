@@ -18,10 +18,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.flow.collectLatest
 import pt.iade.ei.zoopolis.retrofit.AnimalsDTORepositoryImplementation
+import pt.iade.ei.zoopolis.retrofit.FavoriteRepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.RetrofitInstance
 import pt.iade.ei.zoopolis.teste.AnimalMenuTeste
 import pt.iade.ei.zoopolis.ui.theme.ZoopolisTheme
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
+import pt.iade.ei.zoopolis.viewmodel.FavoriteViewModel
 
 class AnimalMenuActivity : ComponentActivity() {
 
@@ -33,7 +35,14 @@ class AnimalMenuActivity : ComponentActivity() {
             }
         }
     })
-
+    private val favoriteViewModel by viewModels<FavoriteViewModel>(factoryProducer = {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return FavoriteViewModel(FavoriteRepositoryImplementation(RetrofitInstance.api))
+                 as T
+            }
+        }
+    })
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -41,6 +50,7 @@ class AnimalMenuActivity : ComponentActivity() {
             ZoopolisTheme {
                 val animalsList = viewModel.animals.collectAsState().value
                 val context = LocalContext.current
+                val favoriteStatus = favoriteViewModel.favoriteStatus.collectAsState().value
                 LaunchedEffect(key1 = viewModel.showErrorToastChannel) {
                     viewModel.showErrorToastChannel.collectLatest { show ->
                         if (show) {

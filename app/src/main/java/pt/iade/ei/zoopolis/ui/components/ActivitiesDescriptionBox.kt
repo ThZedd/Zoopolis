@@ -31,12 +31,12 @@ import pt.iade.ei.zoopolis.R
 
 
 @Composable
-fun ActivitiesDescriptionBox(name: String, imageRes: Int) {
+fun ActivitiesDescriptionBox(name: String, imageRes: Int, description: String) {
     val borderStrokeWidthSize = 2f
     OutlinedCard(
         modifier = Modifier
             .padding(vertical = 15.dp, horizontal = 0.dp)
-            .size(width = 500.dp, height = 500.dp),
+            .size(width = 500.dp, height = 630.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface),
         border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(196f, 0.93f, 0.63f)),
@@ -54,7 +54,7 @@ fun ActivitiesDescriptionBox(name: String, imageRes: Int) {
         ){
             Box(
                 modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.TopCenter
+                contentAlignment = Alignment.Center
             ) {
                 Image(painter = painterResource(id = imageRes),
                     contentDescription = "",
@@ -65,14 +65,14 @@ fun ActivitiesDescriptionBox(name: String, imageRes: Int) {
                 )
                 Column(modifier = Modifier.fillMaxSize(),
                     horizontalAlignment =Alignment.CenterHorizontally ,
-                    verticalArrangement = Arrangement.spacedBy(0.dp))
+                    verticalArrangement = Arrangement.Center)
                 {
                     // Texto principal
                     Text(
                         text = name,
                         fontWeight = FontWeight.W900,
-                        fontSize = 20.sp,
-                        modifier = Modifier.padding(top = 6.dp),
+                        fontSize = 30.sp,
+                        modifier = Modifier.padding(top = 0.dp),
                         textAlign = TextAlign.Center,
                         color = Color.White,
                         style = TextStyle(
@@ -85,11 +85,7 @@ fun ActivitiesDescriptionBox(name: String, imageRes: Int) {
                     )
 
                     Text(
-                        text = "A valorização dos oceanos e a conservação da biodiversidade marinha, é a mensagem das apresentações diárias da Baía dos Golfinhos. \n" +
-                                "\n" +
-                                "Numa envolvência única, de comportamentos subaquáticos, os visitantes têm a oportunidade de conhecer as capacidades físicas e mentais dos embaixadores dos oceanos - os golfinhos. Com esta apresentação pretende-se ainda, sensibilizar os visitantes para a maior ameaça dos oceanos – o lixo marinho – e, deste modo, promover a mudança de atitudes e comportamentos.\n" +
-                                "\n" +
-                                "Conhecer para cuidar e agir pela preservação dos oceanos!",
+                        text = description,
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
                         modifier = Modifier.padding(top = 10.dp, start = 10.dp, bottom = 0.dp, end = 6.dp),
@@ -116,7 +112,14 @@ fun ActivitiesDescriptionBox(name: String, imageRes: Int) {
 @Preview(showBackground = true)
 @Composable
 fun ActivitiesDescriptionBoxPreview(){
-    ActivitiesDescriptionBox("Descrição:", R.drawable.activitiesdescriptionbox)
+    ActivitiesDescriptionBox(
+        "Descrição:",
+               R.drawable.activitiesdescriptionbox,
+        "A valorização dos oceanos e a conservação da biodiversidade marinha, é a mensagem das apresentações diárias da Baía dos Golfinhos. \n" +
+            "\n" +
+            "Numa envolvência única, de comportamentos subaquáticos, os visitantes têm a oportunidade de conhecer as capacidades físicas e mentais dos embaixadores dos oceanos - os golfinhos. Com esta apresentação pretende-se ainda, sensibilizar os visitantes para a maior ameaça dos oceanos – o lixo marinho – e, deste modo, promover a mudança de atitudes e comportamentos.\n" +
+            "\n" +
+            "Conhecer para cuidar e agir pela preservação dos oceanos!")
 
 }
 

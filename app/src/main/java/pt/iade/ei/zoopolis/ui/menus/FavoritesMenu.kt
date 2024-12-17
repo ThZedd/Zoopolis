@@ -70,7 +70,7 @@ fun FavoritesMenu() {
                     items(favoriteAnimals.size) { animal ->
                         AnimalButtonTeste(
                             animal = favoriteAnimals[animal],
-                            AnimalDescriptionMenuActivity::class.java
+                            AnimalDescriptionMenuActivity::class.java, favoriteViewModel
                         )
                     }
                 }

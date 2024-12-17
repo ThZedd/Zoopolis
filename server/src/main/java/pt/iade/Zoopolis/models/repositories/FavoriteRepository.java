@@ -1,12 +1,16 @@
 package pt.iade.Zoopolis.models.repositories;
 
 
+import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pt.iade.Zoopolis.interfaces.AnimalProjection;
+import pt.iade.Zoopolis.models.Animal;
 import pt.iade.Zoopolis.models.AnimalDTO;
 import pt.iade.Zoopolis.models.Favorite;
+import pt.iade.Zoopolis.models.Person;
 
 
 @Repository
@@ -22,5 +26,43 @@ public interface FavoriteRepository extends CrudRepository<Favorite, Integer> {
             WHERE p.id = :personId
             """)
     Iterable<AnimalDTO> findAnimalsByPersonId(int personId);
+
+    @Query("""
+        SELECT COUNT(f) > 0
+        FROM Favorite f
+        WHERE f.person.id = :personId AND f.animal.id = :animalId
+        """)
+    Boolean isFavorite(int personId, int animalId);
+
+    @Query("""
+        SELECT f
+        FROM Favorite f
+        WHERE f.person.id = :personId AND f.animal.id = :animalId
+        """)
+    Favorite findFavoriteByPersonAndAnimal(int personId, int animalId);
+
+    @Modifying
+    @Transactional
+    @Query("""
+        DELETE FROM Favorite f
+        WHERE f.person.id = :personId AND f.animal.id = :animalId
+        """)
+    void removeFavorite(int personId, int animalId);
+
+    // Método default para adicionar um favorito
+    default void addFavorite(int personId, int animalId) {
+        Person person = new Person();
+        person.setId(personId);
+
+        Animal animal = new Animal();
+        animal.setId(animalId);
+
+        Favorite favorite = new Favorite();
+        favorite.setPerson(person);
+        favorite.setAnimal(animal);
+
+        save(favorite); // O método save já existe em CrudRepository
+    }
+
 }
 
