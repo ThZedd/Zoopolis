@@ -1,10 +1,12 @@
 package pt.iade.ei.zoopolis.models
 
+import java.io.Serializable
+
 data class Person(
-    val bdate: String,
-    val email: String,
-    val gender: String,
-    val id: Int,
+    val id: Int? = null,
     val name: String,
+    val email: String,
     val password: String,
-)
+    val gender: Char,
+    val bdate: String
+) : Serializable

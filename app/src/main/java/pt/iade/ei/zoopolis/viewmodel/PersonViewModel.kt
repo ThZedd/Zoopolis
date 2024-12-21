@@ -1,70 +1,54 @@
 package pt.iade.ei.zoopolis.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import pt.iade.ei.zoopolis.models.LoginRequestDTO
+import pt.iade.ei.zoopolis.models.LoginResponseDTO
 import pt.iade.ei.zoopolis.models.Person
 import pt.iade.ei.zoopolis.retrofit.PersonRepository
 import pt.iade.ei.zoopolis.retrofit.Result
 
-class PersonViewModel(
-    private val personrepository: PersonRepository
-):ViewModel() {
+class PersonViewModel(private val personRepository: PersonRepository) : ViewModel() {
 
-    private val _persons = MutableStateFlow<List<Person>>(emptyList())
-    val persons = _persons.asStateFlow()
+    // LiveData para resultados de login
+    private val _loginResult = MutableLiveData<Result<LoginResponseDTO>?>()
+    val loginResult: MutableLiveData<Result<LoginResponseDTO>?> get() = _loginResult
 
-    private val _personById = MutableStateFlow<Person?>(null)
-    val personById = _personById.asStateFlow()
+    // LiveData para resultados de registro
+    private val _registerResult = MutableLiveData<Result<Person>>()
+    val registerResult: LiveData<Result<Person>> get() = _registerResult
 
-    private val _showErrorToastChannel = Channel<Boolean>()
-    val showErrorToastChannel = _showErrorToastChannel.receiveAsFlow()
+    // LiveData para lista de pessoas
+    private val _personsList = MutableLiveData<Result<List<Person>>>()
+    val personsList: LiveData<Result<List<Person>>> get() = _personsList
 
-    init {
-        loadPersons()
-    }
-
-    private fun loadPersons() {
+    // Função para fazer login
+    fun login(loginRequestDTO: LoginRequestDTO) {
+        // Lançar a chamada para login no repositório
         viewModelScope.launch {
-            personrepository.getPersons().collectLatest { result ->
-                when (result) {
-                    is Result.Error -> {
-                        _showErrorToastChannel.send(true)
-                    }
-                    is Result.Sucess -> {
-                        result.data?.let { persons ->
-                            _persons.update {
-                               persons
-                            }
-                        }
-                    }
-                }
-            }
+            val result = personRepository.login(loginRequestDTO)
+            _loginResult.postValue(result)  // Atualiza o LiveData com o resultado
         }
     }
 
-    fun loadPersonById(id: Int) {
+    // Função para registrar pessoa
+    fun register(person: Person) {
+        // Lançar a chamada para registro no repositório
         viewModelScope.launch {
-            personrepository.getPersonsById(id).collectLatest { result ->
-                when (result) {
-                    is Result.Error -> {
-                        _showErrorToastChannel.send(true)
-                    }
-                    is Result.Sucess -> {
-                        result.data?.let { person ->
-                            _personById.update {
-                                person
-                            }
-                        }
-                    }
-                }
-            }
+            val result = personRepository.register(person)
+            _registerResult.postValue(result)  // Atualiza o LiveData com o resultado
+        }
+    }
+
+    // Função para pegar a lista de pessoas
+    fun getPersons() {
+        // Lançar a chamada para pegar a lista de pessoas no repositório
+        viewModelScope.launch {
+            val result = personRepository.getPersons()
+            _personsList.postValue(result)  // Atualiza o LiveData com o resultado
         }
     }
 }

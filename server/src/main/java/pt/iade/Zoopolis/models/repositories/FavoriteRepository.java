@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pt.iade.Zoopolis.interfaces.AnimalProjection;
 import pt.iade.Zoopolis.models.Animal;
 import pt.iade.Zoopolis.models.AnimalDTO;
 import pt.iade.Zoopolis.models.Favorite;

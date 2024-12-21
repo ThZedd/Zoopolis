@@ -1,6 +1,8 @@
 package pt.iade.Zoopolis.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 
 @Entity
@@ -11,18 +13,26 @@ public class Person {
     @Column(name = "per_id")
     private int id;
 
+    @NotBlank(message = "Name cannot be empty")
     @Column(name = "per_name")
     private String name;
 
-    @Column(name = "per_email")
+    @NotBlank(message = "Email cannot be empty")
+    @Email(message = "Email should be valid")
+    @Column(name = "per_email", unique = true)
     private String email;
 
+    @NotBlank(message = "Password cannot be empty")
+    @Size(min = 6, message = "Password must have at least 6 characters")
     @Column(name = "per_password")
     private String password;
 
+    @NotNull(message = "Gender must be specified")
     @Column(name = "per_gender")
     private char gender;
 
+    @NotNull(message = "Birth date cannot be null")
+    @Past(message = "Birth date must be in the past")
     @Column(name = "per_bdate")
     private LocalDate bdate;
 

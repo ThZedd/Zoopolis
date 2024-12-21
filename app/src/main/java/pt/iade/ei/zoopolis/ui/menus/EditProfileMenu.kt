@@ -134,7 +134,7 @@ fun EditProfileMenuPreview(){
         id = 1,
         name = "Bernardo Carvalho",
         email = "ber.cai.car@gmail.com",
-        gender = "male",
+        gender = 'M',
         bdate = "10/07/2004",
         password = "password"
     )

@@ -1,5 +1,7 @@
 package pt.iade.ei.zoopolis.ui.menus
 
+import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,16 +24,22 @@ import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -39,20 +47,47 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import pt.iade.ei.zoopolis.MainActivity
 import pt.iade.ei.zoopolis.R
+import pt.iade.ei.zoopolis.models.Person
+import pt.iade.ei.zoopolis.retrofit.PersonRepositoryImplementation
+import pt.iade.ei.zoopolis.retrofit.Result
+import pt.iade.ei.zoopolis.retrofit.RetrofitInstance
 import pt.iade.ei.zoopolis.ui.components.DatePickerFieldToModal
 import pt.iade.ei.zoopolis.ui.components.IHaveAnAccountButton
-import pt.iade.ei.zoopolis.ui.components.RegisterButton
 import pt.iade.ei.zoopolis.ui.components.TextField
+import pt.iade.ei.zoopolis.viewmodel.PersonViewModel
 
 @Composable
-fun RegisterMenu() {
+fun RegisterMenu(viewModel: PersonViewModel) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var selectedGender by remember { mutableStateOf("Male") }
-    val genders = listOf("Male", "Female", "Other")
+    var selectedGender by remember { mutableStateOf('M') }
+    val genders = listOf('M', 'F', 'O')
     val focusManager = LocalFocusManager.current
+    var isLoading by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+    // Observando o resultado do registro
+    val registerResult by viewModel.registerResult.observeAsState()
+
+    // Aguardar o resultado do registro
+    LaunchedEffect(registerResult) {
+        when (val result = registerResult) {
+            is Result.Sucess -> {
+                // Registro bem-sucedido
+                Toast.makeText(context, "Registro bem-sucedido!", Toast.LENGTH_SHORT).show()
+            }
+
+            is Result.Error -> {
+                // Erro no registro
+                Toast.makeText(context, "Erro: ${result.message}", Toast.LENGTH_SHORT).show()
+            }
+
+            else -> {}
+        }
+    }
+
     Box {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -60,38 +95,28 @@ fun RegisterMenu() {
             contentDescription = "background_image",
             contentScale = ContentScale.FillBounds
         )
-        Scaffold(
-            containerColor = Color.Transparent
-        ) { innerPadding ->
-            Box(
-                contentAlignment = Alignment.TopCenter,
+        Scaffold(containerColor = Color.Transparent) { innerPadding ->
+            Column(
                 modifier = Modifier
+                    .padding(innerPadding)
                     .fillMaxSize()
-                    .padding(top = 0.dp)
+                    .padding(top = 30.dp),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Column(
-                    modifier = Modifier
-                        .padding(innerPadding)
-                        .fillMaxSize()
-                        .padding(top = 50.dp),
-                    verticalArrangement = Arrangement.Top,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.logozoo),
-                        contentDescription = "Logo",
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(300.dp),
-                        alignment = Alignment.TopStart
-                    )
-                }
+                Image(
+                    painter = painterResource(R.drawable.logozoo),
+                    contentDescription = "Logo",
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(300.dp),
+                    alignment = Alignment.TopStart
+                )
+
+                // Card de registro
                 Card(
                     modifier = Modifier
-                        .padding(top = 300.dp)
                         .fillMaxSize(),
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color(0xFF58A458)
-                    )
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFF58A458))
                 ) {
                     Column(
                         modifier = Modifier
@@ -130,7 +155,6 @@ fun RegisterMenu() {
                             labelText = "Email",
                             leadingIcon = Icons.Default.Person,
                             onNext = { focusManager.moveFocus(androidx.compose.ui.focus.FocusDirection.Next) }
-
                         )
 
                         Text(
@@ -147,11 +171,9 @@ fun RegisterMenu() {
                             labelText = "Password",
                             leadingIcon = Icons.Default.Lock,
                             keyboardType = KeyboardType.Password,
-                            visualTransformation = PasswordVisualTransformation(), // Exibe asteriscos
+                            visualTransformation = PasswordVisualTransformation(),
                             onNext = { focusManager.clearFocus() }
                         )
-
-                        Spacer(modifier = Modifier.height(16.dp))
 
                         // Gender selection
                         Text(
@@ -180,14 +202,15 @@ fun RegisterMenu() {
                                         )
                                     )
                                     Text(
-                                        text = gender,
+                                        text = gender.toString(),
                                         color = Color.White,
                                         modifier = Modifier.padding(start = 8.dp)
                                     )
                                 }
                             }
                         }
-                        // Birth date selection
+
+                        // Data de nascimento
                         DatePickerFieldToModal()
 
                         Spacer(modifier = Modifier.height(16.dp))
@@ -196,19 +219,97 @@ fun RegisterMenu() {
                             Spacer(modifier = Modifier.padding(start = 10.dp))
                             IHaveAnAccountButton("I Have An Account")
                             Spacer(modifier = Modifier.width(10.dp))
-                            RegisterButton("Register")
-                            Spacer(modifier = Modifier.padding(end = 20.dp))
-                        }
+                            Card(
+                                modifier = Modifier
+                                    .padding(top = 7.dp, bottom = 10.dp)
+                                    .size(width = 180.dp, height = 40.dp),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = Color(0xFF1E1E1E)
+                                ),
+                                elevation = CardDefaults.cardElevation(
+                                    defaultElevation = 7.dp,
+                                ),
+                                onClick = {
 
+                                    // Verifique se os campos necessários estão preenchidos
+                                    if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+                                        val person = Person(
+                                            name = username,
+                                            email = email,
+                                            password = password,
+                                            gender = selectedGender,
+                                            bdate = "1990-05-15"
+                                            // Outros campos, se necessário
+                                        )
+                                        // Chama o método register no ViewModel
+                                        viewModel.register(person)
+                                        val intent = Intent(context, MainActivity::class.java)
+                                        context.startActivity(intent)
+                                    } else {
+                                        Toast.makeText(context, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            )
+                             {
+
+
+                                Row(
+                                    modifier = Modifier.fillMaxSize(),
+                                    horizontalArrangement = Arrangement.Center,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+
+                                    Box {
+                                        // Contorno - Desenha o texto em todas as direções para simular o contorno
+                                        Text(
+                                            text = "Register",
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 16.sp,
+                                            textAlign = TextAlign.Center,
+                                            color = Color.Black, // Contorno geralmente é preto
+                                            style = TextStyle(
+                                                shadow = Shadow(
+                                                    color = Color.Black,
+                                                    offset = Offset(-3f, -3f),
+                                                    blurRadius = 0.75f
+                                                )
+                                            )
+                                        )
+
+                                        // Texto principal
+                                        Text(
+                                            text = "Register",
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 16.sp,
+                                            textAlign = TextAlign.Center,
+                                            color = Color.White,
+                                            style = TextStyle(
+                                                shadow = Shadow(
+                                                    color = Color.Black,
+                                                    offset = Offset(
+                                                        3f,
+                                                        3f
+                                                    ), // Ajuste o deslocamento da sombra
+                                                    blurRadius = 0.75f // Aumente o valor para uma sombra mais suave
+                                                )
+                                            )
+                                        )
+                                    }
+                                }
+                            }
+                        }
                     }
+                    Spacer(modifier = Modifier.padding(end = 20.dp))
                 }
             }
         }
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun RegisterMenuPreview() {
-    RegisterMenu()
+    // Passe o viewModel aqui para o preview
+    RegisterMenu(viewModel = PersonViewModel(PersonRepositoryImplementation(RetrofitInstance.api)))
 }

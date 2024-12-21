@@ -36,13 +36,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import pt.iade.ei.zoopolis.AnimalDescriptionMenuActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
+import pt.iade.ei.zoopolis.viewmodel.FavoriteViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AnimalMenuTeste() {
     val animalDTOViewModel: AnimalDTOViewModel = viewModel()
-
+    val favoriteViewModel: FavoriteViewModel = viewModel()
     // Coleta os animais da ViewModel
     val animals by animalDTOViewModel.animals.collectAsState()
 
@@ -123,7 +124,7 @@ fun AnimalMenuTeste() {
 
                     items(animals.size) { animal ->
                         AnimalButtonTeste(
-                            animal = animals[animal], AnimalDescriptionMenuActivity::class.java )
+                            animal = animals[animal], AnimalDescriptionMenuActivity::class.java,favoriteViewModel )
                     }
                 }
             }

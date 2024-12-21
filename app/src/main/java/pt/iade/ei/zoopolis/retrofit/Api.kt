@@ -1,7 +1,10 @@
 package pt.iade.ei.zoopolis.retrofit
 
 import pt.iade.ei.zoopolis.models.AnimalDTO
+import pt.iade.ei.zoopolis.models.LoginRequestDTO
+import pt.iade.ei.zoopolis.models.LoginResponseDTO
 import pt.iade.ei.zoopolis.models.Person
+import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -45,6 +48,15 @@ interface Api {
         @Query("personId") personId: Int,
         @Query("animalId") animalId: Int
     ): String
+
+    @POST("persons/login")
+    suspend fun login(@Body loginRequestDTO: LoginRequestDTO): LoginResponseDTO
+
+
+    @POST("persons/register")
+    suspend fun register(@Body person: Person): Person
+
+
 
     companion object{
 
