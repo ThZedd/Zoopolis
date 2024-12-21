@@ -37,15 +37,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pt.iade.ei.zoopolis.MainMenuActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.models.LoginRequestDTO
-import pt.iade.ei.zoopolis.retrofit.PersonRepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.Result
-import pt.iade.ei.zoopolis.retrofit.RetrofitInstance
 import pt.iade.ei.zoopolis.ui.components.TextField
 import pt.iade.ei.zoopolis.viewmodel.PersonViewModel
 
@@ -213,9 +210,4 @@ fun LoginMenu(viewModel: PersonViewModel) {
 
 
 
-@Preview(showBackground = true)
-@Composable
-fun LoginMenuPreview() {
-    // Passe o ViewModel na pré-visualização
-    LoginMenu(viewModel = PersonViewModel(PersonRepositoryImplementation(RetrofitInstance.api)))
-}
+

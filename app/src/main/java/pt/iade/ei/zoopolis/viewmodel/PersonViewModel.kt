@@ -1,5 +1,6 @@
 package pt.iade.ei.zoopolis.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,10 +9,16 @@ import kotlinx.coroutines.launch
 import pt.iade.ei.zoopolis.models.LoginRequestDTO
 import pt.iade.ei.zoopolis.models.LoginResponseDTO
 import pt.iade.ei.zoopolis.models.Person
+import pt.iade.ei.zoopolis.models.SessionManager
 import pt.iade.ei.zoopolis.retrofit.PersonRepository
 import pt.iade.ei.zoopolis.retrofit.Result
 
-class PersonViewModel(private val personRepository: PersonRepository) : ViewModel() {
+class PersonViewModel(
+    private val personRepository: PersonRepository,
+    context: Context // Adicionando contexto para o SessionManager
+) : ViewModel() {
+
+    private val sessionManager = SessionManager(context) // Inicializando o SessionManager
 
     // LiveData para resultados de login
     private val _loginResult = MutableLiveData<Result<LoginResponseDTO>?>()
@@ -27,28 +34,40 @@ class PersonViewModel(private val personRepository: PersonRepository) : ViewMode
 
     // Função para fazer login
     fun login(loginRequestDTO: LoginRequestDTO) {
-        // Lançar a chamada para login no repositório
         viewModelScope.launch {
             val result = personRepository.login(loginRequestDTO)
-            _loginResult.postValue(result)  // Atualiza o LiveData com o resultado
+            _loginResult.postValue(result) // Atualiza o LiveData com o resultado
+
+            if (result is Result.Sucess) {
+                val loginResponse = result.data
+                if (loginResponse != null) {
+                    // Salvar token e user_id na sessão
+                    sessionManager.saveSession(
+                        token = loginResponse.token,
+                        userId = loginResponse.personId
+                    )
+                }
+            }
         }
     }
 
     // Função para registrar pessoa
     fun register(person: Person) {
-        // Lançar a chamada para registro no repositório
         viewModelScope.launch {
             val result = personRepository.register(person)
-            _registerResult.postValue(result)  // Atualiza o LiveData com o resultado
+            _registerResult.postValue(result) // Atualiza o LiveData com o resultado
         }
     }
 
     // Função para pegar a lista de pessoas
     fun getPersons() {
-        // Lançar a chamada para pegar a lista de pessoas no repositório
         viewModelScope.launch {
             val result = personRepository.getPersons()
-            _personsList.postValue(result)  // Atualiza o LiveData com o resultado
+            _personsList.postValue(result) // Atualiza o LiveData com o resultado
         }
+    }
+
+    fun logout() {
+        sessionManager.clearSession()
     }
 }

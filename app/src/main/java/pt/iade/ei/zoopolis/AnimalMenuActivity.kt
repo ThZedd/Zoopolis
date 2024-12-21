@@ -38,7 +38,8 @@ class AnimalMenuActivity : ComponentActivity() {
     private val favoriteViewModel by viewModels<FavoriteViewModel>(factoryProducer = {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return FavoriteViewModel(FavoriteRepositoryImplementation(RetrofitInstance.api))
+                return FavoriteViewModel(FavoriteRepositoryImplementation(RetrofitInstance.api),
+                    applicationContext)
                  as T
             }
         }

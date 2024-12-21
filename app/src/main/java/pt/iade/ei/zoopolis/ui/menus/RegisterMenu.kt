@@ -44,15 +44,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pt.iade.ei.zoopolis.MainActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.models.Person
-import pt.iade.ei.zoopolis.retrofit.PersonRepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.Result
-import pt.iade.ei.zoopolis.retrofit.RetrofitInstance
 import pt.iade.ei.zoopolis.ui.components.DatePickerFieldToModal
 import pt.iade.ei.zoopolis.ui.components.IHaveAnAccountButton
 import pt.iade.ei.zoopolis.ui.components.TextField
@@ -307,9 +304,4 @@ fun RegisterMenu(viewModel: PersonViewModel) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun RegisterMenuPreview() {
-    // Passe o viewModel aqui para o preview
-    RegisterMenu(viewModel = PersonViewModel(PersonRepositoryImplementation(RetrofitInstance.api)))
-}
+

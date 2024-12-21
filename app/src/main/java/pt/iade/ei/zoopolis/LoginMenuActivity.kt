@@ -20,7 +20,8 @@ class LoginMenuActivity : ComponentActivity() {
     private val viewModel by viewModels<PersonViewModel>(factoryProducer = {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return PersonViewModel(PersonRepositoryImplementation(RetrofitInstance.api))
+                return PersonViewModel(PersonRepositoryImplementation(RetrofitInstance.api),
+                    applicationContext)
                         as T
             }
         }
