@@ -70,4 +70,14 @@ class PersonViewModel(
     fun logout() {
         sessionManager.clearSession()
     }
+
+    fun getPersonById(personId: Int): LiveData<Result<Person>> {
+        val personLiveData = MutableLiveData<Result<Person>>()
+        viewModelScope.launch {
+            val result = personRepository.getPersonById(personId)
+            personLiveData.postValue(result)
+        }
+        return personLiveData
+    }
+
 }

@@ -25,6 +25,7 @@ import pt.iade.ei.zoopolis.AnimalMenuActivity
 import pt.iade.ei.zoopolis.FavoriteMenuActivity
 import pt.iade.ei.zoopolis.MapMenuActivity
 import pt.iade.ei.zoopolis.PricesMenuActivity
+import pt.iade.ei.zoopolis.ProfileMenuActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.ui.components.EnterTheCodeButton
 import pt.iade.ei.zoopolis.ui.components.MenuButton
@@ -76,7 +77,8 @@ fun MainMenu() {
                     }
 
                     EnterTheCodeButton("Enter The Code", R.drawable.enterthecode)
-                    MenuButton("Preços", R.drawable.precos, FavoriteMenuActivity::class.java)
+                    MenuButton("Favoritos", R.drawable.precos, FavoriteMenuActivity::class.java)
+                    MenuButton("Profile", R.drawable.precos, ProfileMenuActivity::class.java)
 
                 }
             }
