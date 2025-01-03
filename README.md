@@ -493,7 +493,6 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 	- **SUCESS RESPONSE:**
 	
 ```
-[
   {
 
 	"id": [integer],
@@ -501,9 +500,9 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 	"email": [string],
 	"password": [string],
 	"gender": [char],
-	"bdate": [date]
-	},
-]
+	"points": [integer]
+   },
+
 ```
 
 - **ERROR RESPONSE:**
@@ -540,8 +539,8 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 	"email": [string],
 	"password": [string],
 	"gender": [char],
-	"bdate": [date]
-	  },
+	"points": [integer]
+	},
 
 ]
 ```
@@ -556,38 +555,98 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 	
 }
 ```
-- Mostrar o Email de um User pelo ID
+- Registrar um Novo Usuário
 
 	 - **URL:**
 
-	 `/persons/:id/:email`
+	 `/api/persons/register`
 
 	- **METHOD:**
 
-	 `GET`
+	 `POST`
 	 
 	 - **URL Paramethers:**
 		 - Required:
 		 
-		 `id: [integer]`
+		 `name: [string]`
 		 
 		 `email: [string]`
 
 	- **SUCESS RESPONSE:**
 ```
-[
   {
+	 "id": [integer],
+	"name": [string],
 	"email": [string],
   },
-]
 ```
-
+	- **ERROR RESPONSE:**
 ```
 {
 	
-	"status": 404,
-	"message": "Email not found from Person with id {id} not found.",
+	"status": 409,
+	"message": "Email already in use",
 	"timestamp": [datetime]
 	
 }
+```
+- Fazer Login
+
+	 - **URL:**
+
+	 `/api/persons/login`
+
+	- **METHOD:**
+
+	 `POST`
+	 
+	 - **URL Paramethers:**
+		 - Required:
+		 
+		 `email: [string]`
+		 
+		 `password: [string]`
+
+	- **SUCESS RESPONSE:**
+```
+  {
+	 "id": [integer],
+	"token": [string]
+  },
+```
+	- **ERROR RESPONSE:**
+```
+{
+	
+  "status": 401,
+  "message": "Invalid password",
+  "timestamp": [datetime]
+	
+}
+```
+
+- Validar Token JWT
+
+	 - **URL:**
+
+	 `/api/persons/validate`
+
+	- **METHOD:**
+
+	 `GET`
+
+	- **SUCESS RESPONSE:**
+```
+  {
+	 "Token is valid"
+  },
+```
+	- **ERROR RESPONSE:**
+```
+{
+  "status": 401,
+  "message": "Invalid or expired token",
+  "timestamp": [datetime]
+}
+
 ```
