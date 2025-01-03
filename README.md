@@ -615,9 +615,12 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 	 "id": [integer],
 	"token": [string]
   },
+```
 
 - **ERROR RESPONSE:**
 
+
+```
 {
 	
   "status": 401,
@@ -642,9 +645,12 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
   {
 	 "Token is valid"
   },
+```
 
 - **ERROR RESPONSE:**
 
+
+```
 {
   "status": 401,
   "message": "Invalid or expired token",
