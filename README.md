@@ -377,7 +377,8 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 
 	 `GET`
 
-	- **SUCESS RESPONSE:**
+- **SUCESS RESPONSE:**
+
 	
 ```
 [
@@ -434,8 +435,9 @@ suspend fun getAnimals(): Flow<Result<List<AnimalDTO>>>
 		 
 		 `id: [integer]`
 
-	- **SUCESS RESPONSE:**
-	
+- **SUCESS RESPONSE:**
+
+
 ```
 [
   {
@@ -472,7 +474,8 @@ suspend fun getAnimals(): Flow<Result<List<AnimalDTO>>>
 ```
 
 - **SAMPLE CALL:**
-	
+
+
 ```
 
 @Get("animals/{id}")
@@ -490,7 +493,9 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 
 	 `GET`
 
-	- **SUCESS RESPONSE:**
+- **SUCESS RESPONSE:**
+
+
 	
 ```
   {
@@ -529,7 +534,9 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 		 
 		 `id: [integer]`
 
-	- **SUCESS RESPONSE:**
+- **SUCESS RESPONSE:**
+
+
 ```
 [
   {
@@ -572,7 +579,8 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 		 
 		 `email: [string]`
 
-	- **SUCESS RESPONSE:**
+- **SUCESS RESPONSE:**
+
 ```
   {
 	 "id": [integer],
