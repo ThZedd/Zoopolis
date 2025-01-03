@@ -207,14 +207,11 @@ fun RegisterMenu(viewModel: PersonViewModel) {
                             }
                         }
 
-                        // Data de nascimento
-                        DatePickerFieldToModal()
-
                         Spacer(modifier = Modifier.height(16.dp))
 
                         Row {
                             Spacer(modifier = Modifier.padding(start = 10.dp))
-                            IHaveAnAccountButton("I Have An Account")
+                            IHaveAnAccountButton("I Have An Account", MainActivity::class.java)
                             Spacer(modifier = Modifier.width(10.dp))
                             Card(
                                 modifier = Modifier
@@ -235,7 +232,7 @@ fun RegisterMenu(viewModel: PersonViewModel) {
                                             email = email,
                                             password = password,
                                             gender = selectedGender,
-                                            bdate = "1990-05-15"
+                                            points = 0
                                             // Outros campos, se necessário
                                         )
                                         // Chama o método register no ViewModel

@@ -31,10 +31,9 @@ public class Person {
     @Column(name = "per_gender")
     private char gender;
 
-    @NotNull(message = "Birth date cannot be null")
-    @Past(message = "Birth date must be in the past")
-    @Column(name = "per_bdate")
-    private LocalDate bdate;
+    @NotNull(message = "points cannot be null")
+    @Column(name = "per_points")
+    private int points;
 
     // Construtor padrão
     public Person() {}
@@ -80,11 +79,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public LocalDate getBdate() {
-        return bdate;
+    public int getPoints() {
+        return points;
     }
 
-    public void setBdate(LocalDate bdate) {
-        this.bdate = bdate;
+    public void setPoints(int points) {
+        this.points = points;
     }
 }

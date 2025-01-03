@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun PointsBox(points: String) {
+fun PointsBox(points: Int) {
     Card(
         modifier = Modifier
             .padding(top = 15.dp, end = 8.dp, start = 8.dp),
@@ -40,7 +40,7 @@ fun PointsBox(points: String) {
             verticalAlignment = Alignment.CenterVertically // Ajuste o alinhamento vertical
         ) {
             Text(
-                text = points,
+                text = "$points points",
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 modifier = Modifier.padding(10.dp),
@@ -63,7 +63,7 @@ fun PointsBox(points: String) {
 @Preview(showBackground = true)
 @Composable
 fun PointsBoxPreview(){
-    PointsBox("10000 points")
+    PointsBox(100)
 
 }
 

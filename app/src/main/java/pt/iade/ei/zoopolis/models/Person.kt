@@ -8,5 +8,5 @@ data class Person(
     val email: String,
     val password: String,
     val gender: Char,
-    val bdate: String
+    val points: Int
 ) : Serializable

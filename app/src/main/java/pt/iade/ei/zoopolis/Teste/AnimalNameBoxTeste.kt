@@ -29,7 +29,7 @@ fun AnimalNameBoxTeste(animal: AnimalDTO) {
     val borderStrokeWidthSize = 1.45f
     OutlinedCard(
         modifier = Modifier
-            .padding(top = 15.dp, end = 8.dp, start = 8.dp)
+            .padding(top = 5.dp, end = 8.dp, start = 8.dp)
             .size(width = 330.dp, height = 80.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF0D4311)),

@@ -1,7 +1,6 @@
 package pt.iade.ei.zoopolis.ui.menus
 
 import androidx.compose.foundation.Image
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,18 +14,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.zoopolis.LoginMenuActivity
 import pt.iade.ei.zoopolis.MainMenuActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.RegisterMenuActivity
+import pt.iade.ei.zoopolis.ui.components.EnterAsGuest
 import pt.iade.ei.zoopolis.ui.components.Login
+import pt.iade.ei.zoopolis.viewmodel.PersonViewModel
 
 
 @Composable
 
-fun StartingMenu() {
+fun StartingMenu(viewModel: PersonViewModel) {
 
     Box {
         Image(
@@ -65,7 +65,7 @@ fun StartingMenu() {
 
                     Login("Login", R.drawable.login, LoginMenuActivity::class.java)
                     Login("Register", R.drawable.register, RegisterMenuActivity::class.java)
-                    Login("Enter as Guest", R.drawable.guest, MainMenuActivity::class.java)
+                    EnterAsGuest("Enter as Guest", R.drawable.guest, MainMenuActivity::class.java, viewModel)
 
                 }
             }
@@ -73,10 +73,3 @@ fun StartingMenu() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-
-fun StartingMenuPreview(){
-    StartingMenu()
-
-}

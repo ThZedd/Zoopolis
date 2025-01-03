@@ -23,7 +23,7 @@ import pt.iade.ei.zoopolis.MainActivity
 
 
 @Composable
-fun IHaveAnAccountButton(name: String) {
+fun IHaveAnAccountButton(name: String, activityClass: Class<*>) {
     val context = LocalContext.current
     Card(
         modifier = Modifier
@@ -35,7 +35,7 @@ fun IHaveAnAccountButton(name: String) {
             defaultElevation = 7.dp,
         ),
         onClick = {
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, activityClass)
             context.startActivity(intent)
         }
     ){
@@ -64,7 +64,7 @@ fun IHaveAnAccountButton(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun IHaveAnAccountButtonPreview(){
-    IHaveAnAccountButton("I Have An Account")
+    IHaveAnAccountButton("I Have An Account", MainActivity::class.java)
 
 }
 
