@@ -1,5 +1,6 @@
 package pt.iade.ei.zoopolis.retrofit
 
+import pt.iade.ei.zoopolis.models.AEDTO
 import pt.iade.ei.zoopolis.models.AnimalDTO
 import pt.iade.ei.zoopolis.models.LoginRequestDTO
 import pt.iade.ei.zoopolis.models.LoginResponseDTO
@@ -55,6 +56,21 @@ interface Api {
 
     @POST("persons/register")
     suspend fun register(@Body person: Person): Person
+
+    @POST("persons/{id}/add-point")
+    suspend fun addPointToPerson(@Path("id") id: Int): String
+
+    // Obter todos os registros AE
+    @GET("ae")
+    suspend fun getAllAE(): List<AEDTO>
+
+    // Obter AE por ID
+    @GET("ae/{id}")
+    suspend fun getAEById(@Path("id") id: Int): AEDTO
+
+    // Obter registros AE vinculados a um animal específico
+    @GET("ae/animal/{animalId}")
+    suspend fun getAEByAnimalId(@Path("animalId") animalId: Int): List<AEDTO>
 
 
 

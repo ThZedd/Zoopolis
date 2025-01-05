@@ -59,4 +59,18 @@ class PersonRepositoryImplementation(private val api: Api) : PersonRepository {
             Result.Error(message = "Unexpected error during registration: ${e.message}")
         }
     }
+
+    override suspend fun addPointToPerson(id: Int): Result<String> {
+        return try {
+            val response = api.addPointToPerson(id)
+            Result.Sucess(response)
+        } catch (e: IOException) {
+            Result.Error(message = "Error adding point to person: ${e.message}")
+        } catch (e: HttpException) {
+            Result.Error(message = "HTTP error adding point to person: ${e.message()}")
+        } catch (e: Exception) {
+            Result.Error(message = "Unexpected error adding point: ${e.message}")
+        }
+    }
+
 }

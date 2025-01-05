@@ -648,7 +648,9 @@ suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
 
 	 `GET`
 
-	- **SUCESS RESPONSE:**
+- **SUCESS RESPONSE:**
+
+
 ```
   {
 	 "Token is valid"

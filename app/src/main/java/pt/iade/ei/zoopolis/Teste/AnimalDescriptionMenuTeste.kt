@@ -36,8 +36,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -66,17 +68,21 @@ import pt.iade.ei.zoopolis.MainMenuActivity
 import pt.iade.ei.zoopolis.ProfileMenuActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.models.AnimalDTO
+import pt.iade.ei.zoopolis.models.SessionManager
 import pt.iade.ei.zoopolis.ui.components.GetDirectionsButton
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
 import  pt.iade.ei.zoopolis.ui.components.TextField
+import pt.iade.ei.zoopolis.viewmodel.AEDTOViewModel
+import pt.iade.ei.zoopolis.retrofit.Result
+import pt.iade.ei.zoopolis.viewmodel.PersonViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AnimalDescriptionMenuTeste(animal: AnimalDTO) {
+fun AnimalDescriptionMenuTeste(animal: AnimalDTO, viewModel: AEDTOViewModel, personViewModel: PersonViewModel) {
     val borderStrokeWidthSize = 1.45f
     val animalDTOViewModel: AnimalDTOViewModel = viewModel()
     val context = LocalContext.current
-    var code by remember { mutableStateOf("") }
+    var code by remember { mutableStateOf(" ") }
     var theCode by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
     // Ação de erro de rede
@@ -88,6 +94,36 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO) {
         model = ImageRequest.Builder(LocalContext.current).data(animal.imageUrl).size(Size.ORIGINAL)
             .build()
     ).state
+    val sessionManager = SessionManager(context)
+    val personId = sessionManager.getUserId()
+
+    var rightCode by remember { mutableStateOf("Carregando...") }
+
+    // Disparando a busca do AE pelo animalId
+    LaunchedEffect(animal.id) {
+        viewModel.getAEByAnimalId(animal.id)
+    }
+
+    // Observando aeByAnimalId usando collectAsState
+    val aeByAnimalIdState = viewModel.aeByAnimalId.observeAsState()
+
+    // Atualizando rightCode com base no estado do resultado
+    when (val result = aeByAnimalIdState.value) {
+        is Result.Sucess -> {
+            // Filtra o AE com o animal.id correspondente
+            val ae = result.data?.firstOrNull { it.animal.id == animal.id }
+            rightCode = ae?.code ?: "Código não encontrado"
+        }
+        is Result.Error -> {
+            rightCode = "Erro ao carregar código AE: ${result.message}"
+        }
+        else -> {
+            rightCode = "Carregando..."
+        }
+    }
+
+
+
 
     Box {
         Image(
@@ -441,6 +477,7 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO) {
                                         defaultElevation = 7.dp
                                     ),
                                     onClick = {
+
                                     }
                                 ){
                                     Row(
@@ -589,6 +626,7 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO) {
                                                 defaultElevation = 7.dp,
                                             ),
                                             onClick = {
+                                                code = ""
                                                 theCode = false
                                             }
                                         ) {
@@ -621,7 +659,14 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO) {
                                             elevation = CardDefaults.cardElevation(
                                                 defaultElevation = 7.dp,
                                             ),
-                                            onClick = { theCode = false }
+                                            onClick = {
+                                                if(code == rightCode){
+                                                  personViewModel.addPointToPerson(personId)
+
+                                                }
+                                                code = ""
+                                                theCode = false
+                                            }
                                         ) {
                                             Row(
                                                 modifier = Modifier.fillMaxSize(),

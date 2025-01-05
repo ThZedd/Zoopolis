@@ -16,4 +16,8 @@ interface PersonRepository {
 
     // Registrar uma nova pessoa
     suspend fun register(person: Person): Result<Person>
+
+    // Adicionar 1 ponto aos pontos de um usuário
+    suspend fun addPointToPerson(id: Int): Result<String>
+
 }

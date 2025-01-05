@@ -32,6 +32,10 @@ class PersonViewModel(
     private val _personsList = MutableLiveData<Result<List<Person>>>()
     val personsList: LiveData<Result<List<Person>>> get() = _personsList
 
+    // LiveData para resultado de adicionar pontos
+    private val _addPointResult = MutableLiveData<Result<String>>()
+    val addPointResult: LiveData<Result<String>> get() = _addPointResult
+
     // Função para fazer login
     fun login(loginRequestDTO: LoginRequestDTO) {
         viewModelScope.launch {
@@ -78,6 +82,14 @@ class PersonViewModel(
             personLiveData.postValue(result)
         }
         return personLiveData
+    }
+
+    // Função para adicionar um ponto ao usuário
+    fun addPointToPerson(personId: Int) {
+        viewModelScope.launch {
+            val result = personRepository.addPointToPerson(personId)
+            _addPointResult.postValue(result) // Atualiza o LiveData com o resultado
+        }
     }
 
 }

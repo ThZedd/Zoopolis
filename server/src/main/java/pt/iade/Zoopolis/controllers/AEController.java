@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import pt.iade.Zoopolis.Service.AnimalDTOService;
 import pt.iade.Zoopolis.models.*;
 import pt.iade.Zoopolis.models.repositories.AERepository;
 
@@ -115,4 +116,34 @@ public class AEController {
                 })
                 .orElseThrow(() -> new RuntimeException("AE with id " + id + " not found"));
     }
+
+    @Autowired
+    private AnimalDTOService animalDTOService;
+
+    @GetMapping(path = "/animal/{animalId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<AEDTO> getAEByAnimalId(@PathVariable int animalId) {
+        logger.info("Fetching AE records for animalId {}", animalId);
+        List<AEDTO> aeDTOList = new ArrayList<>();
+        Iterable<AE> aeList = aeRepository.findByAnimalId(animalId); // Ajustar para usar um método que filtre por animalId
+
+        for (AE ae : aeList) {
+            AnimalDTO animalDTO = animalDTOService.getAnimalDTOById(animalId)
+                    .orElse(null);
+
+            AEDTO aeDTO = new AEDTO(
+                    ae.getId(),
+                    ae.getDateIn(),
+                    ae.getDateOut(),
+                    ae.getCode(),
+                    animalDTO,
+                    null // Ajustar conforme necessário
+            );
+
+            aeDTOList.add(aeDTO);
+        }
+
+        return aeDTOList;
+    }
+
+
 }

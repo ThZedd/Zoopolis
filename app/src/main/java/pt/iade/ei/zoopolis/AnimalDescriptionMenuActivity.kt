@@ -19,19 +19,42 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.flow.collectLatest
-import pt.iade.ei.zoopolis.models.AnimalDTO
+import pt.iade.ei.zoopolis.retrofit.AEDTORepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.AnimalsDTORepositoryImplementation
+import pt.iade.ei.zoopolis.retrofit.PersonRepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.RetrofitInstance
 import pt.iade.ei.zoopolis.teste.AnimalDescriptionMenuTeste
 import pt.iade.ei.zoopolis.ui.menus.AnimalDescriptionMenu
 import pt.iade.ei.zoopolis.ui.theme.ZoopolisTheme
+import pt.iade.ei.zoopolis.viewmodel.AEDTOViewModel
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
+import pt.iade.ei.zoopolis.viewmodel.PersonViewModel
 
 class AnimalDescriptionMenuActivity : ComponentActivity() {
     private val viewModel by viewModels<AnimalDTOViewModel>(factoryProducer = {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return AnimalDTOViewModel(AnimalsDTORepositoryImplementation(RetrofitInstance.api))
+                        as T
+            }
+        }
+    })
+    private val AEDTOViewModel by viewModels<AEDTOViewModel>(factoryProducer = {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return AEDTOViewModel(
+                    AEDTORepositoryImplementation(RetrofitInstance.api))
+                        as T
+            }
+        }
+    })
+
+    private val PersonViewModel by viewModels<PersonViewModel>(factoryProducer = {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return PersonViewModel(
+                    PersonRepositoryImplementation(RetrofitInstance.api),
+                    applicationContext)
                         as T
             }
         }
@@ -73,7 +96,7 @@ class AnimalDescriptionMenuActivity : ComponentActivity() {
                         CircularProgressIndicator()
                     }
                 } else {
-                    AnimalDescriptionMenuTeste(animal = animal) // Passe os dados do animal para a tela
+                    AnimalDescriptionMenuTeste(animal = animal, viewModel = AEDTOViewModel, personViewModel = PersonViewModel) // Passe os dados do animal para a tela
                 }
             }
         }

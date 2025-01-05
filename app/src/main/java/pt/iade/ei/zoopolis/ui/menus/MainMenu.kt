@@ -329,7 +329,7 @@ fun MainMenu() {
                     ) {
 
                         Card(modifier = Modifier
-                            .padding(top = 520.dp)
+                            .padding(top = 480.dp)
                             .fillMaxSize(),
                             colors = CardDefaults.cardColors(
                                 containerColor = Color(0xFF58A458)))
@@ -360,7 +360,7 @@ fun MainMenu() {
                                 {
                                     Card(modifier = Modifier
                                         .padding(top = 7.dp, bottom = 10.dp)
-                                        .size(width = 135.dp, height = 40.dp),
+                                        .size(width = 115.dp, height = 40.dp),
                                         colors = CardDefaults.cardColors(
                                             containerColor = Color.White
                                         ),
@@ -368,6 +368,7 @@ fun MainMenu() {
                                             defaultElevation = 7.dp,
                                         ),
                                         onClick = {
+                                            code = ""
                                             theCode = false
                                         }
                                     ) {
@@ -400,7 +401,10 @@ fun MainMenu() {
                                         elevation = CardDefaults.cardElevation(
                                             defaultElevation = 7.dp,
                                         ),
-                                        onClick = { theCode = false}
+                                        onClick = {
+                                            code = ""
+                                            theCode = false
+                                        }
                                     ) {
                                         Row(
                                             modifier = Modifier.fillMaxSize(),
@@ -444,8 +448,11 @@ fun MainMenu() {
                                                 )
                                             }
                                         }
+                                        Spacer(modifier = Modifier.padding(end = 20.dp))
                                     }
+
                                 }
+
                             }
                         }
                     }

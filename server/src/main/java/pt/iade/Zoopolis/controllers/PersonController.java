@@ -108,4 +108,35 @@ public class PersonController {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid or expired token");
         }
     }
+
+    @PostMapping(path = "/{id}/add-point", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Person addPointToUser(@PathVariable int id) {
+        logger.info("Adding one point to user with id {}", id);
+
+        Optional<Person> personOpt = personRepository.findById(id);
+
+        if (personOpt.isPresent()) {
+            Person person = personOpt.get();
+            person.setPoints(person.getPoints() + 1); // Incrementa o ponto
+            return personRepository.save(person); // Salva a alteração no banco
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+    }
+
+    @PostMapping(path = "/{id}/remove-point", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Person removePointToUser(@PathVariable int id) {
+        logger.info("Removing one point to user with id {}", id);
+
+        Optional<Person> personOpt = personRepository.findById(id);
+
+        if (personOpt.isPresent() && personOpt.get().getPoints() > 0) {
+            Person person = personOpt.get();
+            person.setPoints(person.getPoints() - 1); // Incrementa o ponto
+            return personRepository.save(person); // Salva a alteração no banco
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+    }
+
 }

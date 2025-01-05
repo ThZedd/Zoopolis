@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
@@ -50,7 +51,6 @@ import pt.iade.ei.zoopolis.MainActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.models.Person
 import pt.iade.ei.zoopolis.retrofit.Result
-import pt.iade.ei.zoopolis.ui.components.DatePickerFieldToModal
 import pt.iade.ei.zoopolis.ui.components.IHaveAnAccountButton
 import pt.iade.ei.zoopolis.ui.components.TextField
 import pt.iade.ei.zoopolis.viewmodel.PersonViewModel
@@ -105,7 +105,7 @@ fun RegisterMenu(viewModel: PersonViewModel) {
                     painter = painterResource(R.drawable.logozoo),
                     contentDescription = "Logo",
                     contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(300.dp),
+                    modifier = Modifier.size(250.dp),
                     alignment = Alignment.TopStart
                 )
 
@@ -115,14 +115,15 @@ fun RegisterMenu(viewModel: PersonViewModel) {
                         .fillMaxSize(),
                     colors = CardDefaults.cardColors(containerColor = Color(0xFF58A458))
                 ) {
-                    Column(
+                    LazyColumn(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(top = 20.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Top
                     ) {
-                        Text(
+                        item{
+                            Text(
                             text = "Username",
                             fontWeight = FontWeight.Bold,
                             fontSize = 16.sp,
@@ -171,7 +172,7 @@ fun RegisterMenu(viewModel: PersonViewModel) {
                             visualTransformation = PasswordVisualTransformation(),
                             onNext = { focusManager.clearFocus() }
                         )
-
+                        Spacer(modifier = Modifier.height(16.dp))
                         // Gender selection
                         Text(
                             text = "Gender",
@@ -246,7 +247,6 @@ fun RegisterMenu(viewModel: PersonViewModel) {
                             )
                              {
 
-
                                 Row(
                                     modifier = Modifier.fillMaxSize(),
                                     horizontalArrangement = Arrangement.Center,
@@ -292,8 +292,10 @@ fun RegisterMenu(viewModel: PersonViewModel) {
                                 }
                             }
                         }
+                            Spacer(modifier = Modifier.padding(end = 20.dp))
                     }
-                    Spacer(modifier = Modifier.padding(end = 20.dp))
+
+                    }
                 }
             }
         }
