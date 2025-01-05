@@ -5,6 +5,7 @@ import pt.iade.ei.zoopolis.models.AnimalDTO
 import pt.iade.ei.zoopolis.models.LoginRequestDTO
 import pt.iade.ei.zoopolis.models.LoginResponseDTO
 import pt.iade.ei.zoopolis.models.Person
+import pt.iade.ei.zoopolis.models.Visited
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -72,6 +73,20 @@ interface Api {
     @GET("ae/animal/{animalId}")
     suspend fun getAEByAnimalId(@Path("animalId") animalId: Int): List<AEDTO>
 
+    // Criar uma nova visita
+    @POST("visited")
+    suspend fun createVisit(
+        @Query("personId") personId: Int,
+        @Query("animalId") animalId: Int
+    ): Visited
+
+    // Obter todas as visitas
+    @GET("visited")
+    suspend fun getAllVisits(): List<Visited>
+
+    // Obter uma visita pelo ID
+    @GET("visited/{id}")
+    suspend fun getVisitById(@Path("id") id: Int): Visited
 
 
     companion object{

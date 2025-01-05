@@ -23,12 +23,14 @@ import pt.iade.ei.zoopolis.retrofit.AEDTORepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.AnimalsDTORepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.PersonRepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.RetrofitInstance
+import pt.iade.ei.zoopolis.retrofit.VisitedRepositoryImplementation
 import pt.iade.ei.zoopolis.teste.AnimalDescriptionMenuTeste
 import pt.iade.ei.zoopolis.ui.menus.AnimalDescriptionMenu
 import pt.iade.ei.zoopolis.ui.theme.ZoopolisTheme
 import pt.iade.ei.zoopolis.viewmodel.AEDTOViewModel
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
 import pt.iade.ei.zoopolis.viewmodel.PersonViewModel
+import pt.iade.ei.zoopolis.viewmodel.VisitedViewModel
 
 class AnimalDescriptionMenuActivity : ComponentActivity() {
     private val viewModel by viewModels<AnimalDTOViewModel>(factoryProducer = {
@@ -44,6 +46,17 @@ class AnimalDescriptionMenuActivity : ComponentActivity() {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return AEDTOViewModel(
                     AEDTORepositoryImplementation(RetrofitInstance.api))
+                        as T
+            }
+        }
+    })
+
+    private val VisitedViewModel by viewModels<VisitedViewModel>(factoryProducer = {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return VisitedViewModel(
+                    VisitedRepositoryImplementation(RetrofitInstance.api)
+                )
                         as T
             }
         }
@@ -96,7 +109,7 @@ class AnimalDescriptionMenuActivity : ComponentActivity() {
                         CircularProgressIndicator()
                     }
                 } else {
-                    AnimalDescriptionMenuTeste(animal = animal, viewModel = AEDTOViewModel, personViewModel = PersonViewModel) // Passe os dados do animal para a tela
+                    AnimalDescriptionMenuTeste(animal = animal, viewModel = AEDTOViewModel, personViewModel = PersonViewModel, visitedViewModel = VisitedViewModel) // Passe os dados do animal para a tela
                 }
             }
         }

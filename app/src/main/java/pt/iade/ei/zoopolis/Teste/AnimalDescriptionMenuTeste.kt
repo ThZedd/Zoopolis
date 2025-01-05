@@ -75,10 +75,11 @@ import  pt.iade.ei.zoopolis.ui.components.TextField
 import pt.iade.ei.zoopolis.viewmodel.AEDTOViewModel
 import pt.iade.ei.zoopolis.retrofit.Result
 import pt.iade.ei.zoopolis.viewmodel.PersonViewModel
+import pt.iade.ei.zoopolis.viewmodel.VisitedViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AnimalDescriptionMenuTeste(animal: AnimalDTO, viewModel: AEDTOViewModel, personViewModel: PersonViewModel) {
+fun AnimalDescriptionMenuTeste(animal: AnimalDTO, viewModel: AEDTOViewModel, personViewModel: PersonViewModel, visitedViewModel: VisitedViewModel) {
     val borderStrokeWidthSize = 1.45f
     val animalDTOViewModel: AnimalDTOViewModel = viewModel()
     val context = LocalContext.current
@@ -662,7 +663,7 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO, viewModel: AEDTOViewModel, per
                                             onClick = {
                                                 if(code == rightCode){
                                                   personViewModel.addPointToPerson(personId)
-
+                                                  visitedViewModel.createVisit(personId, animal.id)
                                                 }
                                                 code = ""
                                                 theCode = false
