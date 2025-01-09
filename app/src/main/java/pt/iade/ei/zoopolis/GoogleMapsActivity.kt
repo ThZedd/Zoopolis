@@ -103,6 +103,7 @@ class GoogleMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                 mMap.addMarker(
                                     MarkerOptions().position(location).title(enclosure.name)
                                 )
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 20.0f))
                             }
                         }
                     }
@@ -126,9 +127,6 @@ class GoogleMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             Log.e("GoogleMapsActivity", "Erro: Estilo não encontrado.", e)
         }
 
-        // Exemplo de marcador inicial (Lisboa)
-        val lisbon = LatLng(38.7169, -9.139)
-        mMap.addMarker(MarkerOptions().position(lisbon).title("Marcador em Lisboa"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lisbon, 12.0f))
+
     }
 }
