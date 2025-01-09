@@ -124,19 +124,45 @@ public class AEController {
     public List<AEDTO> getAEByAnimalId(@PathVariable int animalId) {
         logger.info("Fetching AE records for animalId {}", animalId);
         List<AEDTO> aeDTOList = new ArrayList<>();
-        Iterable<AE> aeList = aeRepository.findByAnimalId(animalId); // Ajustar para usar um método que filtre por animalId
+        Iterable<AE> aeList = aeRepository.findByAnimalId(animalId); // Adjust to use a method that filters by animalId
 
         for (AE ae : aeList) {
-            AnimalDTO animalDTO = animalDTOService.getAnimalDTOById(animalId)
-                    .orElse(null);
+            AnimalDTO animalDTO = null;
+            EnclosureDTO enclosureDTO = null;
 
+            // Map Animal to AnimalDTO
+            if (ae.getAnimal() != null) {
+                animalDTO = new AnimalDTO(
+                        ae.getAnimal().getId(),
+                        ae.getAnimal().getName(),
+                        ae.getAnimal().getCiName(),
+                        ae.getAnimal().getDescription(),
+                        ae.getAnimal().getImageUrl()
+                );
+            }
+
+            // Map Enclosure to EnclosureDTO
+            if (ae.getEnclosure() != null) {
+                Enclosure enclosure = ae.getEnclosure();
+                enclosureDTO = new EnclosureDTO(
+                        enclosure.getId(),
+                        enclosure.getName(),
+                        enclosure.getAnimalClass(),
+                        enclosure.getMapsId(),
+                        enclosure.getSupportedAmount(),
+                        enclosure.getLatitude(),
+                        enclosure.getLongitude()
+                );
+            }
+
+            // Create AEDTO object
             AEDTO aeDTO = new AEDTO(
                     ae.getId(),
                     ae.getDateIn(),
                     ae.getDateOut(),
                     ae.getCode(),
                     animalDTO,
-                    null // Ajustar conforme necessário
+                    enclosureDTO
             );
 
             aeDTOList.add(aeDTO);
@@ -144,6 +170,7 @@ public class AEController {
 
         return aeDTOList;
     }
+
 
 
 }

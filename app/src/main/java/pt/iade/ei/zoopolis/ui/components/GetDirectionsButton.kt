@@ -24,11 +24,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pt.iade.ei.zoopolis.MainMenuActivity
+import pt.iade.ei.zoopolis.GoogleMapsActivity
+import pt.iade.ei.zoopolis.models.AnimalDTO
 
 
 @Composable
-fun GetDirectionsButton(name: String, containerColor: Color) {
+fun GetDirectionsButton(name: String, containerColor: Color, animal: AnimalDTO) {
     val borderStrokeWidthSize = 1.45f
     val context = LocalContext.current
     OutlinedCard(
@@ -43,7 +44,9 @@ fun GetDirectionsButton(name: String, containerColor: Color) {
 
             ),
         onClick = {
-            val intent = Intent(context, MainMenuActivity::class.java)
+            val intent = Intent(context,GoogleMapsActivity::class.java)
+            intent.putExtra("animal_id", animal.id)
+            context.startActivity(intent)
             context.startActivity(intent)
         }
     ){
@@ -94,11 +97,5 @@ fun GetDirectionsButton(name: String, containerColor: Color) {
 
 
 
-@Preview(showBackground = true)
-@Composable
-fun GetDirectionsButtonPreview(){
-    GetDirectionsButton("Get Directions", containerColor = Color.hsl(330f, 0.11f, 0.11f))
-
-}
 
 

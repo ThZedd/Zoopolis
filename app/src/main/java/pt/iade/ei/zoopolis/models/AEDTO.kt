@@ -5,6 +5,6 @@ data class AEDTO(
     val code: String,
     val dateIn: String,
     val dateOut: String,
-    val enclosure: EnclosuresDTO,
+    val enclosure: EnclosureDTO,
     val id: Int
 )

@@ -9,10 +9,11 @@ import pt.iade.Zoopolis.models.Animal;
 import pt.iade.Zoopolis.models.AnimalDTO;
 import pt.iade.Zoopolis.models.repositories.AnimalRepository;
 
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.text.Normalizer;
+@CrossOrigin(origins = "http://localhost:63342")
 @RestController
 @RequestMapping(path = "/api/animalsDTO")
 public class AnimalDTOController {

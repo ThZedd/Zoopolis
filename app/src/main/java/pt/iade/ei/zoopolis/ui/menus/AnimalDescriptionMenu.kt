@@ -186,10 +186,7 @@ fun AnimalDescriptionMenu() {
                                 }
                             }
                         }
-                        GetDirectionsButton(
-                            name = "Get Directions",
-                            containerColor = Color.hsl(4f, 0.45f, 0.14f)
-                        )
+
                         AnimalNameBox(
                             Animal(
                                 id = 0,

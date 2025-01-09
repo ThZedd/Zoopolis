@@ -2,6 +2,7 @@ package pt.iade.ei.zoopolis.retrofit
 
 import pt.iade.ei.zoopolis.models.AEDTO
 import pt.iade.ei.zoopolis.models.AnimalDTO
+import pt.iade.ei.zoopolis.models.EnclosureDTO
 import pt.iade.ei.zoopolis.models.LoginRequestDTO
 import pt.iade.ei.zoopolis.models.LoginResponseDTO
 import pt.iade.ei.zoopolis.models.Person
@@ -87,6 +88,13 @@ interface Api {
     // Obter uma visita pelo ID
     @GET("visited/{id}")
     suspend fun getVisitById(@Path("id") id: Int): Visited
+
+    @GET("enclosuresDTO")
+    suspend fun getAllEnclosures(): List<EnclosureDTO>
+
+    @GET("enclosuresDTO/{id}")
+    suspend fun getEnclosureById(@Path("id") id: Int): EnclosureDTO
+
 
 
     companion object{

@@ -275,7 +275,8 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO, viewModel: AEDTOViewModel, per
                             }
                             GetDirectionsButton(
                                 name = "Get Directions",
-                                containerColor = Color(0xFF0D4311)
+                                containerColor = Color(0xFF0D4311),
+                                animal = animal
                             )
                             OutlinedCard(
                                 modifier = Modifier
@@ -465,7 +466,8 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO, viewModel: AEDTOViewModel, per
                                 }
                                 GetDirectionsButton(
                                     name = "Get Directions",
-                                    containerColor = Color(0xFF0D4311)
+                                    containerColor = Color(0xFF0D4311),
+                                    animal = animal
                                 )
                                 OutlinedCard(
                                     modifier = Modifier
