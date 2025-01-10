@@ -41,7 +41,7 @@ class PersonRepositoryImplementation(private val api: Api) : PersonRepository {
         } catch (e: IOException) {
             Result.Error(message = "Login failed: ${e.message}")
         } catch (e: HttpException) {
-            Result.Error(message = "HTTP error during login: ${e.message()}")
+            Result.Error(message = "Email or password incorrect ${e.message()}")
         } catch (e: Exception) {
             Result.Error(message = "Unexpected error during login: ${e.message}")
         }
@@ -54,7 +54,7 @@ class PersonRepositoryImplementation(private val api: Api) : PersonRepository {
         } catch (e: IOException) {
             Result.Error(message = "Registration failed: ${e.message}")
         } catch (e: HttpException) {
-            Result.Error(message = "HTTP error during registration: ${e.message()}")
+            Result.Error(message = "You need to fill all the fields ${e.message()}")
         } catch (e: Exception) {
             Result.Error(message = "Unexpected error during registration: ${e.message}")
         }

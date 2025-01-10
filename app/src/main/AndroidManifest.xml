@@ -74,6 +74,22 @@
             android:name=".ProfileMenuActivity"
             android:exported="true"
             android:theme="@style/Theme.Zoopolis" />
+        <activity
+            android:name=".ComboioZooMenuActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Zoopolis" />
+        <activity
+            android:name=".PelicanosActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Zoopolis" />
+        <activity
+            android:name=".RepteisActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Zoopolis" />
+        <activity
+            android:name=".TelefericoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Zoopolis" />
         <activity android:name=".GoogleMapsActivity"
             android:exported="true"
             android:theme="@style/Theme.Zoopolis">

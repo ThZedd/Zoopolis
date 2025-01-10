@@ -153,8 +153,8 @@ fun PricesMenu() {
                     {
                         Column(modifier = Modifier.padding(top = 20.dp)) {
 
-                            PriceButton("Buy Tickets", R.drawable.discount, MainActivity::class.java)
-                            PriceButton("Entry Costs", R.drawable.entryprice, MainActivity::class.java)
+                            PriceButton("Buy Tickets", R.drawable.discount, MainActivity::class.java, "https://www.zoo.pt/pt/visitar/bilheteira/")
+                            PriceButton("Entry Costs", R.drawable.entryprice, MainActivity::class.java, "https://www.zoo.pt/pt/visitar/precos/")
                         }
                     }
 

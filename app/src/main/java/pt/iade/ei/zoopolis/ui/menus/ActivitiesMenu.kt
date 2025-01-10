@@ -34,12 +34,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.zoopolis.ActivitiesTimeActivity
+import pt.iade.ei.zoopolis.ComboioZooMenuActivity
 import pt.iade.ei.zoopolis.FavoriteMenuActivity
 import pt.iade.ei.zoopolis.MainActivity
 import pt.iade.ei.zoopolis.MainMenuActivity
+import pt.iade.ei.zoopolis.PelicanosActivity
 import pt.iade.ei.zoopolis.ProfileMenuActivity
 import pt.iade.ei.zoopolis.R
-import pt.iade.ei.zoopolis.ui.components.PriceButton
+import pt.iade.ei.zoopolis.RepteisActivity
+import pt.iade.ei.zoopolis.TelefericoActivity
+import pt.iade.ei.zoopolis.ui.components.ActivitiesButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -162,12 +166,12 @@ fun ActivitiesMenu() {
                         ) {
 
                            item{
-                            PriceButton("Dolphins", R.drawable.baiadosgolfinhos, ActivitiesTimeActivity::class.java)
-                            PriceButton("Zoo's Train", R.drawable.comboiozoo, MainActivity::class.java)
-                            PriceButton("Cable Car", R.drawable.teleferico, MainActivity::class.java)
-                            PriceButton("Enchanted Forest", R.drawable.bosqueencantado, MainActivity::class.java)
-                            PriceButton("Pelicans", R.drawable.pelicanos, MainActivity::class.java)
-                            PriceButton("Children's Farm", R.drawable.quintinhadolidl, MainActivity::class.java)
+                               ActivitiesButton("Golfinhos", R.drawable.baiadosgolfinhos, ActivitiesTimeActivity::class.java)
+                               ActivitiesButton("Comboio do Zoo", R.drawable.comboiozoo, ComboioZooMenuActivity::class.java)
+                               ActivitiesButton("Teleferico", R.drawable.teleferico, TelefericoActivity::class.java)
+                               ActivitiesButton("Bosque Encantado", R.drawable.bosqueencantado, MainActivity::class.java)
+                               ActivitiesButton("Pelicanos", R.drawable.pelicanos, PelicanosActivity::class.java)
+                               ActivitiesButton("Reptilário", R.drawable.repteis, RepteisActivity::class.java)
                             }
                         }
                     }

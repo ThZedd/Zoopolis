@@ -194,10 +194,12 @@ fun ProfileMenu(personViewModel: PersonViewModel) {
                                 }
                                 else -> {
                                     Text(
-                                        text = "Login to see your profile",
-                                        color = Color.Gray,
-                                        modifier = Modifier.padding(16.dp)
+                                        text = "Guest",
+                                        color = Color.Red,
+                                        modifier = Modifier.padding(16.dp),
+                                        fontSize = 22.sp
                                     )
+                                    LogoutButton("Exit", personViewModel = personViewModel)
                                 }
                             }
 

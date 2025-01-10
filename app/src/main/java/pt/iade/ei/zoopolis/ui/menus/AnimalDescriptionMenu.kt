@@ -41,7 +41,6 @@ import pt.iade.ei.zoopolis.models.Animal
 import pt.iade.ei.zoopolis.models.AnimalClass
 import pt.iade.ei.zoopolis.ui.components.AnimalDescriptionBox
 import pt.iade.ei.zoopolis.ui.components.AnimalNameBox
-import pt.iade.ei.zoopolis.ui.components.GetDirectionsButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

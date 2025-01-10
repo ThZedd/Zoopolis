@@ -37,7 +37,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import pt.iade.ei.zoopolis.AnimalDescriptionMenuActivity
-import pt.iade.ei.zoopolis.FavoriteMenuActivity
 import pt.iade.ei.zoopolis.MainMenuActivity
 import pt.iade.ei.zoopolis.ProfileMenuActivity
 import pt.iade.ei.zoopolis.R

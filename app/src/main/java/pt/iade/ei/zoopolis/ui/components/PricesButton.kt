@@ -15,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -34,9 +35,10 @@ import pt.iade.ei.zoopolis.R
 
 
 @Composable
-fun PriceButton(name: String, imageRes: Int, activityClass: Class<*>){
+fun PriceButton(name: String, imageRes: Int, activityClass: Class<*>, link: String? = null){
     val borderStrokeWidthSize = 1.45f
     val context = LocalContext.current
+    val lintent = remember { Intent(Intent.ACTION_VIEW, android.net.Uri.parse(link)) }
     OutlinedCard(
         modifier = Modifier
             .padding(start = 15.dp, end = 8.dp, bottom = 20.dp)
@@ -48,8 +50,12 @@ fun PriceButton(name: String, imageRes: Int, activityClass: Class<*>){
             defaultElevation = 7.dp
         ),
         onClick = {
+            if (link != null) {
+                context.startActivity(lintent)
+            } else{
             val intent = Intent(context, activityClass)
             context.startActivity(intent)
+            }
         }
     ){
 

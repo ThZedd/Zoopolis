@@ -2,28 +2,28 @@ package pt.iade.ei.zoopolis
 
 import android.content.res.Resources
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import org.json.JSONObject
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import pt.iade.ei.zoopolis.retrofit.AEDTORepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.AnimalsDTORepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.EnclosureDTORepositoryImplementation
+import pt.iade.ei.zoopolis.retrofit.Result
 import pt.iade.ei.zoopolis.retrofit.RetrofitInstance
 import pt.iade.ei.zoopolis.viewmodel.AEDTOViewModel
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
 import pt.iade.ei.zoopolis.viewmodel.EnclosureDTOViewModel
-import pt.iade.ei.zoopolis.retrofit.Result
 
 class GoogleMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 

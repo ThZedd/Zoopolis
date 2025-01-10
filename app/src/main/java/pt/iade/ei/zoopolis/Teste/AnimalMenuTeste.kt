@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Home
@@ -51,7 +50,15 @@ import pt.iade.ei.zoopolis.ProfileMenuActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
 import pt.iade.ei.zoopolis.viewmodel.FavoriteViewModel
+import java.text.Normalizer
 
+// Função para remover acentos e tratar "-" como espaço
+fun String.prepareForSearch(): String {
+    return Normalizer.normalize(this, Normalizer.Form.NFD)
+        .replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "")
+        .replace("-", " ")
+        .lowercase() // Garantir que todas as comparações sejam case-insensitive
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,8 +73,9 @@ fun AnimalMenuTeste() {
     if (showErrorToast) {
         Toast.makeText(LocalContext.current, "Error loading animals", Toast.LENGTH_SHORT).show()
     }
-    var text by remember{mutableStateOf("") }
-    var active by remember{mutableStateOf(false) }
+    var text by remember { mutableStateOf("") }
+    var active by remember { mutableStateOf(false) }
+
     Box {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -79,21 +87,19 @@ fun AnimalMenuTeste() {
         Scaffold(
             containerColor = Color.Transparent,
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-
             topBar = {
                 CenterAlignedTopAppBar(
                     colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                         containerColor = Color.Transparent,
                         titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
-                    title = {
-
-                    },
+                    title = {},
                     navigationIcon = {
-                        IconButton(onClick = {
-                            val intent = Intent(context, MainMenuActivity::class.java)
-                            context.startActivity(intent)
-                        },
+                        IconButton(
+                            onClick = {
+                                val intent = Intent(context, MainMenuActivity::class.java)
+                                context.startActivity(intent)
+                            },
                             modifier = Modifier
                                 .size(75.dp)
                                 .padding(top = 20.dp)
@@ -108,19 +114,16 @@ fun AnimalMenuTeste() {
                     },
                     actions = {
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(8.dp), // Espaçamento entre os ícones
-                            modifier = Modifier.padding(top = 20.dp, end = 10.dp) // Padding geral
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            modifier = Modifier.padding(top = 20.dp, end = 10.dp)
                         ) {
                             IconButton(
-                                onClick =
-                                {
+                                onClick = {
                                     val intent = Intent(context, FavoriteMenuActivity::class.java)
                                     context.startActivity(intent)
                                 },
-                                modifier = Modifier
-                                    .size(60.dp)
-                            )
-                            {
+                                modifier = Modifier.size(60.dp)
+                            ) {
                                 Icon(
                                     painter = painterResource(R.drawable.favorite_heart_menu),
                                     contentDescription = "Localized description",
@@ -129,15 +132,12 @@ fun AnimalMenuTeste() {
                                 )
                             }
                             IconButton(
-                                onClick =
-                                {
+                                onClick = {
                                     val intent = Intent(context, ProfileMenuActivity::class.java)
                                     context.startActivity(intent)
                                 },
                                 modifier = Modifier.size(60.dp)
-
-                            )
-                            {
+                            ) {
                                 Icon(
                                     painter = painterResource(R.drawable.account_circle),
                                     contentDescription = "Localized description",
@@ -152,7 +152,6 @@ fun AnimalMenuTeste() {
                 )
             },
         ) { innerPadding ->
-
             Column(
                 modifier = Modifier
                     .padding(innerPadding)
@@ -167,19 +166,11 @@ fun AnimalMenuTeste() {
                         bottom = 15.dp
                     ),
                     query = text,
-                    onQueryChange = {
-                        text = it
-                    },
-                    onSearch = {
-                        active = false
-                    },
-                    active = active,
-                    onActiveChange = {
-                        active = it
-                    },
-                    placeholder = {
-                        Text(text = "Search")
-                    },
+                    onQueryChange = { text = it },
+                    onSearch = { active = false },
+                    active = false,
+                    onActiveChange = { active = false },
+                    placeholder = { Text(text = "Search") },
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Search,
@@ -191,10 +182,8 @@ fun AnimalMenuTeste() {
                             Icon(
                                 modifier = Modifier.clickable {
                                     if (text.isNotEmpty()) {
-
                                         text = ""
                                     } else {
-
                                         active = false
                                     }
                                 },
@@ -209,23 +198,27 @@ fun AnimalMenuTeste() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Top
                 ) {
+                    // Filtrar os animais com base no texto de pesquisa
+                    val filteredAnimals = animals.filter { animal ->
+                        animal.name.prepareForSearch().contains(text.prepareForSearch())
+                    }
 
-                    items(animals.size) { animal ->
+                    // Mostrar apenas os animais filtrados
+                    items(filteredAnimals.size) { index ->
                         AnimalButtonTeste(
-                            animal = animals[animal], AnimalDescriptionMenuActivity::class.java,favoriteViewModel )
+                            animal = filteredAnimals[index],
+                            AnimalDescriptionMenuActivity::class.java,
+                            favoriteViewModel
+                        )
                     }
                 }
             }
-            }
         }
     }
-
-
+}
 
 @Preview(showBackground = true)
 @Composable
-
-fun AnimalMenuPreview(){
+fun AnimalMenuPreview() {
     AnimalMenuTeste()
 }
-
