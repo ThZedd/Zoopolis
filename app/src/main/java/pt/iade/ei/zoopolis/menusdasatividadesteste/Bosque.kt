@@ -42,12 +42,12 @@ import pt.iade.ei.zoopolis.ui.components.ActivitiesTimeBox
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 
-fun ComboioZooMenu() {
+fun Bosque() {
     val context = LocalContext.current
     Box {
         Image(
             modifier = Modifier.fillMaxSize(),
-            painter = painterResource(R.drawable.baia_golfinhos_background),
+            painter = painterResource(R.drawable.bosque_encantado_folhas_fundo_design),
             contentDescription = "background_image",
             contentScale = ContentScale.FillBounds
         )
@@ -145,11 +145,13 @@ fun ComboioZooMenu() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     item {
-                        ActivitiesImageBox("Comboio do Zoo", R.drawable.baia_dos_golfinhos_design_penguin_dentro_do_retangulo,Color.hsl(196f, 0.93f, 0.63f))
-                        ActivitiesTimeBox("Horário:", R.drawable.baia_dos_golfinhos_design_horario,"Verão: 11:00 às 12:40 e" + " 14:00 às 19:00\n\n" + "Inverno: 11:00 às 12:40 e" + " 14:00 às 17:30\n")
-                        ActivitiesDescriptionBox("Descrição:", R.drawable.activitiesdescriptionbox,"Suba no Comboio do Zoo e usufrua de uma visita diferente pelo Jardim Zoológico.\n" +
+                        ActivitiesImageBox("Bosque Encantado", R.drawable.bosque_encantado_design_banner_passaro_dentro_retangulo,Color.hsl(196f, 0.93f, 0.63f))
+                        ActivitiesTimeBox("Horário:", R.drawable.bosque_encantado_design_banner_horario_sem_transparencia, "\nVerão e inverno: 12h30 / 16h\n\n")
+                        ActivitiesDescriptionBox("Descrição:", R.drawable.bosque_encantado_folhas_fundo_design_banner_info, "Na apresentação Bosque Encantado, privilegia-se a proximidade do treinador e do animal junto do público.\n" +
                                 "\n" +
-                                "Esta atração proporciona outra perspetiva ao passar pelas instalações de algumas das espécies mais emblemáticas do Parque, sem que para isso tenha de sair do seu lugar.")
+                                "Os visitantes podem observar o voo das aves tendo uma sensação única de contacto com a vida animal, com especial destaque à exuberância das espécies tropicais. A apresentação dá a conhecer as diferenças e a importância de existirem, presas e predadores, aves diurnas e noturnas, entre tantas outras informações. Encontre ainda alguns mamíferos e, por vezes, répteis, e fique a saber mais sobre as espécies aqui representadas e os seus ecossistemas.\n" +
+                                "\n" +
+                                "Porque se trata de biodiversidade, é dado a conhecer ao público uma grande variabilidade de espécies, cuja presença nas apresentações acontece de forma rotativa. O bem-estar animal é uma preocupação, do Jardim Zoológico, que também se reflete no Bosque Encantado.")
 
 
                     }
@@ -161,8 +163,8 @@ fun ComboioZooMenu() {
 @Preview(showBackground = true)
 @Composable
 
-fun ComboioZooPreview(){
-    ComboioZooMenu()
+fun BosquePreview(){
+    Bosque()
 
 }
 

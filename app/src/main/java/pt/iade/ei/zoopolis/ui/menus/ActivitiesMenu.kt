@@ -34,6 +34,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.iade.ei.zoopolis.ActivitiesTimeActivity
+import pt.iade.ei.zoopolis.BosqueActivity
 import pt.iade.ei.zoopolis.ComboioZooMenuActivity
 import pt.iade.ei.zoopolis.FavoriteMenuActivity
 import pt.iade.ei.zoopolis.MainActivity
@@ -152,7 +153,7 @@ fun ActivitiesMenu() {
                 ) {
 
                     Card(modifier = Modifier
-                        .padding(top = 120.dp)
+                        .padding(top = 50.dp)
                         .fillMaxSize(),
                         colors = CardDefaults.cardColors(
                             containerColor = Color.hsl(124f, 0.68f, 0.16f)))
@@ -169,7 +170,7 @@ fun ActivitiesMenu() {
                                ActivitiesButton("Golfinhos", R.drawable.baiadosgolfinhos, ActivitiesTimeActivity::class.java)
                                ActivitiesButton("Comboio do Zoo", R.drawable.comboiozoo, ComboioZooMenuActivity::class.java)
                                ActivitiesButton("Teleferico", R.drawable.teleferico, TelefericoActivity::class.java)
-                               ActivitiesButton("Bosque Encantado", R.drawable.bosqueencantado, MainActivity::class.java)
+                               ActivitiesButton("Bosque Encantado", R.drawable.bosqueencantado,BosqueActivity::class.java)
                                ActivitiesButton("Pelicanos", R.drawable.pelicanos, PelicanosActivity::class.java)
                                ActivitiesButton("Reptilário", R.drawable.repteis, RepteisActivity::class.java)
                             }

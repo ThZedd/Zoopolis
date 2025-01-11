@@ -1,4 +1,4 @@
-package pt.iade.ei.zoopolis.teste
+package pt.iade.ei.zoopolis.ui.menus
 
 import android.content.Intent
 import android.widget.Toast
@@ -48,6 +48,7 @@ import pt.iade.ei.zoopolis.FavoriteMenuActivity
 import pt.iade.ei.zoopolis.MainMenuActivity
 import pt.iade.ei.zoopolis.ProfileMenuActivity
 import pt.iade.ei.zoopolis.R
+import pt.iade.ei.zoopolis.ui.components.AnimalButtonTeste
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
 import pt.iade.ei.zoopolis.viewmodel.FavoriteViewModel
 import java.text.Normalizer

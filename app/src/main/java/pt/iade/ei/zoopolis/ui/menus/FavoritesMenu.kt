@@ -40,7 +40,7 @@ import pt.iade.ei.zoopolis.AnimalDescriptionMenuActivity
 import pt.iade.ei.zoopolis.MainMenuActivity
 import pt.iade.ei.zoopolis.ProfileMenuActivity
 import pt.iade.ei.zoopolis.R
-import pt.iade.ei.zoopolis.teste.AnimalButtonTeste
+import pt.iade.ei.zoopolis.ui.components.AnimalButtonTeste
 import pt.iade.ei.zoopolis.viewmodel.FavoriteViewModel
 
 

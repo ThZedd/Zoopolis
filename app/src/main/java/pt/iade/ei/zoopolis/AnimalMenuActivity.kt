@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.collectLatest
 import pt.iade.ei.zoopolis.retrofit.AnimalsDTORepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.FavoriteRepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.RetrofitInstance
-import pt.iade.ei.zoopolis.teste.AnimalMenuTeste
+import pt.iade.ei.zoopolis.ui.menus.AnimalMenuTeste
 import pt.iade.ei.zoopolis.ui.theme.ZoopolisTheme
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
 import pt.iade.ei.zoopolis.viewmodel.FavoriteViewModel

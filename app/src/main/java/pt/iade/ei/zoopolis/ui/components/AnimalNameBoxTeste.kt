@@ -1,13 +1,11 @@
-package pt.iade.ei.zoopolis.teste
-
+package pt.iade.ei.zoopolis.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
@@ -27,35 +25,35 @@ import pt.iade.ei.zoopolis.models.AnimalDTO
 
 
 @Composable
-fun AnimalDescriptionBoxTeste(animal: AnimalDTO) {
+fun AnimalNameBoxTeste(animal: AnimalDTO) {
     val borderStrokeWidthSize = 1.45f
     OutlinedCard(
         modifier = Modifier
-            .padding(top = 15.dp, end = 8.dp, start = 8.dp)
-            .wrapContentHeight()
-            .wrapContentWidth(),// Altura ajustada automaticamente ao conteúdo
+            .padding(top = 5.dp, end = 8.dp, start = 8.dp)
+            .size(width = 330.dp, height = 80.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF0D4311)),
-        border = BorderStroke(borderStrokeWidthSize.dp, Color(0xFFE8FFD2)),
+        border = BorderStroke(borderStrokeWidthSize.dp,Color(0xFFE8FFD2) ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 7.dp,
-        )
+
+            )
     ){
+
 
         Row(
             modifier = Modifier.fillMaxSize(),
             horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.Top
+            verticalAlignment = Alignment.CenterVertically
         ){
-
 
             // Texto principal
             Text(
-                text = animal.description,
+                text = animal.name + "\n" + animal.ciName,
                 fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
-                modifier = Modifier.padding(top = 10.dp, start = 10.dp, end = 10.dp, bottom = 10.dp),
+                fontSize = 22.sp,
                 textAlign = TextAlign.Center,
+                minLines = 2,
                 color = Color.White,
                 style = TextStyle(
                     shadow = Shadow(
@@ -71,18 +69,16 @@ fun AnimalDescriptionBoxTeste(animal: AnimalDTO) {
 
 
 
-
 @Preview(showBackground = true)
 @Composable
-fun AnimalDescriptionTestePreview(){
-    AnimalDescriptionBoxTeste(animal = AnimalDTO(
-        id = 1,
+fun AnimalNameBoxPreview(){
+    AnimalNameBoxTeste(animal = AnimalDTO(
+        id = 0,
         name = "Tiger",
         ciName = "Panthera tigris",
-        imageUrl = "ola",
-        description = "ola"
-    )
-    )
+        description = "Tiger is a Tiger",
+        imageUrl = "ola"
+    ))
 
 }
 

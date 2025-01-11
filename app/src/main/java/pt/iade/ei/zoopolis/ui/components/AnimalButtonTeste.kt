@@ -1,4 +1,4 @@
-package pt.iade.ei.zoopolis.teste
+package pt.iade.ei.zoopolis.ui.components
 
 
 import android.content.Intent
@@ -23,10 +23,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -38,51 +37,56 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
-import pt.iade.ei.zoopolis.AnimalDescriptionMenuActivity
 import pt.iade.ei.zoopolis.R
 import pt.iade.ei.zoopolis.models.AnimalDTO
+import pt.iade.ei.zoopolis.viewmodel.FavoriteViewModel
 
 @Composable
-fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
-    val borderStrokeWidthSize = 1.45f
+fun AnimalButtonTeste(
+    animal: AnimalDTO,
+    activityClass: Class<*>,
+    viewModel: FavoriteViewModel
+) {
     val context = LocalContext.current
     val imageState = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current).data(animal.imageUrl).size(Size.ORIGINAL).build()
     ).state
-    var favorite by remember { mutableStateOf(false) }
+
+    // Use remember e mutableStateOf para garantir que o estado do favorito seja mutável e observável
+    val favoriteStatusMap = viewModel.favoriteStatus.collectAsState().value
+
+    // Use mutableStateOf para manter o estado local de isFavorite, ele será atualizado quando o estado do favoriteStatus mudar
+    val isFavorite = remember { mutableStateOf(favoriteStatusMap[animal.id] ?: false) }
+
+    // Log para verificar o valor de isFavorite
+    Log.d("AnimalButtonTeste", "isFavorite for ${animal.id}: ${isFavorite.value}")
 
     OutlinedCard(
         modifier = Modifier
             .padding(vertical = 10.dp, horizontal = 8.dp)
             .size(width = 300.dp, height = 100.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface),
-        border = BorderStroke(borderStrokeWidthSize.dp, Color.hsl(124f, 0.68f, 0.16f)),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 7.dp
-        ),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        border = BorderStroke(1.45.dp, Color.hsl(124f, 0.68f, 0.16f)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 7.dp),
         onClick = {
             val intent = Intent(context, activityClass)
             intent.putExtra("animal_id", animal.id)
             context.startActivity(intent)
         }
     ) {
-
         Row(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color(0xFFE8FFD2)),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-
-            ) {
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             // Ícone e informações à esquerda
             Row(
                 modifier = Modifier
@@ -93,22 +97,26 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
             ) {
                 IconButton(
                     onClick = {
-                        favorite = !favorite
-
+                        if (isFavorite.value) {
+                            viewModel.removeFavorite(animal.id) // Remove o favorito
+                        } else {
+                            viewModel.addFavorite(animal.id) // Adiciona aos favoritos
+                        }
+                        // Após a ação, atualize o estado de isFavorite
+                        isFavorite.value = !isFavorite.value
                     },
                     modifier = Modifier
                         .padding(start = 5.dp)
-                        .size(34.dp) // Tamanho do botão, ajustável
+                        .size(34.dp)
                 ) {
                     Icon(
                         painter = painterResource(
-                            if (favorite) R.drawable.heart_minus else R.drawable.heart_plus
+                            if (isFavorite.value) R.drawable.heart_minus else R.drawable.heart_plus
                         ),
-                        contentDescription = "Not favorite animal",
+                        contentDescription = if (isFavorite.value) "Remove from favorites" else "Add to favorites",
                         modifier = Modifier.size(22.dp)
                     )
                 }
-
 
                 Spacer(modifier = Modifier.padding(2.dp))
 
@@ -123,18 +131,17 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
                     style = TextStyle(
                         shadow = Shadow(
                             color = Color(0xFFE8FFD2),
-                            offset = Offset(3f, 3f), // Ajuste o deslocamento da sombra
-                            blurRadius = 0.15f // Aumente o valor para uma sombra mais suave
+                            offset = Offset(3f, 3f),
+                            blurRadius = 0.15f
                         )
                     )
                 )
             }
+
             Spacer(modifier = Modifier.padding(2.dp))
 
             Box(
-                modifier = Modifier
-                    .weight(0.65f) // Ocupa parte do espaço
-
+                modifier = Modifier.weight(0.65f)
             ) {
                 if (imageState is AsyncImagePainter.State.Error) {
                     Log.e("AnimalButton", animal.imageUrl)
@@ -154,24 +161,22 @@ fun AnimalButtonTeste(animal: AnimalDTO, activityClass: Class<*>) {
                 }
             }
         }
-    } }
-
-
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun AnimalButtonPreview(){
-    AnimalButtonTeste(animal = AnimalDTO(
-        id = 1,
-        name = "Tiger",
-        ciName = "Panthera tigris",
-        description = "Tiger is a Tiger",
-        imageUrl = "ola"
-    ),
-        AnimalDescriptionMenuActivity::class.java)
-
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

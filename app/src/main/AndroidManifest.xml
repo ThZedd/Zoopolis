@@ -90,9 +90,15 @@
             android:name=".TelefericoActivity"
             android:exported="true"
             android:theme="@style/Theme.Zoopolis" />
+        <activity
+            android:name=".BosqueActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Zoopolis" />
+
         <activity android:name=".GoogleMapsActivity"
             android:exported="true"
             android:theme="@style/Theme.Zoopolis">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

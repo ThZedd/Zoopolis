@@ -1,4 +1,4 @@
-package pt.iade.ei.zoopolis.teste
+package pt.iade.ei.zoopolis.ui.menus
 
 
 import android.content.Intent
@@ -74,6 +74,8 @@ import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
 import  pt.iade.ei.zoopolis.ui.components.TextField
 import pt.iade.ei.zoopolis.viewmodel.AEDTOViewModel
 import pt.iade.ei.zoopolis.retrofit.Result
+import pt.iade.ei.zoopolis.ui.components.AnimalDescriptionBoxTeste
+import pt.iade.ei.zoopolis.ui.components.AnimalNameBoxTeste
 import pt.iade.ei.zoopolis.viewmodel.PersonViewModel
 import pt.iade.ei.zoopolis.viewmodel.VisitedViewModel
 

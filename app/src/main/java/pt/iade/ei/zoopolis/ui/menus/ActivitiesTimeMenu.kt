@@ -134,7 +134,7 @@ fun ActivitiesTimeMenu() {
                 contentAlignment = Alignment.TopCenter,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(top = 120.dp)
+                    .padding(top = 50.dp)
 
             ) {
 

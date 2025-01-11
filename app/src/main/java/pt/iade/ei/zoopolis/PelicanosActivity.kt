@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import pt.iade.ei.zoopolis.menusdasatividadesteste.Pelicanos
 import pt.iade.ei.zoopolis.ui.menus.ActivitiesTimeMenu
 import pt.iade.ei.zoopolis.ui.theme.ZoopolisTheme
 
@@ -15,7 +16,7 @@ class PelicanosActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ZoopolisTheme {
-                ActivitiesTimeMenu()
+               Pelicanos()
             }
         }
     }
@@ -25,6 +26,6 @@ class PelicanosActivity : ComponentActivity() {
 @Composable
 fun PelicanosActivityPreview() {
     ZoopolisTheme {
-        ActivitiesTimeMenu()
+        Pelicanos()
     }
 }

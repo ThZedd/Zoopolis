@@ -9,13 +9,11 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.flow.collectLatest
@@ -24,8 +22,7 @@ import pt.iade.ei.zoopolis.retrofit.AnimalsDTORepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.PersonRepositoryImplementation
 import pt.iade.ei.zoopolis.retrofit.RetrofitInstance
 import pt.iade.ei.zoopolis.retrofit.VisitedRepositoryImplementation
-import pt.iade.ei.zoopolis.teste.AnimalDescriptionMenuTeste
-import pt.iade.ei.zoopolis.ui.menus.AnimalDescriptionMenu
+import pt.iade.ei.zoopolis.ui.menus.AnimalDescriptionMenuTeste
 import pt.iade.ei.zoopolis.ui.theme.ZoopolisTheme
 import pt.iade.ei.zoopolis.viewmodel.AEDTOViewModel
 import pt.iade.ei.zoopolis.viewmodel.AnimalDTOViewModel
@@ -116,11 +113,3 @@ class AnimalDescriptionMenuActivity : ComponentActivity() {
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-fun AnimalDescriptionMenuActivityPreview() {
-    ZoopolisTheme {
-        AnimalDescriptionMenu()
-    }
-}
