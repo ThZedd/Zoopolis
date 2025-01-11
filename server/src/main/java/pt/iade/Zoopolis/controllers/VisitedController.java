@@ -11,6 +11,8 @@ import pt.iade.Zoopolis.models.repositories.VisitedRepository;
 import pt.iade.Zoopolis.models.repositories.PersonRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -104,4 +106,24 @@ public class VisitedController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Get the most visited sub-area
+    @GetMapping("/most-visited-subarea")
+    public ResponseEntity<?> getMostVisitedSubArea() {
+        List<Object[]> results = visitedRepository.findMostVisitedSubArea();
+
+        if (results.isEmpty()) {
+            return ResponseEntity.ok("Nenhuma subárea foi visitada.");
+        }
+
+        Object[] mostVisited = results.get(0); // Primeiro resultado é a subárea mais visitada
+        String subAreaName = (String) mostVisited[0];
+        Long visitCount = (Long) mostVisited[1];
+
+        return ResponseEntity.ok(Map.of(
+                "subArea", subAreaName,
+                "visitCount", visitCount
+        ));
+    }
+
 }
