@@ -359,6 +359,8 @@ zoológico, já que podemos saber todas as informações sobre os locais mais vi
 
 # REST API
 
+[Dicionário de dados](Documents/Terceira_entrega/REST_API_Final.pdf) 
+
 #### **Introdução**
 
 A API do Zoopolis oferece acesso eficiente a informações sobre animais, os pontos dos usuários e localização dos recintos, permitindo consultas, visualizações e recolhas de informações. Desenvolvida para integração com a aplicação móvel, a API fornece os dados atualizados e é compatível várias outras plataformas.
