@@ -331,7 +331,7 @@ Ana Clara é apaixonada por natureza e está sempre procurando atividades educat
 - Descobrir novidades no zoológico e compartilhar com a comunidade escolar.
 ---
 # Diagrama de Classes
- ![image](Documents/Terceira_entrega/Diagrama_de_Classes.png)
+ ![image](Documents/Terceira_entrega/POO/Diagrama_de_Classes.png)
 
 ---
 
@@ -351,15 +351,15 @@ zoológico, já que podemos saber todas as informações sobre os locais mais vi
 
 ## Documentos de referência 
 
-[Dicionário de dados](Documents/Terceira_entrega/Zoopolis_Base_de_Dados_Final.pdf) 
+[Dicionário de dados](Documents/Terceira_entrega/Base_de_Dados/Zoopolis_Base_de_Dados_Final.pdf) 
 
-[Guia de dados](Documents/Terceira_entrega/Guia_de_Dados_Final.pdf) 
+[Guia de dados](Documents/Terceira_entrega/Base_de_Dados/Guia_de_Dados_Final.pdf) 
 
 ---
 
 # REST API
 
-[REST API](Documents/Terceira_entrega/REST_API_Final.pdf) 
+[REST API](Documents/Terceira_entrega/POO/REST_API_Final.pdf) 
 
 #### **Introdução**
 
