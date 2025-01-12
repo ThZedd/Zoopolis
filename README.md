@@ -140,7 +140,7 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 - **Programação Orientada por Objetos:** Interligação da **base de dados** com a app através da utilização do **Spring Boot**.
 - **Base de dados:** Armazenamento das **informações dos animais, utilizadores e dos pontos coletados**.
 - **Competências Comunicacionais:** Comunicação eficaz na **propaganda e divulgação** do produto em desenvolvimento.
-- **Matemática Discreta:** Análise e tratamento dos dados da aplicação.
+#### - **Matemática Discreta:** Utilizamos a lógica dada em matemática discreta, de forma a conseguirmos obter dados úteis para analisar e conseguir desenhar os trajetos mais eficientes possíveis, foi utilizada principalmente na recolha destes dados, estando esta lógica disponível para visualizar na REST API (Mostrar a  subárea mais visitada).
 
 #### 3. Requisitos Técnicos:
 
@@ -416,8 +416,8 @@ Os dados são entregues em formato JSON, garantindo respostas consistentes e fac
 	
 ```
 
-@Get("animals")
-suspend fun getAnimals(): Flow<Result<List<AnimalDTO>>>
+@GET("animalsDTO")  
+suspend fun getAnimals(): List<AnimalDTO>
 
 ```
 - Mostrar Animais por ID
@@ -478,193 +478,329 @@ suspend fun getAnimals(): Flow<Result<List<AnimalDTO>>>
 
 ```
 
-@Get("animals/{id}")
-suspend fun getAnimalsById(id: Int): Flow<Result<AnimalDTO>>
+@GET("animalsDTO/{id}")  
+suspend fun getAnimalsById(@Path("id") id: Int): AnimalDTO
 
 ```
+---
 
-- Mostrar Users
+### Listar Usuários
 
-	 - **URL:**
+- **URL:**
 
-	 `/persons`
+  `/api/persons`
 
-	- **METHOD:**
+- **METHOD:**
 
-	 `GET`
+  `GET`
 
 - **SUCESS RESPONSE:**
-
-
-	
-```
-  {
-
-	"id": [integer],
-	"name": [string],
-	"email": [string],
-	"password": [string],
-	"gender": [char],
-	"points": [integer]
-   },
-
-```
-
-- **ERROR RESPONSE:**
-
-```
-{
-	"status": 500,
-	"message": "An unexpected error occurred.",
-	"timestamp": [datetime]
-}
-```
-- Mostrar Users por ID
-
-	 - **URL:**
-
-	 `/persons/:id`
-
-	- **METHOD:**
-
-	 `GET`
-	 
-	 - **URL Paramethers:**
-		 - Required:
-		 
-		 `id: [integer]`
-
-- **SUCESS RESPONSE:**
-
 
 ```
 [
-  {
-
-	"id": [integer],
-	"name": [string],
-	"email": [string],
-	"password": [string],
-	"gender": [char],
-	"points": [integer]
-	},
-
+  {
+    "id": [integer],
+    "name": [string],
+    "email": [string],
+    "points": [integer]
+  }
 ]
 ```
+
 - **ERROR RESPONSE:**
 
 ```
 {
-	
-	"status": 404,
-	"message": "Person with id {id} not found.",
-	"timestamp": [datetime]
-	
+  "status": 500,
+  "message": "An unexpected error occurred.",
+  "timestamp": [datetime]
 }
 ```
-- Registrar um Novo Usuário
 
-	 - **URL:**
+- **SAMPLE CALL:**
 
-	 `/api/persons/register`
+```
+@Get("persons")
+suspend fun getPersons(): List<Person>
+```
 
-	- **METHOD:**
+---
 
-	 `POST`
-	 
-	 - **URL Paramethers:**
-		 - Required:
-		 
-		 `name: [string]`
-		 
-		 `email: [string]`
+### Obter Usuário por ID
+
+- **URL:**
+
+  `/api/persons/{id}`
+
+- **METHOD:**
+
+  `GET`
+
+- **URL Parameters:**
+
+  - Required:
+
+    `id: [integer]`
 
 - **SUCESS RESPONSE:**
 
 ```
-  {
-	 "id": [integer],
-	"name": [string],
-	"email": [string],
-  },
-```
-
-- **ERROR RESPONSE:**
-
-```
 {
-	
-	"status": 409,
-	"message": "Email already in use",
-	"timestamp": [datetime]
-	
+  "id": [integer],
+  "name": [string],
+  "email": [string],
+  "points": [integer]
 }
 ```
-- Fazer Login
-
-	 - **URL:**
-
-	 `/api/persons/login`
-
-	- **METHOD:**
-
-	 `POST`
-	 
-	 - **URL Paramethers:**
-		 - Required:
-		 
-		 `email: [string]`
-		 
-		 `password: [string]`
-
-	- **SUCESS RESPONSE:**
-```
-  {
-	 "id": [integer],
-	"token": [string]
-  },
-```
 
 - **ERROR RESPONSE:**
 
-
 ```
 {
-	
-  "status": 401,
-  "message": "Invalid password",
+  "status": 404,
+  "message": "User not found.",
   "timestamp": [datetime]
-	
 }
 ```
 
-- Validar Token JWT
+- **SAMPLE CALL:**
 
-	 - **URL:**
+```
+@Get("persons/{id}")
+suspend fun getPersonById(id: Int): Person
+```
 
-	 `/api/persons/validate`
+---
 
-	- **METHOD:**
+### Registrar Usuário
 
-	 `GET`
+- **URL:**
+
+  `/api/persons/register`
+
+- **METHOD:**
+
+  `POST`
+
+- **REQUEST BODY:**
+
+```
+{
+  "name": [string],
+  "email": [string],
+  "password": [string]
+}
+```
 
 - **SUCESS RESPONSE:**
 
-
 ```
-  {
-	 "Token is valid"
-  },
+{
+  "id": [integer],
+  "name": [string],
+  "email": [string],
+  "points": 0
+}
 ```
 
 - **ERROR RESPONSE:**
 
+```
+{
+  "status": 409,
+  "message": "Email already in use.",
+  "timestamp": [datetime]
+}
+```
+
+- **SAMPLE CALL:**
+
+```
+@POST("persons/register")
+suspend fun register(@Body person: Person): Person
+```
+
+---
+
+### Login
+
+- **URL:**
+
+  `/api/persons/login`
+
+- **METHOD:**
+
+  `POST`
+
+- **REQUEST BODY:**
+
+```
+{
+  "email": [string],
+  "password": [string]
+}
+```
+
+- **SUCESS RESPONSE:**
+
+```
+{
+  "id": [integer],
+  "token": [string]
+}
+```
+
+- **ERROR RESPONSE:**
 
 ```
 {
   "status": 401,
-  "message": "Invalid or expired token",
+  "message": "Invalid password.",
   "timestamp": [datetime]
 }
+
+{
+  "status": 404,
+  "message": "User not found.",
+  "timestamp": [datetime]
+}
+```
+
+- **SAMPLE CALL:**
+
+```
+@POST("persons/login")
+suspend fun login(@Body loginRequestDTO: LoginRequestDTO): LoginResponseDTO
+```
+
+---
+
+### Validar Token
+
+- **URL:**
+
+  `/api/persons/validate`
+
+- **METHOD:**
+
+  `GET`
+
+- **HEADERS:**
+
+  - Authorization: `Bearer [token]`
+
+- **SUCESS RESPONSE:**
+
+```
+"Token is valid"
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 401,
+  "message": "Invalid or expired token.",
+  "timestamp": [datetime]
+}
+```
+
+- **SAMPLE CALL:**
+
+```
+@Get("persons/validate")
+suspend fun validateToken(@Header("Authorization") token: String): String
+```
+
+---
+
+### Adicionar Pontuação
+
+- **URL:**
+
+  `/api/persons/{id}/add-point`
+
+- **METHOD:**
+
+  `POST`
+
+- **URL Parameters:**
+
+  - Required:
+
+    `id: [integer]`
+
+- **SUCESS RESPONSE:**
+
+```
+{
+  "id": [integer],
+  "name": [string],
+  "email": [string],
+  "points": [integer]
+}
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 404,
+  "message": "User not found.",
+  "timestamp": [datetime]
+}
+```
+
+- **SAMPLE CALL:**
+
+```
+@POST("persons/{id}/add-point")
+suspend fun addPointToUser(@Path("id") id: Int): Person
+```
+
+---
+
+### Remover Pontuação
+
+- **URL:**
+
+  `/api/persons/{id}/remove-point`
+
+- **METHOD:**
+
+  `POST`
+
+- **URL Parameters:**
+
+  - Required:
+
+    `id: [integer]`
+
+- **SUCESS RESPONSE:**
+
+```
+{
+  "id": [integer],
+  "name": [string],
+  "email": [string],
+  "points": [integer]
+}
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 404,
+  "message": "User not found or points are already at 0.",
+  "timestamp": [datetime]
+}
+```
+
+- **SAMPLE CALL:**
+
+```
+@POST("persons/{id}/remove-point")
+suspend fun removePointToUser(@Path("id") id: Int): Person
 
 ```
