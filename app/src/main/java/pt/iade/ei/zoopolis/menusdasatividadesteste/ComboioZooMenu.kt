@@ -47,7 +47,7 @@ fun ComboioZooMenu() {
     Box {
         Image(
             modifier = Modifier.fillMaxSize(),
-            painter = painterResource(R.drawable.baia_golfinhos_background),
+            painter = painterResource(R.drawable.comboio_design_background),
             contentDescription = "background_image",
             contentScale = ContentScale.FillBounds
         )
@@ -145,9 +145,9 @@ fun ComboioZooMenu() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     item {
-                        ActivitiesImageBox("Comboio do Zoo", R.drawable.baia_dos_golfinhos_design_penguin_dentro_do_retangulo,Color.hsl(196f, 0.93f, 0.63f))
-                        ActivitiesTimeBox("Horário:", R.drawable.baia_dos_golfinhos_design_horario,"Verão: 11:00 às 12:40 e" + " 14:00 às 19:00\n\n" + "Inverno: 11:00 às 12:40 e" + " 14:00 às 17:30\n")
-                        ActivitiesDescriptionBox("Descrição:", R.drawable.activitiesdescriptionbox,"Suba no Comboio do Zoo e usufrua de uma visita diferente pelo Jardim Zoológico.\n" +
+                        ActivitiesImageBox("Comboio do Zoo", R.drawable.comboio_banner_com_comboio_dentro,Color.hsl(196f, 0.93f, 0.63f))
+                        ActivitiesTimeBox("Horário:", R.drawable.comboio_design_horario,"Verão: 11:00 às 12:40 e" + " 14:00 às 19:00\n\n" + "Inverno: 11:00 às 12:40 e" + " 14:00 às 17:30\n")
+                        ActivitiesDescriptionBox("Descrição:", R.drawable.comboio_design_info,"Suba no Comboio do Zoo e usufrua de uma visita diferente pelo Jardim Zoológico.\n" +
                                 "\n" +
                                 "Esta atração proporciona outra perspetiva ao passar pelas instalações de algumas das espécies mais emblemáticas do Parque, sem que para isso tenha de sair do seu lugar.")
 

@@ -1587,8 +1587,45 @@ suspend fun getAEByAnimalId(@Path("animalId") animalId: Int): List<AEDTO>
   ```
   No content returned.
   ```
+---
 
+# Manual do Utilizador
 
+[Manual do Utilizador](Documents/Terceira_entrega/Manual_do_utilizador.pdf) 
 
+---
+## Autoavaliação do Projeto
+O Zoopolis é um projeto que se destaca pela iniciativa, tendo em atenção os detalhes e pela dedicação em construir uma aplicação funcional, segura, intuitiva e interativa. Segue uma análise mais detalhada das áreas mais relevantes da aplicação:
+
+### API e Back-End  
+A API foi desenvolvida seguindo as boas práticas de arquitetura e design de dados. Os endpoints estão bem estruturados, e o tratamento de erros é robusto, com mensagens explicitas e informativas, que auxiliam no processo de debugging, facilitando os desenvolvedores. Além disso, o sistema mostrou-se flexível, pronto para futuras atualizações.
+
+### Front-End
+O front-end foi desenvolvido focado na utilização e experiência do usuário. A interface é limpa, intuitiva e simples, adaptando-se a diferentes dispositivos e tamanhos de ecrã. A integração com o Google Maps API foi bem executada, proporcionando uma navegação suave e eficiente.
+Em especial, destacam-se:
+
+- **Mapa Personalizado**, integrado com Google Maps API, que efetua o tratamento dos dados de forma limpa e eficaz .
+
+### Base de Dados
+A base de dados foi projetada de forma eficiente, com uma estrutura bem normalizada e otimizada para diversos tipos de consultas. O dicionário de dados e o guia de dados fornecem informações detalhadas sobre todas as tabelas, campos e relacionamentos, facilitando a compreensão e manutenção da base de dados. As queries foram bem elaboradas, com uso adequado de índices e cláusulas de forma a garantir uma melhor performance e integridade dos dados.
+
+- **Dados georreferenciados** para os recintos, permitindo consultas rápidas e integração fluida com o mapa personalizado no frontend.
+
+### Funcionalidades Implementadas
+O Zoopolis apresenta um conjunto diverso de funcionalidades:
+
+- **Sistema de busca de animais**, essencial para lidar com grandes quantidades de dados sobre os animais.
+- **Login e registro de utilizadores**, com autenticação segura.
+- **Menu de Favoritos**, com os animais favoritos de cada utilizador.
+- **Mapa Personalizado**  facilitando o percurso no Zoo para os utilizadores.
+- **Sistema de pontuação**, permitindo assim uma experiencia mais divertida e única no Zoológico.
+
+### Conformidade com a Proposta
+O projeto atende à proposta inicial, entregando todas as funcionalidades principais.
+
+### Opinião e Nota Final
+O Zoopolis é um projeto completo, tecnicamente sólido, bem pensado e construído por apenas uma pessoa. A integração do back-end com a base de dados e front-end é eficiente, somada á  usabilidade e escalabilidade, demonstra o compromisso com a entrega de um produto de alta qualidade.
+
+**Nota sugerida:** 18/20
 
 

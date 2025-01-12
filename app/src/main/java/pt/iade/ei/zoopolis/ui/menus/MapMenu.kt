@@ -22,7 +22,7 @@ fun MapMenu() {
                     painter = painterResource(id = R.drawable.mapazoo),
                     contentDescription = "Description of the image",
                     modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.FillHeight
+                    contentScale = ContentScale.Crop
                 )
             }
         }
