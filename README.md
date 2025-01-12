@@ -105,12 +105,11 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 ### Caso de Utilização Principal: Visita Guiada (Core)
 
 1.  O utilizador faz login ou cria uma conta;
-2.  **Introduz o código**, que estará disponibilizado no bilhete, e inicia a sua visita ao zoo;
-3. Acede ao menu dos animais e **seleciona o animal** que deseja visitar;
-4. Recebe informações detalhadas e curiosidades acerca do animal, e o **trajeto necessário** a efetuar até chegar a esse animal;
-5. Após chegar ao recinto desse animal irá se deparar com uma placa com uma foto do animal, algumas informações sobre o mesmo e um **QR Code**, que poderá scannear;
-6. Ao scannear esse **QR Code** esse animal aparece durante aquela visita como **"Visitado"** e o utilizador **ganha 1 ponto**;
-7. Esses pontos podem ser acumulados, e ao fim de juntar um determinado número de pontos poderá levantar num dos kiosks um brinde.
+2. Acede ao menu dos animais e **seleciona o animal** que deseja visitar;
+3. Recebe informações detalhadas e curiosidades acerca do animal, e o **trajeto necessário** a efetuar até chegar a esse animal;
+4.  Após chegar ao recinto desse animal irá se deparar com uma placa com uma foto do animal, algumas informações sobre o mesmo e um código, que futuramente poderá scannear;
+5. Ao scannear esse introduzir o código desse animal aparece durante aquela visita como **"Visitado"** e o utilizador **ganha 1 ponto**;
+6. Esses pontos podem ser acumulados, e ao fim de juntar um determinado número de pontos poderá levantar num dos kiosks um brinde.
 
 ### Casos de Utilização Secundários:
 
@@ -123,9 +122,9 @@ Estas aplicações oferecem várias funções básicas, tais como, mapas e guias
 
 #### - Pesquisa Informativa:
 1. O utilizador pode selecionar a opção de **entrar como convidado**;
-2. Seleciona o **menu dos animais**;
-3. Pesquisa sobre o **animal que deseja**;
-4. Seleciona (caso este exista no zoológico) e obterá informações sobre o mesmo.
+2. Seleciona o **menu das atividades;
+3. Pesquisa sobre a **atividade que deseja**;
+4. Seleciona e obterá informações, como, o horário e uma pequena descrição sobre a mesma.
 
 ---
 # Descrição da solução
