@@ -1311,7 +1311,283 @@ suspend fun createVisit(
       @Query("personId") personId: Int,
       @Query("animalId") animalId: Int
   ): String
+  ```
   
+  ---
+
+## Retrieve All Enclosures
+
+### URL:
+
+`/api/enclosuresDTO`
+
+### METHOD:
+
+`GET`
+
+### SUCCESS RESPONSE:
+
+```
+[
+  {
+    "id": [integer],
+    "name": [string],
+    "animalClass": [string],
+    "mapsId": [integer],
+    "supportedAmount": [integer],
+    "latitude": [float],
+    "longitude": [float]
+  }
+]
+```
+
+### ERROR RESPONSE:
+
+- **No specific error responses defined for this endpoint.**
+
+### SAMPLE CALL:
+
+```
+@GET("enclosuresDTO")
+suspend fun getAllEnclosures(): List<EnclosureDTO>
+```
+
+---
+
+## Retrieve Enclosure by ID
+
+### URL:
+
+`/api/enclosuresDTO/{id}`
+
+### METHOD:
+
+`GET`
+
+### URL Parameters:
+
+- Required:
+
+  `id: [integer]`
+
+### SUCCESS RESPONSE:
+
+```
+{
+  "id": [integer],
+  "name": [string],
+  "animalClass": [string],
+  "mapsId": [integer],
+  "supportedAmount": [integer],
+  "latitude": [float],
+  "longitude": [float]
+}
+```
+
+### ERROR RESPONSE:
+
+```
+{
+  "status": 404,
+  "message": "Enclosure not found",
+  "timestamp": [datetime]
+}
+```
+
+### SAMPLE CALL:
+
+```
+@GET("enclosuresDTO/{id}")
+suspend fun getEnclosureById(@Path("id") id: Int): EnclosureDTO
+```
+---
+## Obter Todos os Registros AE
+
+- **URL:**
+
+  `/api/ae`
+
+- **METHOD:**
+
+  `GET`
+
+- **SUCCESS RESPONSE:**
+
+```
+[
+  {
+    "id": [integer],
+    "dateIn": [string], // Date in ISO format
+    "dateOut": [string], // Date in ISO format
+    "code": [string],
+    "animalDTO": {
+      "id": [integer],
+      "name": [string],
+      "ciName": [string],
+      "description": [string],
+      "imageUrl": [string]
+    },
+    "enclosureDTO": {
+      "id": [integer],
+      "name": [string],
+      "animalClass": [string],
+      "mapsId": [string],
+      "supportedAmount": [integer],
+      "latitude": [double],
+      "longitude": [double]
+    }
+  }
+]
+```
+
+- **SAMPLE CALL:**
+
+```
+@GET("ae")
+suspend fun getAllAE(): List<AEDTO>
+```
+
+---
+
+## Obter Registro AE por ID
+
+- **URL:**
+
+  `/api/ae/{id}`
+
+- **METHOD:**
+
+  `GET`
+
+- **URL Parameters:**
+
+  - Required:
+
+    `id: [integer]`
+
+- **SUCCESS RESPONSE:**
+
+```
+{
+  "id": [integer],
+  "dateIn": [string], // Date in ISO format
+  "dateOut": [string], // Date in ISO format
+  "code": [string],
+  "animalDTO": {
+    "id": [integer],
+    "name": [string],
+    "ciName": [string],
+    "description": [string],
+    "imageUrl": [string]
+  },
+  "enclosureDTO": {
+    "id": [integer],
+    "name": [string],
+    "animalClass": [string],
+    "mapsId": [string],
+    "supportedAmount": [integer],
+    "latitude": [double],
+    "longitude": [double]
+  }
+}
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 404,
+  "message": "AE with id [id] not found",
+  "timestamp": [datetime]
+}
+```
+
+- **SAMPLE CALL:**
+
+```
+@GET("ae/{id}")
+suspend fun getAEById(@Path("id") id: Int): AEDTO
+```
+
+---
+
+## Obter Registros AE por ID do Animal
+
+- **URL:**
+
+  `/api/ae/animal/{animalId}`
+
+- **METHOD:**
+
+  `GET`
+
+- **URL Parameters:**
+
+  - Required:
+
+    `animalId: [integer]`
+
+- **SUCCESS RESPONSE:**
+
+```
+[
+  {
+    "id": [integer],
+    "dateIn": [string], // Date in ISO format
+    "dateOut": [string], // Date in ISO format
+    "code": [string],
+    "animalDTO": {
+      "id": [integer],
+      "name": [string],
+      "ciName": [string],
+      "description": [string],
+      "imageUrl": [string]
+    },
+    "enclosureDTO": {
+      "id": [integer],
+      "name": [string],
+      "animalClass": [string],
+      "mapsId": [string],
+      "supportedAmount": [integer],
+      "latitude": [double],
+      "longitude": [double]
+    }
+  }
+]
+```
+
+- **SAMPLE CALL:**
+
+```
+@GET("ae/animal/{animalId}")
+suspend fun getAEByAnimalId(@Path("animalId") animalId: Int): List<AEDTO>
+```
+---
+### URL:
+`/api/images/{imageName}`
+
+### METHOD:
+`GET`
+
+### URL Parameters:
+- Required:
+  - `imageName: [string]`
+    - The name of the image file to retrieve.
+
+### SUCCESS RESPONSE:
+- **Code:** 200 OK
+- **Content:**
+  - Returns the requested image file as a binary stream.
+  - Headers include `Content-Disposition` to suggest a download with the original filename, and `Content-Type` set to the appropriate media type (e.g., `image/jpeg`).
+
+### ERROR RESPONSE:
+- **Code:** 404 NOT FOUND
+- **Content:**
+  ```
+  No content returned.
+  ```
+
+
 
 
 
