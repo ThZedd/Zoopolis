@@ -804,3 +804,514 @@ suspend fun addPointToUser(@Path("id") id: Int): Person
 suspend fun removePointToUser(@Path("id") id: Int): Person
 
 ```
+---
+
+### Listar Visitas
+
+- **URL:**
+
+  `/api/visited`
+
+- **METHOD:**
+
+  `GET`
+
+- **SUCESS RESPONSE:**
+
+```
+[
+  {
+    "id": [integer],
+    "person": {
+      "id": [integer],
+      "name": [string],
+      "email": [string]
+    },
+    "subArea": {
+      "id": [integer],
+      "name": [string]
+    },
+    "dtime": [datetime]
+  }
+]
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 500,
+  "message": "An unexpected error occurred.",
+  "timestamp": [datetime]
+}
+```
+
+- **SAMPLE CALL:**
+
+```
+@GET("visited")  
+suspend fun getAllVisits(): List<Visited>
+```
+
+---
+
+### Obter Visita por ID
+
+- **URL:**
+
+  `/api/visited/{id}`
+
+- **METHOD:**
+
+  `GET`
+
+- **URL Parameters:**
+
+  - Required:
+
+    `id: [integer]`
+
+- **SUCESS RESPONSE:**
+
+```
+{
+  "id": [integer],
+  "person": {
+    "id": [integer],
+    "name": [string],
+    "email": [string]
+  },
+  "subArea": {
+    "id": [integer],
+    "name": [string]
+  },
+  "dtime": [datetime]
+}
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 404,
+  "message": "Visit not found.",
+  "timestamp": [datetime]
+}
+```
+
+- **SAMPLE CALL:**
+
+```
+@GET("visited/{id}")  
+suspend fun getVisitById(@Path("id") id: Int): Visited
+```
+
+---
+
+### Criar Visita
+
+- **URL:**
+
+  `/api/visited`
+
+- **METHOD:**
+
+  `POST`
+
+- **REQUEST BODY:**
+
+```
+{
+  "personId": [integer],
+  "animalId": [integer]
+}
+```
+
+- **SUCESS RESPONSE:**
+
+```
+{
+  "id": [integer],
+  "person": {
+    "id": [integer],
+    "name": [string],
+    "email": [string]
+  },
+  "subArea": {
+    "id": [integer],
+    "name": [string]
+  },
+  "dtime": [datetime]
+}
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 400,
+  "message": "Invalid person ID.",
+  "timestamp": [datetime]
+}
+```
+
+- **SAMPLE CALL:**
+
+```
+@POST("visited")  
+suspend fun createVisit(  
+    @Query("personId") personId: Int,  
+    @Query("animalId") animalId: Int  
+): Visited
+```
+
+---
+
+### Atualizar Visita
+
+- **URL:**
+
+  `/api/visited/{id}`
+
+- **METHOD:**
+
+  `PUT`
+
+- **REQUEST BODY:**
+
+```
+{
+  "dtime": [datetime],
+  "person": {
+    "id": [integer]
+  },
+  "subArea": {
+    "id": [integer]
+  }
+}
+```
+
+- **SUCESS RESPONSE:**
+
+```
+{
+  "id": [integer],
+  "person": {
+    "id": [integer],
+    "name": [string],
+    "email": [string]
+  },
+  "subArea": {
+    "id": [integer],
+    "name": [string]
+  },
+  "dtime": [datetime]
+}
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 404,
+  "message": "Visit not found.",
+  "timestamp": [datetime]
+}
+```
+---
+
+### Deletar Visita
+
+- **URL:**
+
+  `/api/visited/{id}`
+
+- **METHOD:**
+
+  `DELETE`
+
+- **URL Parameters:**
+
+  - Required:
+
+    `id: [integer]`
+
+- **SUCESS RESPONSE:**
+
+```
+{
+  "message": "Visit deleted successfully."
+}
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 404,
+  "message": "Visit not found.",
+  "timestamp": [datetime]
+}
+```
+---
+
+### Obter Sub-área Mais Visitada
+
+- **URL:**
+
+  `/api/visited/most-visited-subarea`
+
+- **METHOD:**
+
+  `GET`
+
+- **SUCESS RESPONSE:**
+
+```
+{
+  "subArea": [string],
+  "visitCount": [integer]
+}
+```
+
+- **ERROR RESPONSE:**
+
+```
+{
+  "status": 500,
+  "message": "An unexpected error occurred.",
+  "timestamp": [datetime]
+}
+```
+---
+
+### Get All Favorites
+
+- **URL:**
+  `/api/favorite`
+
+- **METHOD:**
+  `GET`
+
+- **SUCESS RESPONSE:**
+  ```
+  [
+    {
+      "id": [integer],
+      "personId": [integer],
+      "animalId": [integer]
+    },
+    ...
+  ]
+  ```
+
+- **ERROR RESPONSE:**
+  ```
+  {
+    "status": 500,
+    "message": "Internal Server Error.",
+    "timestamp": [datetime]
+  }
+  ```
+
+- **SAMPLE CALL:**
+  ```
+  @GET("favorite")
+  suspend fun getFavorites(): List<Favorite>
+  ```
+
+---
+
+### Get Favorite by ID
+
+- **URL:**
+  `/api/favorite/{id}`
+
+- **METHOD:**
+  `GET`
+
+- **URL Parameters:**
+  - Required:
+    `id: [integer]`
+
+- **SUCESS RESPONSE:**
+  ```
+  {
+    "id": [integer],
+    "personId": [integer],
+    "animalId": [integer]
+  }
+  ```
+
+- **ERROR RESPONSE:**
+  ```
+  {
+    "status": 404,
+    "message": "Favorite not found.",
+    "timestamp": [datetime]
+  }
+  ```
+
+- **SAMPLE CALL:**
+  ```
+  @GET("favorite/{id}")
+  suspend fun getFavorite(@Path("id") id: Int): Optional<Favorite>
+  ```
+
+---
+
+### Get Favorite Animals by Person
+
+- **URL:**
+  `/api/favorite/person/{personId}`
+
+- **METHOD:**
+  `GET`
+
+- **URL Parameters:**
+  - Required:
+    `personId: [integer]`
+
+- **SUCESS RESPONSE:**
+  ```
+  [
+    {
+      "id": [integer],
+      "name": [string],
+      "species": [string]
+    },
+    ...
+  ]
+  ```
+
+- **ERROR RESPONSE:**
+  ```
+  {
+    "status": 404,
+    "message": "No favorite animals found for the person.",
+    "timestamp": [datetime]
+  }
+  ```
+
+- **SAMPLE CALL:**
+  ```
+  @GET("favorite/person/{personId}")
+  suspend fun getFavoriteAnimalsByPerson(@Path("personId") personId: Int): List<AnimalDTO>
+  ```
+
+---
+
+### Check if Animal is Favorite
+
+- **URL:**
+  `/api/favorite/isFavorite`
+
+- **METHOD:**
+  `GET`
+
+- **QUERY Parameters:**
+  - Required:
+    `personId: [integer]`
+    `animalId: [integer]`
+
+- **SUCESS RESPONSE:**
+  ```
+  true
+  ```
+
+- **ERROR RESPONSE:**
+  ```
+  {
+    "status": 400,
+    "message": "Bad Request.",
+    "timestamp": [datetime]
+  }
+  ```
+
+- **SAMPLE CALL:**
+  ```
+  @GET("favorite/isFavorite")
+  suspend fun isFavorite(
+      @Query("personId") personId: Int,
+      @Query("animalId") animalId: Int
+  ): Boolean
+  ```
+
+---
+
+### Add Favorite
+
+- **URL:**
+  `/api/favorite/add`
+
+- **METHOD:**
+  `POST`
+
+- **QUERY Parameters:**
+  - Required:
+    `personId: [integer]`
+    `animalId: [integer]`
+
+- **SUCESS RESPONSE:**
+  ```
+  "Animal added to favorites successfully."
+  ```
+
+- **ERROR RESPONSE:**
+  ```
+  {
+    "status": 409,
+    "message": "Animal is already a favorite for this person.",
+    "timestamp": [datetime]
+  }
+  ```
+
+- **SAMPLE CALL:**
+  ```
+  @POST("favorite/add")
+  suspend fun addFavorite(
+      @Query("personId") personId: Int,
+      @Query("animalId") animalId: Int
+  ): String
+  ```
+
+---
+
+### Remove Favorite
+
+- **URL:**
+  `/api/favorite/remove`
+
+- **METHOD:**
+  `DELETE`
+
+- **QUERY Parameters:**
+  - Required:
+    `personId: [integer]`
+    `animalId: [integer]`
+
+- **SUCESS RESPONSE:**
+  ```
+  "Animal removed from favorites successfully."
+  ```
+
+- **ERROR RESPONSE:**
+  ```
+  {
+    "status": 404,
+    "message": "Animal is not a favorite for this person.",
+    "timestamp": [datetime]
+  }
+  ```
+
+- **SAMPLE CALL:**
+  ```
+  @DELETE("favorite/remove")
+  suspend fun removeFavorite(
+      @Query("personId") personId: Int,
+      @Query("animalId") animalId: Int
+  ): String
+  
+
+
+
