@@ -63,6 +63,10 @@ import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import pt.iade.ei.zoopolis.FavoriteMenuActivity
 import pt.iade.ei.zoopolis.MainMenuActivity
 import pt.iade.ei.zoopolis.ProfileMenuActivity
@@ -85,7 +89,7 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO, viewModel: AEDTOViewModel, per
     val borderStrokeWidthSize = 1.45f
     val animalDTOViewModel: AnimalDTOViewModel = viewModel()
     val context = LocalContext.current
-    var code by remember { mutableStateOf(" ") }
+    var code by remember { mutableStateOf("") }
     var theCode by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
     // Ação de erro de rede
@@ -668,6 +672,10 @@ fun AnimalDescriptionMenuTeste(animal: AnimalDTO, viewModel: AEDTOViewModel, per
                                                 if(code == rightCode){
                                                   personViewModel.addPointToPerson(personId)
                                                   visitedViewModel.createVisit(personId, animal.id)
+                                                }
+                                                CoroutineScope(Dispatchers.Main).launch {
+                                                    delay(2000L) // 1 segundo
+                                                    // Outras ações ou apenas o delay sem continuar nada
                                                 }
                                                 code = ""
                                                 theCode = false
